@@ -13,10 +13,10 @@ function App() {
       <nav>      <h1>clon.wpp</h1>
       </nav>
       <Routes>
-        <Route path="/" element={<LoginScreen/>} />
-        <Route path="/chats" element={<ChatScreen/>} />
+        <Route path="/login" element={<LoginScreen/>} />
+        <Route path="/inicio" element={<ChatScreen/>} />
       </Routes>
-      <Route path="/login" element={<ContactScreen/>} /> <Route path="/contact" element={<h2>contact</h2>} />
+      <Route path="/contact" element={<ContactScreen/>} /> <Route path="/contact" element={<h2>contact</h2>} />
     </div>
   )
 }
