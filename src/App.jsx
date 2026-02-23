@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink, Route, Routes } from 'react-router'
 import LoginScreen from '../Screens/LoginScreen/LoginScreen'
 import HomeScreen from '../Screens/HomeScreen/HomeScreen'
-import ContactScreen from '../Screens/ContactScreen/ContactScreen'
+import ContactScreen from '../Screens/ChatScreen/ChatScreen'
 import './global.css'
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
       <Routes>
         <Route path='/login' element={<LoginScreen />} />
         <Route path='/home' element={<HomeScreen />} />
-        <Route path='/contact/:id' element={<ContactScreen />} />
+        <Route path="/" element={<HomeScreen />} />
       </Routes>
 
     </div>

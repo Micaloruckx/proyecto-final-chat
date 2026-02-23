@@ -1,12 +1,12 @@
 import React from 'react'
 import { useParams } from 'react-router'
-import { contact } from '../HomeScreen/HomeScreen'
+import { contact } from '../../data/contacts'
 
-export default function ContactScreen() {
+export default function ChatScreen() {
   const { id } = useParams();
-  const contact = contacts.find(contact => contact.id === parseInt(id));
+  const selectedContact = contact.find(contact => contact.id === parseInt(id));
 
-  if (!contact) {
+  if (!selectedContact) {
     return <h2>Contacto no encontrado</h2>;
   }
   return (
