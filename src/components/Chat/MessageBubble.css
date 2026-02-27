@@ -1,0 +1,35 @@
+.bubbleRow {
+    display: flex;
+}
+
+.bubbleRow.me {
+    justify-content: flex-end;
+}
+
+.bubbleRow.them {
+    justify-content: flex-start;
+}
+
+.bubble {
+    max-width: min(520px, 78%);
+    padding: 10px 10px 6px;
+    border-radius: 10px;
+    background: #202c33;
+    color: #e9edef;
+}
+
+.bubbleRow.me .bubble {
+    background: #005c4b;
+}
+
+.text {
+    white-space: pre-wrap;
+}
+
+.time {
+    margin-top: 6px;
+    font-size: 11px;
+    color: #cfd3d6;
+    opacity: 0.8;
+    text-align: right;
+}

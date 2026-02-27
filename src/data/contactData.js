@@ -1,92 +1,49 @@
-const contacts = [
-    {
-        id: 1,
-        name: 'Jon Snow',
-        last_time_connection: 'Hace 5 minutos',
-        profile_picture: 'https://static.wikia.nocookie.net/gameofthrones/images/0/0c/Jon_Snow_Season_8.png',
-        messages: [
-            {
-                id: 1,
-                text: 'The Long Night is over. ¿Todo en Invernalia?',
-                send_by_me: false,
-                created_at: '2024-10-01T08:15:00Z',
-                is_read: true
-            },
-            {
-                id: 2,
-                text: 'Voy camino, llego en un rato.',
-                send_by_me: true,
-                created_at: '2024-10-01T08:17:00Z',
-                is_read: true
-            }
-        ]
-    },
-    {
-        id: 2,
-        name: 'Daenerys Targaryen',
-        last_time_connection: 'Hace 1 hora',
-        profile_picture: 'https://static.wikia.nocookie.net/gameofthrones/images/7/73/Daenerys_Targaryen_-_Season_7.png',
-        messages: [
-            {
-                id: 1,
-                text: 'Los dragones están inquietos.',
-                send_by_me: false,
-                created_at: '2024-09-30T21:00:00Z',
-                is_read: false
-            },
-            {
-                id: 2,
-                text: 'Mantendré la calma. ¿Necesitas refuerzos?',
-                send_by_me: true,
-                created_at: '2024-09-30T21:05:00Z',
-                is_read: false
-            }
-        ]
-    },
-    {
-        id: 3,
-        name: 'Tyrion Lannister',
-        last_time_connection: 'Hace 4 horas',
-        profile_picture: 'https://static.wikia.nocookie.net/gameofthrones/images/1/1b/Tyrion_Lannister_-_Season_7.png',
-        messages: [
-            {
-                id: 1,
-                text: 'Siempre he preferido una buena copa y una conversación larga.',
-                send_by_me: false,
-                created_at: '2024-09-29T18:30:00Z',
-                is_read: true
-            },
-            {
-                id: 2,
-                text: 'Te preparo algo de vino para cuando vuelvas.',
-                send_by_me: true,
-                created_at: '2024-09-29T18:35:00Z',
-                is_read: true
-            }
-        ]
-    },
-    {
-        id: 4,
-        name: 'Arya Stark',
-        last_time_connection: 'Hace 2 días',
-        profile_picture: 'https://static.wikia.nocookie.net/gameofthrones/images/9/9b/Arya_Stark_Season_8.png',
-        messages: [
-            {
-                id: 1,
-                text: 'He terminado mi lista.',
-                send_by_me: false,
-                created_at: '2024-09-27T07:45:00Z',
-                is_read: true
-            },
-            {
-                id: 2,
-                text: '¿Otra misión?',
-                send_by_me: true,
-                created_at: '2024-09-27T07:50:00Z',
-                is_read: true
-            }
-        ]
-    }
-]
+const contactData = {
+    users: [
+        { id: "jon", name: "Jon Snow", avatar: "/Avatars/Jon.PNG", status: "I know nothing.", lastSeen: "Hace 5 minutos" },
+        { id: "arya", name: "Arya Stark", avatar: "/Avatars/Arya.PNG", status: "A girl has no name.", lastSeen: "Hace 2 días" },
+        { id: "sansa", name: "Sansa Stark", avatar: "/Avatars/Sansa.PNG", status: "The North remembers.", lastSeen: "Ayer" },
+        { id: "bran", name: "Bran Stark", avatar: "/Avatars/Bran.PNG", status: "I remember everything.", lastSeen: "Hace 4 horas" },
+        { id: "robb", name: "Robb Stark", avatar: "/Avatars/Robb.PNG", status: "King in the North.", lastSeen: "Hoy" },
+        { id: "eddard", name: "Eddard Stark", avatar: "/Avatars/Eddard.PNG", status: "Winter is coming.", lastSeen: "Hoy" },
+        { id: "catelyn", name: "Catelyn Stark", avatar: "/Avatars/Catelyn.PNG", status: "Family first.", lastSeen: "Online" },
+        { id: "rickon", name: "Rickon Stark", avatar: "/Avatars/Rickon.PNG", status: "⚡", lastSeen: "Unknown" },
+        { id: "tony", name: "Tony Stark", avatar: "/Avatars/Tony.png", status: "Genius, billionaire, playboy, philanthropist.", lastSeen: "Online" },
+    ],
 
-export default contacts
+    chats: [
+        { id: "chat-jon", userId: "jon", lastMessage: "¿Todo en Invernalia?", lastTime: "08:15", unread: 0 },
+        { id: "chat-arya", userId: "arya", lastMessage: "He terminado mi lista.", lastTime: "07:45", unread: 0 },
+        { id: "chat-sansa", userId: "sansa", lastMessage: "Necesitamos aliados.", lastTime: "Ayer", unread: 1 },
+        { id: "chat-bran", userId: "bran", lastMessage: "Vi algo...", lastTime: "21:02", unread: 0 },
+        { id: "chat-tony", userId: "tony", lastMessage: "¿Quién es el de la capa negra?", lastTime: "Ahora", unread: 2 },
+    ],
+
+    messages: {
+        "chat-jon": [
+            { id: "m1", fromMe: false, text: "The Long Night is over. ¿Todo en Invernalia?", time: "08:15" },
+            { id: "m2", fromMe: true, text: "Voy camino, llego en un rato.", time: "08:17" },
+        ],
+        "chat-arya": [
+            { id: "m1", fromMe: false, text: "He terminado mi lista.", time: "07:45" },
+            { id: "m2", fromMe: true, text: "¿Otra misión?", time: "07:50" },
+        ],
+        "chat-sansa": [
+            { id: "m1", fromMe: false, text: "Necesitamos aliados.", time: "18:40" },
+            { id: "m2", fromMe: true, text: "Decime a quién.", time: "18:41" },
+        ],
+        "chat-bran": [
+            { id: "m1", fromMe: false, text: "Vi algo...", time: "21:02" },
+            { id: "m2", fromMe: true, text: "¿Qué viste?", time: "21:03" },
+        ],
+
+        "chat-tony": [
+            { id: "m1", fromMe: false, text: "Ok, me perdí. ¿Esto es un grupo de lobos?", time: "Ahora" },
+            { id: "m2", fromMe: true, text: "Bienvenido a WhatStark.", time: "Ahora" },
+            { id: "m3", fromMe: false, text: "¿Quién es el de la capa negra? Tiene vibes de “yo hago mis propias reglas”.", time: "Ahora" },
+            { id: "m4", fromMe: true, text: "Jon. Y sí.", time: "Ahora" },
+        ],
+    },
+};
+
+export default contactData;

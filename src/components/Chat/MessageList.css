@@ -1,0 +1,7 @@
+.messageList {
+    padding: 14px;
+    overflow: auto;
+    display: grid;
+    gap: 8px;
+    background: #0b141a;
+}

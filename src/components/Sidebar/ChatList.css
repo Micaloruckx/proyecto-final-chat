@@ -1,0 +1,20 @@
+.chatList {
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.chatListTop {
+    padding: 12px;
+    border-bottom: 1px solid #1f2c33;
+}
+
+.brand {
+    color: #e9edef;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.chatItems {
+    overflow: auto;
+}
