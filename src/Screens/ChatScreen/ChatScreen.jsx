@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useChat } from "../../Context/ContactContext";
-import ChatList from "../components/Sidebar/ChatList";
-import ChatHeader from "../components/Chat/ChatHeader.jsx";
-import MessageList from "../components/Chat/MessageList";
-import MessageInput from "../components/Chat/MessageInput";
-import "./ChatLayout.css";
+import ChatList from "../../components/Sidebar/ChatList";
+import ChatHeader from "../../components/Chat/ChatHeader.jsx";
+import MessageList from "../../components/Chat/MessageList";
+import MessageInput from "../../components/Chat/MessageInput";
+import "./ChatScreen.css";
 
 export default function ChatLayout() {
     const { currentUser, selectedChatId } = useChat();
