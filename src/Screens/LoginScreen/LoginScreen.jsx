@@ -15,21 +15,29 @@ export default function Login() {
     return (
         <div className="login">
             <div className="loginCard">
+                <img
+                    className="loginLogo"
+                    src="/Logos/Logo-WhatStark-png.png"
+                    alt="WhatStark"
+                />
                 <h1>WhatStark</h1>
                 <p>Elegí tu usuario</p>
 
-                <div className="userGrid">
+                <div className="loginUsers">
                     {users.map((u) => (
                         <button
                             key={u.id}
-                            className="userBtn"
+                            className="loginUserBtn"
                             onClick={() => {
                                 login(u.id);
                                 navigate("/");
                             }}
                         >
-                            <img className="avatar" src={u.avatar} alt={u.name} />
-                            <div className="userName">{u.name}</div>
+                            <img className="loginAvatar" src={u.avatar} alt={u.name} />
+                            <div className="loginUserMeta">
+                                <div className="loginUserName">{u.name}</div>
+                                <div className="loginUserStatus">{u.status}</div>
+                            </div>
                         </button>
                     ))}
                 </div>
