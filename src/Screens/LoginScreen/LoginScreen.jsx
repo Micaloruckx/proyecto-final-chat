@@ -13,7 +13,7 @@ export default function Login() {
     }, [currentUser, navigate]);
 
     return (
-        <div className="login">
+        <div className="loginPage">
             <div className="loginCard">
                 <img
                     className="loginLogo"

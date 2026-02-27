@@ -1,4 +1,4 @@
-import { NavLink, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import LoginScreen from "./Screens/LoginScreen/LoginScreen";
 import ChatScreen from "./Screens/ChatScreen/ChatScreen";
 

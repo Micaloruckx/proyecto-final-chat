@@ -7,12 +7,14 @@ import MessageList from "../../components/Chat/MessageList";
 import MessageInput from "../../components/Chat/MessageInput";
 import "./ChatScreen.css";
 
-export default function ChatLayout() {
+export default function ChatScreen() {
     const { currentUser, selectedChatId } = useChat();
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!currentUser) navigate("/login");
+        if (!currentUser) {
+            navigate("/login");
+        }
     }, [currentUser, navigate]);
 
     return (
