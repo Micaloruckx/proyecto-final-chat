@@ -1,13 +1,13 @@
 .searchBox {
     width: 100%;
-    padding: 10px 12px;
-    border-radius: 10px;
-    border: 1px solid #2a3942;
-    background: #202c33;
-    color: #e9edef;
+    padding: var(--radius-sm) var(--radius-md);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-bg-surface-2);
+    background: var(--color-bg-surface);
+    color: var(--color-text-primary);
     outline: none;
 }
 
 .searchBox::placeholder {
-    color: #8696a0;
+    color: var(--color-text-muted);
 }

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import contactData from "../data/contactData";
 
 const ContactContext = createContext(null);
+const ARG_TIME_ZONE = "America/Argentina/Buenos_Aires";
 
     const AUTH_STORAGE_KEYS = [
         "ws_currentUser",
@@ -18,13 +19,82 @@ const ContactContext = createContext(null);
     }
 
     function safeLoadMessages() {
+        const openedAt = ensureAppOpenedAt();
+        const baseMessages = hydrateMessages(contactData.messages, openedAt);
+
         try {
             const raw = localStorage.getItem("ws_messages");
-            if (!raw) return contactData.messages;
-            return JSON.parse(raw);
+            if (!raw) return baseMessages;
+            const parsed = JSON.parse(raw);
+            if (!parsed || typeof parsed !== "object") return baseMessages;
+            return {
+                ...baseMessages,
+                ...hydrateMessages(parsed, openedAt),
+            };
         } catch {
-            return contactData.messages;
+            return baseMessages;
         }
+    }
+
+    function ensureAppOpenedAt() {
+        const key = "ws_app_opened_at";
+        const existing = localStorage.getItem(key);
+        if (existing) return existing;
+
+        const now = new Date().toISOString();
+        localStorage.setItem(key, now);
+        return now;
+    }
+
+    function formatArgentinaTime(date) {
+        return new Intl.DateTimeFormat("es-AR", {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false,
+            timeZone: ARG_TIME_ZONE,
+        }).format(date);
+    }
+
+    function hydrateMessages(messagesMap, openedAtIso) {
+        if (!messagesMap || typeof messagesMap !== "object") return {};
+
+        const openedAtMs = Date.parse(openedAtIso) || Date.now();
+        const result = {};
+
+        Object.entries(messagesMap).forEach(([chatId, messages]) => {
+            if (!Array.isArray(messages)) {
+                result[chatId] = [];
+                return;
+            }
+
+            result[chatId] = messages.map((message, index) => {
+                if (!message || typeof message !== "object") return message;
+
+                const hasCreatedAt = Boolean(message.createdAt);
+                const createdAt = hasCreatedAt
+                    ? message.createdAt
+                    : new Date(openedAtMs + index * 60000).toISOString();
+
+                if (message.time === "Ahora") {
+                    return {
+                        ...message,
+                        time: formatArgentinaTime(new Date(createdAt)),
+                        createdAt,
+                    };
+                }
+
+                if (hasCreatedAt) {
+                    return {
+                        ...message,
+                        createdAt,
+                    };
+                }
+
+                return { ...message };
+            });
+        });
+
+        return result;
     }
 
     export function ContactProvider({ children }) {
@@ -64,11 +134,14 @@ const ContactContext = createContext(null);
             const trimmed = text.trim();
             if (!trimmed) return;
 
+            const now = new Date();
+
             const newMsg = {
                 id: `m-${Date.now()}`,
                 fromMe: true,
                 text: trimmed,
-                time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+                time: formatArgentinaTime(now),
+                createdAt: now.toISOString(),
             };
 
             setMessagesByChatId((prev) => {

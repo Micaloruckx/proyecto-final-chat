@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useChat } from "../../context/ContactContext";
 import MessageBubble from "./MessageBubble.jsx";
 import "./MessageList.css";

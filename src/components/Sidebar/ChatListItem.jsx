@@ -1,4 +1,6 @@
+import React from "react";
 import { useChat } from "../../context/ContactContext";
+import PropTypes from "prop-types";
 import "./ChatListItem.css";
 
 export default function ChatListItem({ chat, active }) {
@@ -21,3 +23,14 @@ export default function ChatListItem({ chat, active }) {
         </button>
     );
 }
+
+ChatListItem.propTypes = {
+    chat: PropTypes.shape({
+        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+        userId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+        lastTime: PropTypes.string.isRequired,
+        lastMessage: PropTypes.string.isRequired,
+        unread: PropTypes.number.isRequired,
+    }).isRequired,
+    active: PropTypes.bool,
+};

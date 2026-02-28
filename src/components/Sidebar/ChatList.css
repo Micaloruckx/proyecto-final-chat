@@ -5,15 +5,15 @@
 }
 
 .chatListTop {
-    padding: 12px;
-    border-bottom: 1px solid #1f2c33;
+    padding: var(--radius-md);
+    border-bottom: 1px solid var(--color-border);
 }
 
 .brand {
-    color: #e9edef;
+    font-family: var(--font-family-heading);
+    color: var(--color-text-primary);
     font-weight: 700;
-    margin-bottom: 10px;
-}
+    margin-bottom: var(--radius-sm);}
 
 .chatItems {
     overflow: auto;

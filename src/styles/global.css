@@ -14,29 +14,35 @@ body,
 }
 
 :root {
-    /* Background */
-    --bg-app: #f0f2f5;
-    --bg-panel: #ffffff;
-    --bg-chat: #efeae2;
-    --bg-input: #f0f2f5;
+    --font-family-base: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-family-heading: "Poppins", "Inter", "Segoe UI", Roboto, sans-serif;
 
-    /* Brand */
-    --primary: #25d366;
-    --primary-hover: #20bd5a;
+    --color-bg-app: #0b141a;
+    --color-bg-panel: #111b21;
+    --color-bg-surface: #202c33;
+    --color-bg-surface-2: #2a3942;
 
-    /* Text */
-    --text-primary: #111b21;
-    --text-secondary: #667781;
+    --color-border: #1f2c33;
+    --color-border-strong: #3b4a54;
 
-    /* Borders */
-    --border-color: #e9edef;
+    --color-text-primary: #e9edef;
+    --color-text-secondary: #aebac1;
+    --color-text-muted: #8696a0;
 
-    /* Message bubbles */
-    --bubble-me: #d9fdd3;
-    --bubble-them: #ffffff;
+    --color-brand: #25d366;
+    --color-accent: #00a884;
+    --color-link: #56b6ff;
+    --color-primary-btn: #1b74e4;
+    --color-text-on-accent: #001011;
+    --color-panel-overlay: rgba(17, 27, 33, 0.92);
 
-    /* Icons */
-    --icon-color: #54656f;
+    --radius-sm: 10px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-pill: 999px;
+
+    --shadow-card: 0 18px 50px rgba(0, 0, 0, 0.45);
+    --shadow-logo: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.35));
 }
 
 body {

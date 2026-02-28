@@ -1,3 +1,4 @@
+import React from "react";
 import { useChat } from "../../context/ContactContext";
 import "./ChatHeader.css";
 

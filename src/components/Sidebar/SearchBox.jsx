@@ -1,4 +1,6 @@
+import React from "react";
 import "./SearchBox.css";
+import PropTypes from "prop-types";
 
 export default function SearchBox({ value, onChange }) {
     return (
@@ -6,7 +8,12 @@ export default function SearchBox({ value, onChange }) {
             className="searchBox"
             value={value}
             onChange={(e) => onChange(e.target.value)}
-            placeholder="Buscar Stark..."
+            placeholder="Buscar contacto..."
         />
     );
 }
+
+SearchBox.propTypes = {
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+};

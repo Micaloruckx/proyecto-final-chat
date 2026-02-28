@@ -12,24 +12,32 @@
 
 .bubble {
     max-width: min(520px, 78%);
-    padding: 10px 10px 6px;
-    border-radius: 10px;
-    background: #202c33;
-    color: #e9edef;
+    padding: var(--radius-sm) var(--radius-sm) 6px;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-surface);
+    color: var(--color-text-primary);
 }
 
 .bubbleRow.me .bubble {
-    background: #005c4b;
-}
+    background: var(--color-accent);}
 
 .text {
     white-space: pre-wrap;
 }
 
+.messageImage {
+    display: block;
+    max-width: 220px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 6px;
+}
+
 .time {
     margin-top: 6px;
     font-size: 11px;
-    color: #cfd3d6;
+    color: var(--color-text-secondary);
     opacity: 0.8;
     text-align: right;
 }
