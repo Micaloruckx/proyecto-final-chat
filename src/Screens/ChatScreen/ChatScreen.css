@@ -17,13 +17,20 @@
     background: #0b141a;
 }
 
-.empty {
+.sup {
     height: 100%;
     display: grid;
     place-content: center;
     color: #aebac1;
     text-align: center;
     padding: 24px;
+}
+
+.sup h2 {
+    font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 800;
+    font-size: large;
+    color: #25D366;
 }
 
 @media (max-width: 900px) {

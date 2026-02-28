@@ -42,7 +42,9 @@ export function ContactProvider({ children }) {
         setCurrentUser(null);
         setSelectedChatId(null);
         setMessagesByChatId(contactData.messages);
-        persistAll(null, null, contactData.messages);
+        localStorage.removeItem("ws_currentUser");
+        localStorage.removeItem("ws_selectedChatId");
+        localStorage.setItem("ws_messages", JSON.stringify(contactData.messages));
     }
 
     function selectChat(chatId) {

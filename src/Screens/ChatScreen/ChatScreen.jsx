@@ -25,7 +25,7 @@ export default function ChatScreen() {
 
             <main className="right">
                 {!selectedChatId ? (
-                    <div className="empty">
+                    <div className="sup">
                         <h2>WhatStark</h2>
                         <p>Seleccioná un chat para empezar.</p>
                     </div>
