@@ -6,6 +6,7 @@ const ContactContext = createContext(null);
 const ARG_TIME_ZONE = "America/Argentina/Buenos_Aires";
 const AI_ENABLED_STORAGE_KEY = "ws_ai_enabled";
 const THEME_STORAGE_KEY = "ws_theme";
+const AI_REQUEST_TIMEOUT_MS = 8000;
 const AI_FALLBACK_BY_CHAT = {
     "chat-jon": "Entendido. Mantengamos la calma y revisamos el perímetro al amanecer.",
     "chat-arya": "Si vamos, vamos rápido. Sin ruido.",
@@ -123,24 +124,42 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
     }
 
     async function requestAiReply(chatId, history, userText) {
-        const response = await fetch("/api/chat", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                chatId,
-                userText,
-                history,
-            }),
-        });
+        const controller = new AbortController();
+        const timeoutId = window.setTimeout(() => controller.abort(), AI_REQUEST_TIMEOUT_MS);
 
-        if (!response.ok) {
-            throw new Error("AI request failed");
+        try {
+            const response = await fetch("/api/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    chatId,
+                    userText,
+                    history,
+                }),
+                signal: controller.signal,
+            });
+
+            if (!response.ok) {
+                throw new Error("AI request failed");
+            }
+
+            const contentType = response.headers.get("content-type") || "";
+            if (!contentType.includes("application/json")) {
+                throw new Error("AI response is not JSON");
+            }
+
+            const data = await response.json();
+            const reply = typeof data?.reply === "string" ? data.reply.trim() : "";
+            if (!reply) {
+                throw new Error("AI reply is empty");
+            }
+
+            return reply;
+        } finally {
+            window.clearTimeout(timeoutId);
         }
-
-        const data = await response.json();
-        return data?.reply?.trim() || buildFallbackReply(chatId);
     }
 
     function hydrateMessages(messagesMap, openedAtIso) {

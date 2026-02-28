@@ -12,7 +12,6 @@
     z-index: 2;
     padding: var(--radius-md);
     background: var(--color-bg-panel);
-    border-bottom: 1px solid var(--color-border);
 }
 
 .upChats {
@@ -20,7 +19,7 @@
     color: var(--color-text-primary);
     font-weight: 400;
     margin-bottom: var(--radius-sm);
-    font-size: 30px;
+    font-size: 25px;
 
 }
 
@@ -47,8 +46,8 @@
     width: 48px;
     height: 28px;
     border-radius: var(--radius-pill);
-    border: 1px solid var(--color-border-strong);
-    background: var(--color-bg-surface);
+    border: 1px solid color-mix(in srgb, var(--color-accent) 60%, var(--color-bg-surface));
+    background: color-mix(in srgb, var(--color-accent) 42%, var(--color-bg-surface));
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -59,12 +58,12 @@
 
 .themeSwitch:hover,
 .themeSwitch:focus-visible {
-    background: var(--color-bg-surface-2);
+    background: color-mix(in srgb, var(--color-accent) 50%, var(--color-bg-surface));
 }
 
 .themeSwitch.on {
-    background: var(--color-accent);
-    border-color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 42%, var(--color-bg-surface));
+    border-color: color-mix(in srgb, var(--color-accent) 60%, var(--color-bg-surface));
 }
 
 .switchIcon {

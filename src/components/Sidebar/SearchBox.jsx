@@ -13,7 +13,7 @@ export default function SearchBox({ value, onChange }) {
                 className="searchBox"
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
-                placeholder="Buscar contacto..."
+                placeholder="Buscar chat o contacto..."
             />
             {value ? (
                 <button

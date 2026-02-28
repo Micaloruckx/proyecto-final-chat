@@ -15,12 +15,22 @@
     height: fit-content;
     padding: var(--radius-sm) var(--radius-sm) 6px;
     border-radius: var(--radius-sm);
-    background: var(--color-bg-surface);
+    background: var(--color-bg-panel);
     color: var(--color-text-primary);
+    border: 0,5px solid var(--color-border);
+    box-shadow: 0 0.5px 5px var(--color-border);
 }
 
 .bubbleRow.me .bubble {
-    background: var(--color-accent);}
+    border-color: transparent;
+    background: color-mix(in srgb, var(--color-accent) 28%, var(--color-bg-panel));
+    box-shadow: 0 1px 3px color-mix(in srgb, var(--color-accent) 45%, var(--color-border));
+}
+
+[data-theme="dark"] .bubbleRow.me .bubble {
+    background: var(--color-accent);
+    box-shadow: 0 0.5px 2px var(--color-accent);
+}
 
 .text {
     white-space: pre-wrap;

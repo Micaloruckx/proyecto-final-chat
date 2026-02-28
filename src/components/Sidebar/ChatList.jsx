@@ -79,7 +79,7 @@ export default function ChatList() {
                 <div className="topRow">
                     <div className="upChats">Chats</div>
                     <div className="themeControl">
-                        <span className="themeLabel">Tema: {theme === "dark" ? "Oscuro" : "Claro"}</span>
+                        <span className="themeLabel">Tema {theme === "dark" ? "Oscuro" : "Claro"}</span>
                         <button
                             type="button"
                             className={`themeSwitch ${theme === "dark" ? "on" : "off"}`}
@@ -90,10 +90,10 @@ export default function ChatList() {
                             title={`Modo actual: ${theme === "dark" ? "oscuro" : "claro"}`}
                         >
                             <span className="switchIcon switchIconSun" aria-hidden="true">
-                                <BsSunFill size={10} />
+                                <BsSunFill size={12} />
                             </span>
                             <span className="switchIcon switchIconMoon" aria-hidden="true">
-                                <BsMoonStarsFill size={10} />
+                                <BsMoonStarsFill size={11} />
                             </span>
                             <span className="switchThumb" aria-hidden="true" />
                         </button>

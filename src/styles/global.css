@@ -72,9 +72,9 @@ body,
     --shadow-card: 0 18px 50px rgba(0, 0, 0, 0.45);
     --shadow-logo: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.35));
 
-    --chat-wallpaper: url('/fondo_MainOscuro.jpg');
-    --chat-overlay-start: rgba(0, 0, 0, 0.6);
-    --chat-overlay-end: rgba(0, 0, 0, 0.5);
+    --chat-wallpaper: url('/fondo_MainClaro.png');
+    --chat-overlay-start: rgba(0, 0, 0, 0.72);
+    --chat-overlay-end: rgba(0, 0, 0, 0.64);
 }
 
 body {
