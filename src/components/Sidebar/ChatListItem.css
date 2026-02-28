@@ -1,11 +1,11 @@
 .chatItem {
-    width: 75%;
+    width: 100%;
     display: grid;
     grid-template-columns: 52px 1fr;
     gap: var(--radius-sm);
     padding: var(--radius-sm) var(--radius-md);
     background: transparent;
-    border: 0;
+    border: 5px solid transparent;
     border-radius: var(--radius-md);
     text-align: left;
     cursor: pointer;
@@ -44,6 +44,7 @@
 .name {
     font-family: var(--font-family-heading);
     font-weight: 600;
+    font-size: larger;
 }
 
 .time {
@@ -53,7 +54,7 @@
 
 .last {
     color: var(--color-text-secondary);
-    font-size: 13px;
+    font-size: 15px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
