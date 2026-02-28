@@ -66,8 +66,8 @@ export default function ChatList() {
         const list = !q
             ? withPreview
             : withPreview.filter((c) =>
-                  (usersById[c.userId]?.name || "").toLowerCase().includes(q)
-              );
+                (usersById[c.userId]?.name || "").toLowerCase().includes(q)
+            );
 
         return [...list].sort((a, b) => b.lastAt - a.lastAt);
     }, [query, withPreview, usersById]);
@@ -75,7 +75,7 @@ export default function ChatList() {
     return (
         <div className="chatList">
             <div className="chatListTop">
-                <div className="brand">WhatStark</div>
+                <div className="upChats">Chats</div>
                 <SearchBox value={query} onChange={setQuery} />
             </div>
 

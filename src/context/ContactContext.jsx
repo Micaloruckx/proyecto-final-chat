@@ -4,6 +4,32 @@ import contactData from "../data/contactData";
 
 const ContactContext = createContext(null);
 const ARG_TIME_ZONE = "America/Argentina/Buenos_Aires";
+const AI_ENABLED_STORAGE_KEY = "ws_ai_enabled";
+const AI_FALLBACK_BY_CHAT = {
+    "chat-jon": "Entendido. Mantengamos la calma y revisamos el perímetro al amanecer.",
+    "chat-arya": "Si vamos, vamos rápido. Sin ruido.",
+    "chat-sansa": "Tomo nota. Lo resolvemos con estrategia y no con apuro.",
+    "chat-bran": "Lo vi antes de que ocurriera. Debemos prepararnos.",
+    "chat-robb": "Bien. Coordino turnos y lo dejamos cubierto.",
+    "chat-catelyn": "Gracias por avisar. Cuidate y manteneme al tanto.",
+    "chat-eddard": "Actuemos con prudencia. El norte siempre observa.",
+    "chat-rickon": "Jajaja, banco. Después te mando otra 😄",
+    "chat-tony": "Anotado. Te lo optimizo y te lo devuelvo en versión Mark I.",
+    "chat-targaryen": "[Tyrion] Recibido. Mantenemos el plan y esperamos tu señal.",
+};
+
+const LOCAL_AI_SUFFIX_BY_CHAT = {
+    "chat-jon": "Nos vemos en la muralla.",
+    "chat-arya": "Voy sin hacer ruido.",
+    "chat-sansa": "Lo ordeno y te confirmo.",
+    "chat-bran": "Ya lo había visto venir.",
+    "chat-robb": "Dejo turnos cubiertos.",
+    "chat-catelyn": "Avisame cuando llegues.",
+    "chat-eddard": "Actuemos con prudencia.",
+    "chat-rickon": "Después te mando otra 😄",
+    "chat-tony": "Te lo optimizo en una pasada.",
+    "chat-targaryen": "[Varys] La información ya está en movimiento.",
+};
 
     const AUTH_STORAGE_KEYS = [
         "ws_currentUser",
@@ -46,6 +72,12 @@ const ARG_TIME_ZONE = "America/Argentina/Buenos_Aires";
         return now;
     }
 
+    function safeLoadAiEnabled() {
+        const raw = localStorage.getItem(AI_ENABLED_STORAGE_KEY);
+        if (raw === null) return true;
+        return raw === "true";
+    }
+
     function formatArgentinaTime(date) {
         return new Intl.DateTimeFormat("es-AR", {
             hour: "2-digit",
@@ -53,6 +85,53 @@ const ARG_TIME_ZONE = "America/Argentina/Buenos_Aires";
             hour12: false,
             timeZone: ARG_TIME_ZONE,
         }).format(date);
+    }
+
+    function persistMessages(nextMessagesByChatId) {
+        localStorage.setItem("ws_messages", JSON.stringify(nextMessagesByChatId));
+    }
+
+    function appendMessage(setter, chatId, message) {
+        setter((prev) => {
+            const next = {
+                ...prev,
+                [chatId]: [...(prev[chatId] || []), message],
+            };
+            persistMessages(next);
+            return next;
+        });
+    }
+
+    function buildFallbackReply(chatId) {
+        return AI_FALLBACK_BY_CHAT[chatId] || "Recibido. Te respondo en breve.";
+    }
+
+    function buildLocalAiReply(chatId, userText) {
+        const clean = userText.trim();
+        const firstChunk = clean.split(/[.!?]/)[0]?.trim() || "Entendido";
+        const suffix = LOCAL_AI_SUFFIX_BY_CHAT[chatId] || "Sigo atento.";
+        return `${firstChunk}. ${suffix}`;
+    }
+
+    async function requestAiReply(chatId, history, userText) {
+        const response = await fetch("/api/chat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                chatId,
+                userText,
+                history,
+            }),
+        });
+
+        if (!response.ok) {
+            throw new Error("AI request failed");
+        }
+
+        const data = await response.json();
+        return data?.reply?.trim() || buildFallbackReply(chatId);
     }
 
     function hydrateMessages(messagesMap, openedAtIso) {
@@ -102,6 +181,7 @@ const ARG_TIME_ZONE = "America/Argentina/Buenos_Aires";
         const [currentUser, setCurrentUser] = useState(null);
         const [selectedChatId, setSelectedChatId] = useState(null);
         const [messagesByChatId, setMessagesByChatId] = useState(() => safeLoadMessages());
+        const [aiEnabled, setAiEnabled] = useState(() => safeLoadAiEnabled());
 
         useEffect(() => {
             // Hard reset de auth al iniciar la app: siempre volver a login al recargar.
@@ -130,9 +210,17 @@ const ARG_TIME_ZONE = "America/Argentina/Buenos_Aires";
             setSelectedChatId(chatId);
         }
 
+        function toggleAiEnabled() {
+            setAiEnabled((prev) => {
+                const next = !prev;
+                localStorage.setItem(AI_ENABLED_STORAGE_KEY, String(next));
+                return next;
+            });
+        }
+
         function sendMessage(chatId, text) {
             const trimmed = text.trim();
-            if (!trimmed) return;
+            if (!trimmed || !chatId) return;
 
             const now = new Date();
 
@@ -144,14 +232,31 @@ const ARG_TIME_ZONE = "America/Argentina/Buenos_Aires";
                 createdAt: now.toISOString(),
             };
 
-            setMessagesByChatId((prev) => {
-                const next = {
-                    ...prev,
-                    [chatId]: [...(prev[chatId] || []), newMsg],
-                };
-                localStorage.setItem("ws_messages", JSON.stringify(next));
-                return next;
-            });
+            const history = [...(messagesByChatId[chatId] || []), newMsg]
+                .slice(-20)
+                .map((msg) => ({
+                    fromMe: Boolean(msg.fromMe),
+                    text: msg.text || (msg.image ? "[imagen]" : ""),
+                }));
+
+            appendMessage(setMessagesByChatId, chatId, newMsg);
+
+            if (!aiEnabled) return;
+
+            (async () => {
+                const replyText = await requestAiReply(chatId, history, trimmed).catch(() =>
+                    buildLocalAiReply(chatId, trimmed) || buildFallbackReply(chatId)
+                );
+
+                const replyNow = new Date();
+                appendMessage(setMessagesByChatId, chatId, {
+                    id: `m-ai-${Date.now()}`,
+                    fromMe: false,
+                    text: replyText,
+                    time: formatArgentinaTime(replyNow),
+                    createdAt: replyNow.toISOString(),
+                });
+            })();
         }
 
         const value = {
@@ -161,9 +266,11 @@ const ARG_TIME_ZONE = "America/Argentina/Buenos_Aires";
             currentUser,
             selectedChatId,
             messagesByChatId,
+            aiEnabled,
             login,
             logout,
             selectChat,
+            toggleAiEnabled,
             sendMessage,
         };
 

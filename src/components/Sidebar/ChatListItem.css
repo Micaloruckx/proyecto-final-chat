@@ -1,5 +1,5 @@
 .chatItem {
-    width: 100%;
+    width: 75%;
     display: grid;
     grid-template-columns: 52px 1fr;
     gap: var(--radius-sm);

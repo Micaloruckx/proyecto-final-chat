@@ -3,7 +3,7 @@ import { useChat } from "../../context/ContactContext";
 import "./ChatHeader.css";
 
 export default function ChatHeader() {
-    const { selectedChatId, chats, usersById } = useChat();
+    const { selectedChatId, chats, usersById, aiEnabled, toggleAiEnabled } = useChat();
     const chat = chats.find((c) => c.id === selectedChatId);
     const u = chat ? usersById[chat.userId] : null;
 
@@ -16,6 +16,13 @@ export default function ChatHeader() {
                 <div className="headerName">{u.name}</div>
                 <div className="headerStatus">{u.status}</div>
             </div>
+            <button
+                type="button"
+                className={`aiToggle ${aiEnabled ? "on" : "off"}`}
+                onClick={toggleAiEnabled}
+            >
+                IA {aiEnabled ? "ON" : "OFF"}
+            </button>
         </div>
     );
 }
