@@ -12,6 +12,7 @@
 
 .bubble {
     max-width: min(520px, 78%);
+    height: fit-content;
     padding: var(--radius-sm) var(--radius-sm) 6px;
     border-radius: var(--radius-sm);
     background: var(--color-bg-surface);
@@ -37,7 +38,7 @@
 .time {
     margin-top: 6px;
     font-size: 11px;
-    color: var(--color-text-secondary);
+    color: var(--color-text-primary);
     opacity: 0.8;
     text-align: right;
 }

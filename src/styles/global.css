@@ -17,6 +17,39 @@ body,
     --font-family-base: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --font-family-heading: "Poppins", "Inter", "Segoe UI", Roboto, sans-serif;
 
+    --color-bg-app: #efeae2;
+    --color-bg-panel: #ffffff;
+    --color-bg-surface: #f0f2f5;
+    --color-bg-surface-2: #e9edef;
+
+    --color-border: #d1d7db;
+    --color-border-strong: #b7c3cc;
+
+    --color-text-primary: #111b21;
+    --color-text-secondary: #54656f;
+    --color-text-muted: #667781;
+
+    --color-brand: #40A44E;
+    --color-accent: #00a884;
+    --color-link: #0b57d0;
+    --color-primary-btn: #1b74e4;
+    --color-text-on-accent: #001011;
+    --color-panel-overlay: rgba(255, 255, 255, 0.92);
+
+    --radius-sm: 10px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-pill: 999px;
+
+    --shadow-card: 0 12px 30px rgba(17, 27, 33, 0.18);
+    --shadow-logo: drop-shadow(0 8px 14px rgba(17, 27, 33, 0.22));
+
+    --chat-wallpaper: url('/fondo_MainClaro.png');
+    --chat-overlay-start: rgba(255, 255, 255, 0.55);
+    --chat-overlay-end: rgba(255, 255, 255, 0.45);
+}
+
+[data-theme="dark"] {
     --color-bg-app: #0b141a;
     --color-bg-panel: #111b21;
     --color-bg-surface: #202c33;
@@ -36,13 +69,12 @@ body,
     --color-text-on-accent: #001011;
     --color-panel-overlay: rgba(17, 27, 33, 0.92);
 
-    --radius-sm: 10px;
-    --radius-md: 12px;
-    --radius-lg: 18px;
-    --radius-pill: 999px;
-
     --shadow-card: 0 18px 50px rgba(0, 0, 0, 0.45);
     --shadow-logo: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.35));
+
+    --chat-wallpaper: url('/fondo_MainOscuro.jpg');
+    --chat-overlay-start: rgba(0, 0, 0, 0.6);
+    --chat-overlay-end: rgba(0, 0, 0, 0.5);
 }
 
 body {

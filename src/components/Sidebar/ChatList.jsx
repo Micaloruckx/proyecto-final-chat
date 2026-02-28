@@ -32,7 +32,7 @@ function getSortEpoch(timeLabel, createdAt, index, referenceNow) {
 }
 
 export default function ChatList() {
-    const { chats, usersById, selectedChatId, messagesByChatId } = useChat();
+    const { chats, usersById, selectedChatId, messagesByChatId, theme, toggleTheme } = useChat();
     const [query, setQuery] = useState("");
     const referenceNow = useMemo(() => {
         const openedAt = localStorage.getItem("ws_app_opened_at");
@@ -75,7 +75,17 @@ export default function ChatList() {
     return (
         <div className="chatList">
             <div className="chatListTop">
-                <div className="upChats">Chats</div>
+                <div className="topRow">
+                    <div className="upChats">Chats</div>
+                    <button
+                        type="button"
+                        className={`themeSwitch ${theme === "dark" ? "dark" : "light"}`}
+                        onClick={toggleTheme}
+                        aria-label={`Cambiar a modo ${theme === "dark" ? "claro" : "oscuro"}`}
+                    >
+                        {theme === "dark" ? "☀️" : "🌙"}
+                    </button>
+                </div>
                 <SearchBox value={query} onChange={setQuery} />
             </div>
 

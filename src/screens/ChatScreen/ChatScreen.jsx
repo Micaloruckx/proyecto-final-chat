@@ -5,6 +5,7 @@ import ChatList from "../../components/Sidebar/ChatList";
 import ChatHeader from "../../components/Chat/ChatHeader.jsx";
 import MessageList from "../../components/Chat/MessageList";
 import MessageInput from "../../components/Chat/MessageInput";
+import { BsFileEarmarkText, BsPersonPlus } from "react-icons/bs";
 import "./ChatScreen.css";
 
 export default function ChatScreen() {
@@ -26,8 +27,25 @@ export default function ChatScreen() {
             <main className="right">
                 {!selectedChatId ? (
                     <div className="sup">
-                        <h2>WhatStark</h2>
-                        <p>Seleccioná un chat para empezar.</p>
+                        <div className="supTitle">
+                            <h2>WhatStark</h2>
+                            <a href="logo"> 
+                                <img src="/public/Logos/LogoSolo-WhatStark-png.PNG" alt="Logo WhatStark" height={300} />
+                            </a>
+                            <p>Seleccioná un chat para empezar o</p>
+                        </div>
+                        <div className="supActions" aria-label="Acciones rápidas">
+                            <button type="button" className="supActionBtn" aria-label="Enviar documento">
+                                <BsFileEarmarkText size={30} />
+                            </button>
+                            <button type="button" className="supActionBtn" aria-label="Añadir contacto">
+                                <BsPersonPlus size={32} />
+                            </button>
+                        </div>
+                        <div className="supActionLabels" aria-hidden="true">
+                            <span>Enviar documento</span>
+                            <span>Añadir contacto</span>
+                        </div>
                     </div>
                 ) : (
                     <>

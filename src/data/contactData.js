@@ -1,14 +1,14 @@
 const contactData = {
     users: [
-        { id: "jon", name: "Jon Snow", avatar: "/Avatars/Jon.PNG", status: "I know nothing.", lastSeen: "Hace 5 minutos" },
-        { id: "arya", name: "Arya Stark", avatar: "/Avatars/Arya.PNG", status: "A girl has no name.", lastSeen: "Hace 2 días" },
-        { id: "sansa", name: "Sansa Stark", avatar: "/Avatars/Sansa.PNG", status: "The North remembers.", lastSeen: "Ayer" },
-        { id: "bran", name: "Bran Stark", avatar: "/Avatars/Bran.PNG", status: "I remember everything.", lastSeen: "Hace 4 horas" },
-        { id: "robb", name: "Robb Stark", avatar: "/Avatars/Robb.PNG", status: "King in the North.", lastSeen: "Hoy" },
-        { id: "eddard", name: "Eddard Stark", avatar: "/Avatars/Eddard.PNG", status: "Winter is coming.", lastSeen: "Hoy" },
-        { id: "catelyn", name: "Catelyn Stark", avatar: "/Avatars/Catelyn.PNG", status: "Family first.", lastSeen: "Online" },
+        { id: "jon", name: "Jon Snow", avatar: "/Avatars/Jon.PNG", status: "I know nothing", lastSeen: "Hace 5 minutos" },
+        { id: "arya", name: "Arya Stark", avatar: "/Avatars/Arya.PNG", status: "A girl has no name", lastSeen: "Hace 2 días" },
+        { id: "sansa", name: "Sansa Stark", avatar: "/Avatars/Sansa.PNG", status: "The North remembers", lastSeen: "Ayer" },
+        { id: "bran", name: "Bran Stark", avatar: "/Avatars/Bran.PNG", status: "I remember everything", lastSeen: "Hace 4 horas" },
+        { id: "robb", name: "Robb Stark", avatar: "/Avatars/Robb.PNG", status: "King in the North", lastSeen: "Hoy" },
+        { id: "eddard", name: "Eddard Stark", avatar: "/Avatars/Eddard.PNG", status: "Winter is coming", lastSeen: "Hoy" },
+        { id: "catelyn", name: "Catelyn Stark", avatar: "/Avatars/Catelyn.PNG", status: "Family first", lastSeen: "Online" },
         { id: "rickon", name: "Rickon Stark", avatar: "/Avatars/Rickon.PNG", status: "⚡", lastSeen: "Unknown" },
-        { id: "tony", name: "Tony Stark", avatar: "/Avatars/Tony.png", status: "Genius, billionaire, playboy, philanthropist.", lastSeen: "Online" },
+        { id: "tony", name: "Tony Stark", avatar: "/Avatars/Tony.png", status: "Genius, billionaire, philanthropist", lastSeen: "Online" },
         { id: "targaryen-group", name: "Consejo Targaryen 🔥", avatar: "/Logos/Logo-WhatStark-png.png", status: "Grupo · 7 participantes", lastSeen: "Online" },
     ],
 

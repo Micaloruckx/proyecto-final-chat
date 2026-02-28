@@ -5,6 +5,7 @@ import contactData from "../data/contactData";
 const ContactContext = createContext(null);
 const ARG_TIME_ZONE = "America/Argentina/Buenos_Aires";
 const AI_ENABLED_STORAGE_KEY = "ws_ai_enabled";
+const THEME_STORAGE_KEY = "ws_theme";
 const AI_FALLBACK_BY_CHAT = {
     "chat-jon": "Entendido. Mantengamos la calma y revisamos el perímetro al amanecer.",
     "chat-arya": "Si vamos, vamos rápido. Sin ruido.",
@@ -76,6 +77,14 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
         const raw = localStorage.getItem(AI_ENABLED_STORAGE_KEY);
         if (raw === null) return true;
         return raw === "true";
+    }
+
+    function safeLoadTheme() {
+        const stored = localStorage.getItem(THEME_STORAGE_KEY);
+        if (stored === "light" || stored === "dark") return stored;
+
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        return prefersDark ? "dark" : "light";
     }
 
     function formatArgentinaTime(date) {
@@ -182,11 +191,17 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
         const [selectedChatId, setSelectedChatId] = useState(null);
         const [messagesByChatId, setMessagesByChatId] = useState(() => safeLoadMessages());
         const [aiEnabled, setAiEnabled] = useState(() => safeLoadAiEnabled());
+        const [theme, setTheme] = useState(() => safeLoadTheme());
 
         useEffect(() => {
             // Hard reset de auth al iniciar la app: siempre volver a login al recargar.
             clearAuthStorage();
         }, []);
+
+        useEffect(() => {
+            document.documentElement.setAttribute("data-theme", theme);
+            localStorage.setItem(THEME_STORAGE_KEY, theme);
+        }, [theme]);
 
         const usersById = useMemo(() => {
             const map = {};
@@ -216,6 +231,10 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
                 localStorage.setItem(AI_ENABLED_STORAGE_KEY, String(next));
                 return next;
             });
+        }
+
+        function toggleTheme() {
+            setTheme((prev) => (prev === "dark" ? "light" : "dark"));
         }
 
         function sendMessage(chatId, text) {
@@ -267,10 +286,12 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
             selectedChatId,
             messagesByChatId,
             aiEnabled,
+            theme,
             login,
             logout,
             selectChat,
             toggleAiEnabled,
+            toggleTheme,
             sendMessage,
         };
 

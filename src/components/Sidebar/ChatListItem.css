@@ -78,5 +78,6 @@
     display: grid;
     place-items: center;
     font-size: 12px;
+    font-weight: 600;
     padding: 0 6px;
 }

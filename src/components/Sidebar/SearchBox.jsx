@@ -1,10 +1,14 @@
 import React from "react";
 import "./SearchBox.css";
 import PropTypes from "prop-types";
+import { BsSearch } from "react-icons/bs";
 
 export default function SearchBox({ value, onChange }) {
     return (
         <div className="searchBoxWrap">
+            <span className="searchIcon" aria-hidden="true">
+                <BsSearch size={14} />
+            </span>
             <input
                 className="searchBox"
                 value={value}
