@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { useChat } from "../../context/ContactContext";
+import { BsSunFill, BsMoonStarsFill } from "react-icons/bs";
 import SearchBox from "./SearchBox";
 import ChatListItem from "./ChatListItem.jsx";
 import "./ChatList.css";
@@ -77,14 +78,26 @@ export default function ChatList() {
             <div className="chatListTop">
                 <div className="topRow">
                     <div className="upChats">Chats</div>
-                    <button
-                        type="button"
-                        className={`themeSwitch ${theme === "dark" ? "dark" : "light"}`}
-                        onClick={toggleTheme}
-                        aria-label={`Cambiar a modo ${theme === "dark" ? "claro" : "oscuro"}`}
-                    >
-                        {theme === "dark" ? "☀️" : "🌙"}
-                    </button>
+                    <div className="themeControl">
+                        <span className="themeLabel">Tema: {theme === "dark" ? "Oscuro" : "Claro"}</span>
+                        <button
+                            type="button"
+                            className={`themeSwitch ${theme === "dark" ? "on" : "off"}`}
+                            onClick={toggleTheme}
+                            role="switch"
+                            aria-checked={theme === "dark"}
+                            aria-label={`Cambiar a modo ${theme === "dark" ? "claro" : "oscuro"}`}
+                            title={`Modo actual: ${theme === "dark" ? "oscuro" : "claro"}`}
+                        >
+                            <span className="switchIcon switchIconSun" aria-hidden="true">
+                                <BsSunFill size={10} />
+                            </span>
+                            <span className="switchIcon switchIconMoon" aria-hidden="true">
+                                <BsMoonStarsFill size={10} />
+                            </span>
+                            <span className="switchThumb" aria-hidden="true" />
+                        </button>
+                    </div>
                 </div>
                 <SearchBox value={query} onChange={setQuery} />
             </div>
