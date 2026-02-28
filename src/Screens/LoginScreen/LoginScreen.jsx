@@ -78,7 +78,7 @@ export default function LoginScreen() {
                     alt="WhatStark"
                 />
 
-                <h1 className="loginTitle">WhatStark / Iniciar sesión</h1>
+                <h1 className="loginTitle">Iniciar sesión</h1>
 
                 <form className="loginForm" onSubmit={handleSubmit}>
                     <label className="field">
