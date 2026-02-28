@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useChat } from "../../Context/ContactContext";
+import { useChat } from "../../context/ContactContext";
 import "./LoginScreen.css";
 
 // Pantalla de login con animación de carga simulada y redirección al chat principal
@@ -28,7 +28,7 @@ export default function LoginScreen() {
         setMode("loading");
         setProgress(0);
 
-        const totalMs = 1400;
+        const totalMs = 2500;
         const stepMs = 35;
         const steps = Math.ceil(totalMs / stepMs);
         let i = 0;

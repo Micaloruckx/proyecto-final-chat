@@ -1,5 +1,5 @@
 import "./MessageBubble.css";
-import { useChat } from "../../Context/ContactContext";
+import { useChat } from "../../context/ContactContext";
 
 export default function MessageBubble({ message }) {
     return (

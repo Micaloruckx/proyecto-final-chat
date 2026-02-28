@@ -1,4 +1,4 @@
-import { useChat } from "../../Context/ContactContext";
+import { useChat } from "../../context/ContactContext";
 import "./ChatHeader.css";
 
 export default function ChatHeader() {

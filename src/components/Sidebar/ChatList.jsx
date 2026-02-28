@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { useChat } from "../../Context/ContactContext";
+import { useChat } from "../../context/ContactContext";
 import SearchBox from "./SearchBox";
 import ChatListItem from "./ChatListItem.jsx";
 import "./ChatList.css";

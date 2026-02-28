@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import LoginScreen from "./Screens/LoginScreen/LoginScreen";
-import ChatScreen from "./Screens/ChatScreen/ChatScreen";
+import LoginScreen from "./screens/LoginScreen/LoginScreen";
+import ChatScreen from "./screens/ChatScreen/ChatScreen";
 
 function App() {
   return (

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useChat } from "../../Context/ContactContext";
+import { useChat } from "../../context/ContactContext";
 import ChatList from "../../components/Sidebar/ChatList";
 import ChatHeader from "../../components/Chat/ChatHeader.jsx";
 import MessageList from "../../components/Chat/MessageList";

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useChat } from "../../Context/ContactContext";
+import { useChat } from "../../context/ContactContext";
 import "./MessageInput.css";
 
 export default function MessageInput() {

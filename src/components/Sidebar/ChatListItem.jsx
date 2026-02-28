@@ -1,4 +1,4 @@
-import { useChat } from "../../Context/ContactContext";
+import { useChat } from "../../context/ContactContext";
 import "./ChatListItem.css";
 
 export default function ChatListItem({ chat, active }) {
