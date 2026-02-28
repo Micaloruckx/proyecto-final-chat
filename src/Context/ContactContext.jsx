@@ -1,4 +1,5 @@
-import { createContext, useContext, useMemo, useState } from "react";
+import React, { createContext, useContext, useMemo, useState } from "react";
+import PropTypes from 'prop-types';
 import contactData from "../data/contactData";
 
 const ContactContext = createContext(null);
@@ -88,6 +89,10 @@ export function ContactProvider({ children }) {
 
     return <ContactContext.Provider value={value}>{children}</ContactContext.Provider>;
 }
+
+ContactProvider.propTypes = {
+    children: PropTypes.node.isRequired,
+};
 
 export function useChat() {
     const ctx = useContext(ContactContext);
