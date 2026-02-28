@@ -16,5 +16,32 @@
     margin-bottom: var(--radius-sm);}
 
 .chatItems {
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    padding-right: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-bg-surface-2) transparent;
+}
+
+.chatItems::-webkit-scrollbar {
+    width: 10px;
+}
+
+.chatItems::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chatItems::-webkit-scrollbar-thumb {
+    background: var(--color-bg-surface-2);
+    border-radius: var(--radius-pill);
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+.chatItems::-webkit-scrollbar-thumb:hover {
+    background: var(--color-border-strong);
+    background-clip: content-box;
 }
