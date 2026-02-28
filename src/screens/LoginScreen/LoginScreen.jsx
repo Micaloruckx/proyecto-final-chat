@@ -16,7 +16,6 @@ export default function LoginScreen() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    // Si ya hay sesión, ir directo al chat
     useEffect(() => {
         if (currentUser) navigate("/", { replace: true });
     }, [currentUser, navigate]);
@@ -24,7 +23,7 @@ export default function LoginScreen() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        // Simula proceso de login con animación de carga
+        // INicia simulación de proceso de login con animación de carga
         setMode("loading");
         setProgress(0);
 
@@ -41,7 +40,6 @@ export default function LoginScreen() {
             if (pct >= 100) {
                 clearInterval(t);
 
-                // Simula login exitoso con usuario por defecto (ignora email/password)
                 login(defaultUserId);
 
                 // Redirige al chat principal
@@ -106,7 +104,7 @@ export default function LoginScreen() {
 
                     <div className="loginRow">
                         <label className="remember">
-                            <input type="checkbox" defaultChecked />
+                            <input type="checkbox" className="checkbox" defaultChecked />
                             Recordarme
                         </label>
                         <button type="button" className="linkBtn" onClick={() => alert("Aún no funciono, soon 🙂")}>

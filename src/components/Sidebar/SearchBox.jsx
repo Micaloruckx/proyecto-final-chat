@@ -4,12 +4,24 @@ import PropTypes from "prop-types";
 
 export default function SearchBox({ value, onChange }) {
     return (
-        <input
-            className="searchBox"
-            value={value}
-            onChange={(e) => onChange(e.target.value)}
-            placeholder="Buscar contacto..."
-        />
+        <div className="searchBoxWrap">
+            <input
+                className="searchBox"
+                value={value}
+                onChange={(e) => onChange(e.target.value)}
+                placeholder="Buscar contacto..."
+            />
+            {value ? (
+                <button
+                    type="button"
+                    className="searchClearBtn"
+                    onClick={() => onChange("")}
+                    aria-label="Limpiar búsqueda"
+                >
+                    ×
+                </button>
+            ) : null}
+        </div>
     );
 }
 

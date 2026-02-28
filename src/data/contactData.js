@@ -9,9 +9,11 @@ const contactData = {
         { id: "catelyn", name: "Catelyn Stark", avatar: "/Avatars/Catelyn.PNG", status: "Family first.", lastSeen: "Online" },
         { id: "rickon", name: "Rickon Stark", avatar: "/Avatars/Rickon.PNG", status: "⚡", lastSeen: "Unknown" },
         { id: "tony", name: "Tony Stark", avatar: "/Avatars/Tony.png", status: "Genius, billionaire, playboy, philanthropist.", lastSeen: "Online" },
+        { id: "targaryen-group", name: "Consejo Targaryen 🔥", avatar: "/Logos/Logo-WhatStark-png.png", status: "Grupo · 7 participantes", lastSeen: "Online" },
     ],
 
     chats: [
+        { id: "chat-targaryen", userId: "targaryen-group", lastMessage: "[Vos] Entendido. Sigo en las sombras.", lastTime: "Ahora", unread: 3 },
         { id: "chat-tony", userId: "tony", lastMessage: "Aprobada, 10/10 actitud.", lastTime: "Ahora", unread: 2 },
         { id: "chat-eddard", userId: "eddard", lastMessage: "El Norte recuerda, pero también aprende.", lastTime: "22:07", unread: 0 },
         { id: "chat-bran", userId: "bran", lastMessage: "Hablamos cuando llegue Jon.", lastTime: "21:09", unread: 0 },
@@ -24,6 +26,14 @@ const contactData = {
     ],
 
     messages: {
+        "chat-targaryen": [
+            { id: "m1", fromMe: false, text: "[Daenerys] El Consejo se reúne al anochecer. Nadie debe saberlo.", time: "Ahora" },
+            { id: "m2", fromMe: false, text: "[Tyrion] Revisen rutas de ingreso y salida. Sin testigos.", time: "Ahora" },
+            { id: "m3", fromMe: true, text: "[Vos] Confirmo acceso por patio interno. Sin movimientos sospechosos.", time: "Ahora" },
+            { id: "m4", fromMe: false, text: "[Varys] Mantengan perfil bajo. Hay ojos en todas partes.", time: "Ahora" },
+            { id: "m5", fromMe: true, text: "[Vos] Entendido. Sigo en las sombras.", time: "Ahora" },
+        ],
+
         "chat-jon": [
             { id: "m1", fromMe: false, text: "La guardia vio movimiento al sur. ¿Seguís en camino?", time: "08:15" },
             { id: "m2", fromMe: true, text: "Sí, entro por la puerta este en 10 minutos.", time: "08:17" },

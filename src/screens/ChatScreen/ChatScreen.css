@@ -3,6 +3,7 @@
     display: grid;
     grid-template-columns: 360px 1fr;
     background: var(--color-bg-app);
+    overflow: hidden;
 }
 
 .left {
@@ -15,6 +16,8 @@
     display: grid;
     grid-template-rows: auto 1fr auto;
     background: var(--color-bg-app);
+    min-height: 0;
+    overflow: hidden;
 }
 
 .sup {

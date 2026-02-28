@@ -1,6 +1,11 @@
+.searchBoxWrap {
+    position: relative;
+}
+
 .searchBox {
     width: 100%;
     padding: var(--radius-sm) var(--radius-md);
+    padding-right: 36px;
     border-radius: var(--radius-sm);
     border: 1px solid var(--color-bg-surface-2);
     background: var(--color-bg-surface);
@@ -10,4 +15,25 @@
 
 .searchBox::placeholder {
     color: var(--color-text-muted);
+}
+
+.searchClearBtn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    border-radius: var(--radius-pill);
+    display: grid;
+    place-items: center;
+    color: var(--color-text-muted);
+    background: transparent;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.searchClearBtn:hover {
+    background: var(--color-bg-surface-2);
+    color: var(--color-text-primary);
 }

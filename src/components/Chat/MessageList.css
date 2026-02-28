@@ -1,6 +1,8 @@
 .messageList {
+    min-height: 0;
     padding: 14px;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     display: grid;
     gap: 8px;
     background-image: url(/fondo_Main.png);

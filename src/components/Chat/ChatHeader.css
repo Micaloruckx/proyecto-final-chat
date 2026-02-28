@@ -1,4 +1,7 @@
 .chatHeader {
+    position: sticky;
+    top: 0;
+    z-index: 3;
     display: flex;
     align-items: center;
     gap: var(--radius-sm);

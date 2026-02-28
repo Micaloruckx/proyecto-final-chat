@@ -2,10 +2,16 @@
     height: 100%;
     display: grid;
     grid-template-rows: auto 1fr;
+    min-height: 0;
+    overflow: hidden;
 }
 
 .chatListTop {
+    position: sticky;
+    top: 0;
+    z-index: 2;
     padding: var(--radius-md);
+    background: var(--color-bg-panel);
     border-bottom: 1px solid var(--color-border);
 }
 
@@ -16,12 +22,15 @@
     margin-bottom: var(--radius-sm);}
 
 .chatItems {
+    display: grid;
+    gap: 4px;
+    min-height: 0;
     overflow-y: auto;
     overflow-x: hidden;
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     overscroll-behavior: contain;
     scrollbar-gutter: stable;
-    padding-right: 4px;
+    padding: 6px 8px 8px 6px;
     scrollbar-width: thin;
     scrollbar-color: var(--color-bg-surface-2) transparent;
 }
