@@ -50,7 +50,7 @@ export default function LoginScreen() {
     // Muestra pantalla de carga mientras "inicia sesión"
     if (mode === "loading") {
         return (
-            <div className="loginScreen">
+            <main className="loginScreen" aria-live="polite" aria-busy="true">
                 <div className="loginCard loadingCard">
                     <img
                         className="loginLogo bigPulse"
@@ -58,16 +58,16 @@ export default function LoginScreen() {
                         alt="WhatStark"
                     />
                     <div className="loadingText">Cargando tus chats…</div>
-                    <div className="loadingBar">
+                    <div className="loadingBar" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress} aria-label="Progreso de inicio de sesión">
                         <div className="loadingFill" style={{ width: `${progress}%` }} />
                     </div>
                 </div>
-            </div>
+            </main>
         );
     }
 
     return (
-        <div className="loginScreen">
+        <main className="loginScreen">
             <div className="loginCard">
                 <img
                     className="loginLogo"
@@ -81,11 +81,13 @@ export default function LoginScreen() {
                     <label className="field">
                         <span className="fieldLabel">Correo electrónico</span>
                         <input
+                            id="login-email"
                             className="fieldInput"
                             type="email"
                             placeholder="Introduce tu correo electrónico"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            autoComplete="email"
                             required
                         />
                     </label>
@@ -93,18 +95,20 @@ export default function LoginScreen() {
                     <label className="field">
                         <span className="fieldLabel">Contraseña</span>
                         <input
+                            id="login-password"
                             className="fieldInput"
                             type="password"
                             placeholder="Ingrese su contraseña"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            autoComplete="current-password"
                             required
                         />
                     </label>
 
                     <div className="loginRow">
                         <label className="remember">
-                            <input type="checkbox" className="checkbox" defaultChecked />
+                            <input type="checkbox" className="checkbox" defaultChecked aria-label="Recordar sesión" />
                             Recordarme
                         </label>
                         <button type="button" className="linkBtn" onClick={() => alert("Aún no funciono, soon 🙂")}>
@@ -124,6 +128,6 @@ export default function LoginScreen() {
                     </div>
                 </form>
             </div>
-        </div>
+        </main>
     );
 }

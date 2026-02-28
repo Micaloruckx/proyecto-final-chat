@@ -14,13 +14,16 @@ export default function MessageInput() {
 
     return (
         <form className="msgForm" onSubmit={onSubmit}>
+            <label className="srOnly" htmlFor="chat-message-input">Escribir mensaje</label>
             <input
+                id="chat-message-input"
                 className="msgInput"
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 placeholder="Escribir mensaje..."
+                aria-label="Escribir mensaje"
             />
-            <button className="sendBtn" type="submit">Enviar</button>
+            <button className="sendBtn" type="submit" aria-label="Enviar mensaje">Enviar</button>
         </form>
     );
 }

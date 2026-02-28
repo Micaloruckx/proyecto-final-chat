@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useChat } from "../../context/ContactContext";
+import Nav from "../../components/Nav/Nav";
 import ChatList from "../../components/Sidebar/ChatList";
 import ChatHeader from "../../components/Chat/ChatHeader.jsx";
 import MessageList from "../../components/Chat/MessageList";
@@ -21,17 +22,18 @@ export default function ChatScreen() {
     return (
         <div className="layout">
             <aside className="left">
-                <ChatList />
+                <div className="leftShell">
+                    <Nav />
+                    <ChatList />
+                </div>
             </aside>
 
             <main className="right">
                 {!selectedChatId ? (
-                    <div className="sup">
+                    <section className="sup" aria-label="Estado inicial del chat">
                         <div className="supTitle">
                             <h2>WhatStark</h2>
-                            <a href="logo"> 
-                                <img src="/public/Logos/LogoSolo-WhatStark-png.PNG" alt="Logo WhatStark" height={300} />
-                            </a>
+                            <img src="/public/Logos/LogoSolo-WhatStark-png.PNG" alt="Logo WhatStark" height={300} />
                             <p>Seleccioná un chat para empezar o</p>
                         </div>
                         <div className="supActions" aria-label="Acciones rápidas">
@@ -46,7 +48,7 @@ export default function ChatScreen() {
                             <span>Enviar documento</span>
                             <span>Añadir contacto</span>
                         </div>
-                    </div>
+                    </section>
                 ) : (
                     <>
                         <ChatHeader />

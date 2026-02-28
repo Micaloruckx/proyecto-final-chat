@@ -1,0 +1,61 @@
+.profilePage {
+    min-height: 100vh;
+    background: var(--color-bg-app);
+    display: grid;
+    place-items: center;
+    padding: 24px;
+}
+
+.profileCard {
+    width: min(420px, 100%);
+    background: var(--color-bg-panel);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 22px;
+    display: grid;
+    justify-items: center;
+    gap: 10px;
+}
+
+.profileBackBtn {
+    justify-self: start;
+    border-radius: var(--radius-pill);
+    padding: 8px 12px;
+    background: var(--color-bg-surface);
+    color: var(--color-text-primary);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.profileBackBtn:hover {
+    background: var(--color-bg-surface-2);
+    transform: translateY(-1px);
+}
+
+.profileBackBtn:focus-visible {
+    background: var(--color-bg-surface-2);
+    transform: translateY(-1px);
+}
+
+.profileAvatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 4px;
+}
+
+.profileName {
+    font-family: var(--font-family-heading);
+    color: var(--color-text-primary);
+    font-size: 28px;
+}
+
+.profileStatus {
+    color: var(--color-text-secondary);
+    font-size: 16px;
+}
+
+.profileSeen {
+    color: var(--color-text-muted);
+    font-size: 14px;
+}

@@ -18,7 +18,7 @@
 }
 
 .loginLogo {
-    width: 9150px;
+    width: 150px;
     height: 150px;
     display: block;
     margin: 0 auto var(--radius-sm);
@@ -106,6 +106,10 @@
     font-size: 13px;
 }
 
+.linkBtn:focus-visible {
+    text-decoration: underline;
+}
+
 .loginBtn {
     height: 44px;
     border-radius: var(--radius-md);
@@ -119,6 +123,13 @@
 
 .loginBtn:hover {
     filter: brightness(1.03);
+}
+
+.loginBtn:focus-visible,
+.fieldInput:focus-visible,
+.checkbox:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
 }
 
 .footerText {

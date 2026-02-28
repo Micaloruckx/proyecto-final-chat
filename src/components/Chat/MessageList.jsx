@@ -13,7 +13,7 @@ export default function MessageList() {
     }, [selectedChatId, msgs.length]);
 
     return (
-        <div className="messageList">
+        <div className="messageList" role="log" aria-live="polite" aria-label="Mensajes del chat">
             {msgs.map((m) => (
                 <MessageBubble key={m.id} message={m} />
             ))}

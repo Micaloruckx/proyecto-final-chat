@@ -11,9 +11,11 @@ export default function SearchBox({ value, onChange }) {
             </span>
             <input
                 className="searchBox"
+                type="search"
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
                 placeholder="Buscar chat o contacto..."
+                aria-label="Buscar chat o contacto"
             />
             {value ? (
                 <button
