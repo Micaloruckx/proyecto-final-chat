@@ -27,8 +27,8 @@ export default function LoginScreen() {
         setMode("loading");
         setProgress(0);
 
-        const totalMs = 3000;
-        const stepMs = 35;
+        const totalMs = 2500;
+        const stepMs = 60;
         const steps = Math.ceil(totalMs / stepMs);
         let i = 0;
 

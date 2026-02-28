@@ -4,9 +4,7 @@ import contactData from "../data/contactData";
 
 const ContactContext = createContext(null);
 const ARG_TIME_ZONE = "America/Argentina/Buenos_Aires";
-const AI_ENABLED_STORAGE_KEY = "ws_ai_enabled";
 const THEME_STORAGE_KEY = "ws_theme";
-const AI_REQUEST_TIMEOUT_MS = 8000;
 const AI_FALLBACK_BY_CHAT = {
     "chat-jon": "Entendido. Mantengamos la calma y revisamos el perímetro al amanecer.",
     "chat-arya": "Si vamos, vamos rápido. Sin ruido.",
@@ -74,12 +72,6 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
         return now;
     }
 
-    function safeLoadAiEnabled() {
-        const raw = localStorage.getItem(AI_ENABLED_STORAGE_KEY);
-        if (raw === null) return true;
-        return raw === "true";
-    }
-
     function safeLoadTheme() {
         const stored = localStorage.getItem(THEME_STORAGE_KEY);
         if (stored === "light" || stored === "dark") return stored;
@@ -121,45 +113,6 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
         const firstChunk = clean.split(/[.!?]/)[0]?.trim() || "Entendido";
         const suffix = LOCAL_AI_SUFFIX_BY_CHAT[chatId] || "Sigo atento.";
         return `${firstChunk}. ${suffix}`;
-    }
-
-    async function requestAiReply(chatId, history, userText) {
-        const controller = new AbortController();
-        const timeoutId = window.setTimeout(() => controller.abort(), AI_REQUEST_TIMEOUT_MS);
-
-        try {
-            const response = await fetch("/api/chat", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    chatId,
-                    userText,
-                    history,
-                }),
-                signal: controller.signal,
-            });
-
-            if (!response.ok) {
-                throw new Error("AI request failed");
-            }
-
-            const contentType = response.headers.get("content-type") || "";
-            if (!contentType.includes("application/json")) {
-                throw new Error("AI response is not JSON");
-            }
-
-            const data = await response.json();
-            const reply = typeof data?.reply === "string" ? data.reply.trim() : "";
-            if (!reply) {
-                throw new Error("AI reply is empty");
-            }
-
-            return reply;
-        } finally {
-            window.clearTimeout(timeoutId);
-        }
     }
 
     function hydrateMessages(messagesMap, openedAtIso) {
@@ -209,7 +162,6 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
         const [currentUser, setCurrentUser] = useState(null);
         const [selectedChatId, setSelectedChatId] = useState(null);
         const [messagesByChatId, setMessagesByChatId] = useState(() => safeLoadMessages());
-        const [aiEnabled, setAiEnabled] = useState(() => safeLoadAiEnabled());
         const [theme, setTheme] = useState(() => safeLoadTheme());
 
         useEffect(() => {
@@ -244,14 +196,6 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
             setSelectedChatId(chatId);
         }
 
-        function toggleAiEnabled() {
-            setAiEnabled((prev) => {
-                const next = !prev;
-                localStorage.setItem(AI_ENABLED_STORAGE_KEY, String(next));
-                return next;
-            });
-        }
-
         function toggleTheme() {
             setTheme((prev) => (prev === "dark" ? "light" : "dark"));
         }
@@ -270,21 +214,10 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
                 createdAt: now.toISOString(),
             };
 
-            const history = [...(messagesByChatId[chatId] || []), newMsg]
-                .slice(-20)
-                .map((msg) => ({
-                    fromMe: Boolean(msg.fromMe),
-                    text: msg.text || (msg.image ? "[imagen]" : ""),
-                }));
-
             appendMessage(setMessagesByChatId, chatId, newMsg);
 
-            if (!aiEnabled) return;
-
             (async () => {
-                const replyText = await requestAiReply(chatId, history, trimmed).catch(() =>
-                    buildLocalAiReply(chatId, trimmed) || buildFallbackReply(chatId)
-                );
+                const replyText = buildLocalAiReply(chatId, trimmed) || buildFallbackReply(chatId);
 
                 const replyNow = new Date();
                 appendMessage(setMessagesByChatId, chatId, {
@@ -304,12 +237,10 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
             currentUser,
             selectedChatId,
             messagesByChatId,
-            aiEnabled,
             theme,
             login,
             logout,
             selectChat,
-            toggleAiEnabled,
             toggleTheme,
             sendMessage,
         };
