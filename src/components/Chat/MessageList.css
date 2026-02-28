@@ -4,4 +4,6 @@
     display: grid;
     gap: 8px;
     background-image: url(/fondo_Main.png);
+    opacity: 0.8;
+    background-size: cover;
 }

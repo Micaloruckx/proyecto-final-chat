@@ -144,6 +144,8 @@
     width: 140px;
     height: 140px;
     animation: pulse 1.3s ease-in-out infinite;
+    opacity: 0.8;
+
 }
 
 @keyframes pulse {

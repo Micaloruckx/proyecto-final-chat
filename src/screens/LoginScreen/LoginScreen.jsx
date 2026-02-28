@@ -59,8 +59,7 @@ export default function LoginScreen() {
                         src="/Logos/Logo-WhatStark-png.png"
                         alt="WhatStark"
                     />
-                    <div className="loadingText">Iniciando sesión…</div>
-                    <div className="loadingPct">{progress}%</div>
+                    <div className="loadingText">Cargando tus chats…</div>
                     <div className="loadingBar">
                         <div className="loadingFill" style={{ width: `${progress}%` }} />
                     </div>
