@@ -3,5 +3,5 @@
     overflow: auto;
     display: grid;
     gap: 8px;
-    background-image: url(../public/fondo_Main.png);
+    background-image: url(/fondo_Main.png);
 }
