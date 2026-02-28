@@ -32,6 +32,7 @@
 .chatMeta {
     display: grid;
     gap: 6px;
+    min-width: 0;
 }
 
 .row {
@@ -39,20 +40,28 @@
     justify-content: space-between;
     gap: var(--radius-sm);
     align-items: center;
+    min-width: 0;
 }
 
 .name {
     font-family: var(--font-family-heading);
     font-weight: 600;
     font-size: larger;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .time {
     color: var(--color-text-muted);
     font-size: 12px;
+    flex-shrink: 0;
 }
 
 .last {
+    flex: 1;
+    min-width: 0;
     color: var(--color-text-secondary);
     font-size: 15px;
     overflow: hidden;
