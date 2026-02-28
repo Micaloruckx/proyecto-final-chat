@@ -58,3 +58,12 @@
 .searchBox:focus-visible {
     border-color: var(--color-border-strong);
 }
+
+[data-theme="dark"] .searchBox {
+    border-color: var(--color-border-strong);
+}
+
+[data-theme="dark"] .searchBox:focus-visible,
+[data-theme="dark"] .searchClearBtn:focus-visible {
+    box-shadow: 0 0 0 2px var(--color-accent);
+}
