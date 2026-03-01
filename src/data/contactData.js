@@ -13,16 +13,16 @@ const contactData = {
     ],
 
     chats: [
-        { id: "chat-targaryen", userId: "targaryen-group", lastMessage: "[Vos] Entendido. Sigo en las sombras.", lastTime: "Ahora", unread: 3 },
+        { id: "chat-targaryen", userId: "targaryen-group", lastMessage: "[Vos] Cuervos enviados. Nadie sale sin señal.", lastTime: "Ahora", unread: 3 },
         { id: "chat-tony", userId: "tony", lastMessage: "Aprobada, 10/10 actitud.", lastTime: "Ahora", unread: 2 },
-        { id: "chat-eddard", userId: "eddard", lastMessage: "Nota de voz", lastTime: "22:08", unread: 0 },
-        { id: "chat-bran", userId: "bran", lastMessage: "Hablamos cuando llegue Jon.", lastTime: "21:09", unread: 0 },
-        { id: "chat-catelyn", userId: "catelyn", lastMessage: "Qué linda foto. Abrigate bien.", lastTime: "20:20", unread: 0 },
-        { id: "chat-robb", userId: "robb", lastMessage: "Perfecto. Esa actitud me gusta.", lastTime: "19:16", unread: 0 },
-        { id: "chat-sansa", userId: "sansa", lastMessage: "Perfecto. Los cito al amanecer.", lastTime: "18:47", unread: 1 },
-        { id: "chat-rickon", userId: "rickon", lastMessage: "jajaja quedó épica", lastTime: "17:29", unread: 0 },
-        { id: "chat-jon", userId: "jon", lastMessage: "Traé leña para el salón.", lastTime: "08:23", unread: 0 },
-        { id: "chat-arya", userId: "arya", lastMessage: "Entonces voy con vos.", lastTime: "07:56", unread: 0 },
+        { id: "chat-eddard", userId: "eddard", lastMessage: "Al alba se cierran las puertas del norte.", lastTime: "22:12", unread: 0 },
+        { id: "chat-bran", userId: "bran", lastMessage: "No era una amenaza, era una advertencia.", lastTime: "21:14", unread: 0 },
+        { id: "chat-catelyn", userId: "catelyn", lastMessage: "Volvé al salón cuando suene la campana.", lastTime: "20:24", unread: 0 },
+        { id: "chat-robb", userId: "robb", lastMessage: "Entonces mañana entrenamos con acero real.", lastTime: "19:21", unread: 0 },
+        { id: "chat-sansa", userId: "sansa", lastMessage: "Si prometen lealtad, abro las puertas.", lastTime: "18:52", unread: 1 },
+        { id: "chat-rickon", userId: "rickon", lastMessage: "Shaggydog casi se come mi guante otra vez.", lastTime: "17:33", unread: 0 },
+        { id: "chat-jon", userId: "jon", lastMessage: "La guardia del portón cambia al tercer toque.", lastTime: "08:27", unread: 0 },
+        { id: "chat-arya", userId: "arya", lastMessage: "Voy por los pasillos viejos. Nadie me ve.", lastTime: "07:59", unread: 0 },
     ],
 
     messages: {
@@ -32,6 +32,8 @@ const contactData = {
             { id: "m3", fromMe: true, text: "[Vos] Confirmo acceso por patio interno. Sin movimientos sospechosos.", time: "Ahora" },
             { id: "m4", fromMe: false, text: "[Varys] Mantengan perfil bajo. Hay ojos en todas partes.", time: "Ahora" },
             { id: "m5", fromMe: true, text: "[Vos] Entendido. Sigo en las sombras.", time: "Ahora" },
+            { id: "m6", fromMe: false, text: "[Daenerys] Si alguien pregunta, el Consejo nunca existió.", time: "Ahora" },
+            { id: "m7", fromMe: true, text: "[Vos] Cuervos enviados. Nadie sale sin señal.", time: "Ahora" },
         ],
 
         "chat-jon": [
@@ -40,6 +42,8 @@ const contactData = {
             { id: "m3", fromMe: false, text: "Perfecto. Sam está revisando provisiones.", time: "08:19" },
             { id: "m4", fromMe: true, text: "Decile que reserve mantas para los nuevos.", time: "08:21" },
             { id: "m5", fromMe: false, text: "Hecho. Traé leña para el salón.", time: "08:23" },
+            { id: "m6", fromMe: true, text: "También llevo aceite para las antorchas de la muralla interior.", time: "08:25" },
+            { id: "m7", fromMe: false, text: "Bien. La guardia del portón cambia al tercer toque.", time: "08:27" },
         ],
         "chat-arya": [
             { id: "m1", fromMe: false, text: "Terminé de entrenar antes del amanecer.", time: "07:45" },
@@ -47,6 +51,8 @@ const contactData = {
             { id: "m3", fromMe: false, text: "Quiero practicar con arco en el patio norte.", time: "07:53" },
             { id: "m4", fromMe: true, text: "Voy cuando termine con Jon.", time: "07:55" },
             { id: "m5", fromMe: false, text: "Entonces voy con vos.", time: "07:56" },
+            { id: "m6", fromMe: true, text: "Llevá la capa oscura. El viento corta como cuchillo hoy.", time: "07:58" },
+            { id: "m7", fromMe: false, text: "Voy por los pasillos viejos. Nadie me ve.", time: "07:59" },
         ],
         "chat-sansa": [
             { id: "m1", fromMe: false, text: "Necesitamos aliados para reforzar el norte.", time: "18:40" },
@@ -54,6 +60,8 @@ const contactData = {
             { id: "m3", fromMe: false, text: "Manderly y Glover. Si llegan juntos, nos conviene.", time: "18:43" },
             { id: "m4", fromMe: true, text: "Les mando cuervos hoy mismo.", time: "18:45" },
             { id: "m5", fromMe: false, text: "Perfecto. Los cito al amanecer.", time: "18:47" },
+            { id: "m6", fromMe: true, text: "¿Conviene preparar el salón grande o la sala de guerra?", time: "18:49" },
+            { id: "m7", fromMe: false, text: "Sala de guerra. Si prometen lealtad, abro las puertas.", time: "18:52" },
         ],
         "chat-bran": [
             { id: "m1", fromMe: false, text: "Vi algo en el bosque de los arcianos.", time: "21:02" },
@@ -61,6 +69,8 @@ const contactData = {
             { id: "m3", fromMe: false, text: "Huellas recientes. No eran de nuestros exploradores.", time: "21:05" },
             { id: "m4", fromMe: true, text: "Aviso a los guardias de la muralla interior.", time: "21:07" },
             { id: "m5", fromMe: false, text: "Bien. Hablamos cuando llegue Jon.", time: "21:09" },
+            { id: "m6", fromMe: true, text: "¿Querés que mande dos rastreadores con antorchas?", time: "21:11" },
+            { id: "m7", fromMe: false, text: "No era una amenaza, era una advertencia.", time: "21:14" },
         ],
 
         "chat-tony": [
@@ -82,9 +92,10 @@ const contactData = {
             { id: "m3", fromMe: false, text: "Bien. El frío está fuerte esta noche.", time: "20:12" },
             { id: "m4", fromMe: true, text: "Nos quedamos dentro después de la ronda.", time: "20:14" },
             { id: "m5", fromMe: false, text: "Perfecto, me quedo más tranquila.", time: "20:16" },
-            { id: "m6", fromMe: true, text: "Te mando una selfie rápida antes de entrar.", time: "20:18" },
-            { id: "m7", fromMe: true, text: "", image: "/avatars/sansa.png", time: "20:19" },
-            { id: "m8", fromMe: false, text: "Qué linda foto. Abrigate bien.", time: "20:20" },
+            { id: "m6", fromMe: true, text: "Ya están cerradas las ventanas del ala oeste.", time: "20:18" },
+            { id: "m7", fromMe: false, text: "Gracias. Que nadie duerma sin manta esta noche.", time: "20:20" },
+            { id: "m8", fromMe: true, text: "Entendido. Voy a revisar hogar por hogar con Maester Luwin.", time: "20:22" },
+            { id: "m9", fromMe: false, text: "Volvé al salón cuando suene la campana.", time: "20:24" },
         ],
 
         "chat-robb": [
@@ -93,9 +104,10 @@ const contactData = {
             { id: "m3", fromMe: false, text: "Cansados, pero firmes. Necesitan rotar guardia.", time: "19:08" },
             { id: "m4", fromMe: true, text: "Armo dos turnos extra para mañana.", time: "19:10" },
             { id: "m5", fromMe: false, text: "Entonces entrenamos al amanecer.", time: "19:12" },
-            { id: "m6", fromMe: false, text: "Mirá, los chicos ya están listos.", time: "19:14" },
-            { id: "m7", fromMe: false, text: "", image: "/avatars/robb.png", time: "19:15" },
-            { id: "m8", fromMe: true, text: "Perfecto. Esa actitud me gusta.", time: "19:16" },
+            { id: "m6", fromMe: false, text: "Los del patio norte piden entrenar con escudos pesados.", time: "19:14" },
+            { id: "m7", fromMe: true, text: "Dales media hora más y cambiamos a lanzas cortas.", time: "19:16" },
+            { id: "m8", fromMe: false, text: "Buena orden. Ya están alineados y listos.", time: "19:19" },
+            { id: "m9", fromMe: true, text: "Entonces mañana entrenamos con acero real.", time: "19:21" },
         ],
 
         "chat-eddard": [
@@ -107,13 +119,17 @@ const contactData = {
             // ===== [VOICE NOTE EDDARD EN DATA - INICIO] =====
             { id: "m6", fromMe: false, text: "", audio: "/audio/chat-sfx.mp3", audioLabel: "Nota de voz:", time: "22:08" },
             // ===== [VOICE NOTE EDDARD EN DATA - FIN] =====
+            { id: "m7", fromMe: true, text: "Recibida. Doy la orden de cerrar los accesos del puente.", time: "22:10" },
+            { id: "m8", fromMe: false, text: "Al alba se cierran las puertas del norte.", time: "22:12" },
         ],
 
         "chat-rickon": [
             { id: "m1", fromMe: false, text: "Mirá esta selfie con Shaggydog 😎", time: "17:25" },
-            { id: "m2", fromMe: false, text: "", image: "/avatars/rickon.png", time: "17:26" },
+            { id: "m2", fromMe: false, text: "No para quieto, pero hoy se quedó al lado mío como un lord.", time: "17:26" },
             { id: "m3", fromMe: true, text: "JAJA, te salió tremenda. Él posa mejor que yo.", time: "17:27" },
             { id: "m4", fromMe: false, text: "jajaja quedó épica", time: "17:29" },
+            { id: "m5", fromMe: true, text: "No lo sueltes cerca de la cocina o vamos a perder media cena.", time: "17:31" },
+            { id: "m6", fromMe: false, text: "Shaggydog casi se come mi guante otra vez.", time: "17:33" },
         ],
     },
 };
