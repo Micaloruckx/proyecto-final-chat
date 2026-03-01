@@ -17,6 +17,43 @@
 	justify-items: center;
 }
 
+.navMenuWrap {
+	position: relative;
+}
+
+.navMenu {
+	position: absolute;
+	left: calc(100% + 8px);
+	bottom: 0;
+	min-width: 170px;
+	background: var(--color-bg-panel);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-md);
+	box-shadow: var(--shadow-card);
+	padding: 6px;
+	display: grid;
+	gap: 4px;
+	z-index: 30;
+}
+
+.navMenuItem {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 10px;
+	border-radius: 8px;
+	color: var(--color-text-primary);
+	background: transparent;
+	text-align: left;
+	font-size: 13px;
+}
+
+.navMenuItem:hover,
+.navMenuItem:focus-visible {
+	background: var(--color-bg-surface-2);
+}
+
 .navIconBtn {
 	width: 46px;
 	height: 46px;

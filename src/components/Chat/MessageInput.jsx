@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BsSendFill } from "react-icons/bs";
 import { useChat } from "../../context/ContactContext";
 import "./MessageInput.css";
 
@@ -23,7 +24,9 @@ export default function MessageInput() {
                 placeholder="Escribe un mensaje"
                 aria-label="Escribir mensaje"
             />
-            <button className="sendBtn" type="submit" aria-label="Enviar mensaje">Enviar</button>
+            <button className="sendBtn" type="submit" aria-label="Enviar mensaje">
+                <BsSendFill size={18} />
+            </button>
         </form>
     );
 }

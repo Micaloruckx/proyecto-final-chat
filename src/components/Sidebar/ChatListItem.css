@@ -9,7 +9,21 @@
     border-radius: var(--radius-md);
     text-align: left;
     color: var(--color-text-primary);
-    transition: background-color 0.15s ease;
+    transition: background-color 0.15s ease, max-height 0.18s ease, opacity 0.18s ease, padding 0.18s ease, margin 0.18s ease;
+    max-height: 280px;
+    opacity: 1;
+    overflow: visible;
+}
+
+.chatItem.collapsed {
+    max-height: 0;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0;
+    border-width: 0;
+    pointer-events: none;
+    overflow: hidden;
 }
 
 .chatItem:hover {
@@ -112,12 +126,13 @@
     height: 20px;
     border-radius: var(--radius-pill);
     background: var(--color-accent);
-    color: var(--color-text-on-accent);
-    display: grid;
-    place-items: center;
+    color: var(--color-bg-surface-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 12px;
-    font-weight: 600;
-    padding: 0 6px;
+    font-weight: 500;
+    padding: 0 px;
 }
 
 [data-theme="dark"] .chatItem:hover {

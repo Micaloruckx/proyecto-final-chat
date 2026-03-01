@@ -62,16 +62,11 @@ export default function ChatList({ onMenuClick }) {
         });
     }, [chats, messagesByChatId, referenceNow]);
 
-    const filtered = useMemo(() => {
-        const q = query.trim().toLowerCase();
-        const list = !q
-            ? withPreview
-            : withPreview.filter((c) =>
-                (usersById[c.userId]?.name || "").toLowerCase().includes(q)
-            );
+    const sortedChats = useMemo(() => {
+        return [...withPreview].sort((a, b) => b.lastAt - a.lastAt);
+    }, [withPreview]);
 
-        return [...list].sort((a, b) => b.lastAt - a.lastAt);
-    }, [query, withPreview, usersById]);
+    const loweredQuery = query.trim().toLowerCase();
 
     return (
         <div className="chatList">
@@ -113,9 +108,13 @@ export default function ChatList({ onMenuClick }) {
             </div>
 
             <div className="chatItems">
-                {filtered.map((c) => (
-                    <ChatListItem key={c.id} chat={c} active={c.id === selectedChatId} />
-                ))}
+                {sortedChats.map((c) => {
+                    const userName = (usersById[c.userId]?.name || "").toLowerCase();
+                    const collapsed = Boolean(loweredQuery) && !userName.includes(loweredQuery);
+                    return (
+                        <ChatListItem key={c.id} chat={c} active={c.id === selectedChatId} collapsed={collapsed} />
+                    );
+                })}
             </div>
         </div>
     );

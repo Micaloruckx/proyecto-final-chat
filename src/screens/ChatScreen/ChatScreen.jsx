@@ -6,7 +6,7 @@ import ChatList from "../../components/Sidebar/ChatList";
 import ChatHeader from "../../components/Chat/ChatHeader.jsx";
 import MessageList from "../../components/Chat/MessageList";
 import MessageInput from "../../components/Chat/MessageInput";
-import { BsFileEarmarkText, BsPersonPlus } from "react-icons/bs";
+import { BsChevronLeft, BsFileEarmarkText, BsPersonPlus } from "react-icons/bs";
 import "./ChatScreen.css";
 
 export default function ChatScreen() {
@@ -103,7 +103,7 @@ export default function ChatScreen() {
                     onClick={() => setMobileNavOpen(false)}
                     aria-label="Cerrar menú"
                 >
-                    ×
+                    <BsChevronLeft size={18} />
                 </button>
                 <div className="mobileNavInner">
                     <Nav />

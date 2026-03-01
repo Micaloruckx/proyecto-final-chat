@@ -260,6 +260,15 @@
     }
 }
 
+/* ------ Media Queries [1024px] ------ */
+
+@media (min-width: 1024px) {
+    .loginLogo {
+        width: 142px;
+        height: 142px;
+    }
+}
+
 /* ------ Media Queries [420px] ------ */
 
 @media (max-width: 420px) {
@@ -319,12 +328,5 @@
 
     .footerText {
         margin-top: 0;
-    }
-}
-
-@media (min-width: 1024px) {
-    .loginLogo {
-        width: 142px;
-        height: 142px;
     }
 }

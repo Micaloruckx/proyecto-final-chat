@@ -4,7 +4,7 @@ import { useChat } from "../../context/ContactContext";
 import PropTypes from "prop-types";
 import "./ChatListItem.css";
 
-export default function ChatListItem({ chat, active }) {
+export default function ChatListItem({ chat, active, collapsed }) {
     const { usersById, selectChat } = useChat();
     const navigate = useNavigate();
     const u = usersById[chat.userId];
@@ -16,7 +16,7 @@ export default function ChatListItem({ chat, active }) {
     }
 
     return (
-        <article className={`chatItem ${active ? "active" : ""}`} aria-current={active ? "true" : undefined}>
+        <article className={`chatItem ${active ? "active" : ""} ${collapsed ? "collapsed" : ""}`} aria-current={active ? "true" : undefined}>
             <button
                 type="button"
                 className="chatAvatarBtn"
@@ -55,4 +55,5 @@ ChatListItem.propTypes = {
         unread: PropTypes.number.isRequired,
     }).isRequired,
     active: PropTypes.bool,
+    collapsed: PropTypes.bool,
 };
