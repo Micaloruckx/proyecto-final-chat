@@ -12,8 +12,8 @@ export default function LoginScreen() {
         "/Avatars/Frodo.PNG",
         "/Avatars/Tyrion.PNG",
         "/Avatars/Hermione.PNG",
-        "/Avatars/Daenerys.PNG",
-        "/Avatars/Daemon.PNG",
+        "/Avatars/Daenerys.png",
+        "/Avatars/Daemon.png",
     ], []);
 
     const [mode, setMode] = useState("form");

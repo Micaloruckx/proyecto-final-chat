@@ -8,7 +8,7 @@ const contactData = {
         { id: "eddard", name: "Eddard Stark", avatar: "/Avatars/Eddard.PNG", status: "Se acerca el invierno", lastSeen: "Hoy", phone: "+54 9 11 4609-5538" },
         { id: "catelyn", name: "Catelyn Stark", avatar: "/Avatars/Catelyn.PNG", status: "La familia primero", lastSeen: "En línea", phone: "+54 9 11 6294-7815" },
         { id: "rickon", name: "Rickon Stark", avatar: "/Avatars/Rickon.PNG", status: "⚡", lastSeen: "Desconocido", phone: "+54 9 11 2076-4489" },
-        { id: "tony", name: "Tony Stark", avatar: "/Avatars/Tony.PNG", status: "Genio, multimillonario y filántropo", lastSeen: "En línea", phone: "+54 9 11 9999-3000" },
+        { id: "tony", name: "Tony Stark", avatar: "/Avatars/Tony.png", status: "Genio, multimillonario y filántropo", lastSeen: "En línea", phone: "+54 9 11 9999-3000" },
         { id: "targaryen-group", name: "Consejo Targaryen 🔥", avatar: "/Logos/Logo-WhatStark-png.png", status: "Grupo · 7 participantes", lastSeen: "En línea", phone: "+54 9 11 7000-0001" },
     ],
 
@@ -72,7 +72,7 @@ const contactData = {
             { id: "m6", fromMe: true, text: "Jon. Hace eso antes del desayuno.", time: "Ahora" },
             { id: "m7", fromMe: false, text: "Genial, no me pongan en la primera fila.", time: "Ahora" },
             { id: "m8", fromMe: false, text: "Bueno, para caer bien: selfie de presentación 😎", time: "Ahora" },
-            { id: "m9", fromMe: false, text: "", image: "/Avatars/Tony.PNG", time: "Ahora" },
+            { id: "m9", fromMe: false, text: "", image: "/Avatars/Tony.png", time: "Ahora" },
             { id: "m10", fromMe: true, text: "Aprobada, 10/10 actitud.", time: "Ahora" },
         ],
 
