@@ -150,6 +150,10 @@ Durante el desarrollo del proyecto, los principales aprendizajes fueron:
 	- Aprendí a traducir problemas de UX y bugs técnicos en pedidos concretos, para iterar más rápido y con menos fricción.
 	- Aprendí a validar cada cambio con evidencia (estado de Git, lint, build, deploy) y a priorizar soluciones de raíz en lugar de parches rápidos.
 
+6. **Posibilidades de uso de audio en UX**
+	- Integrar audio en 2 pantallas puntuales (login/loading) ayuda a reforzar identidad temática de la app.
+	- También aprendí que se puede controlar volumen máximo, delays de inicio y fallback por interacción del usuario para cumplir políticas de autoplay en navegadores.
+
 ---
 
 > Guía de consistencia visual (inputs y botones)
