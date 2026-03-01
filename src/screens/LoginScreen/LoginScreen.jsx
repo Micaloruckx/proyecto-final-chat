@@ -9,11 +9,11 @@ export default function LoginScreen() {
     const { currentUser, login } = useChat();
 
     const avatarOptions = useMemo(() => [
-        "/Avatars/frodo.png",
-        "/Avatars/tyrion.png",
-        "/Avatars/hermione.png",
-        "/Avatars/daenerys.png",
-        "/Avatars/daemon.png",
+        "/Avatars/Frodo.PNG",
+        "/Avatars/Tyrion.PNG",
+        "/Avatars/Hermione.PNG",
+        "/Avatars/Daenerys.png",
+        "/Avatars/Daemon.png",
     ], []);
 
     const [mode, setMode] = useState("form");
