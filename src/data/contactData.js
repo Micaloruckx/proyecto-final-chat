@@ -72,7 +72,7 @@ const contactData = {
             { id: "m6", fromMe: true, text: "Jon. Hace eso antes del desayuno.", time: "Ahora" },
             { id: "m7", fromMe: false, text: "Genial, no me pongan en la primera fila.", time: "Ahora" },
             { id: "m8", fromMe: false, text: "Bueno, para caer bien: selfie de presentación 😎", time: "Ahora" },
-            { id: "m9", fromMe: false, text: "", image: "/Avatars/Tony.png", time: "Ahora" },
+            { id: "m9", fromMe: false, text: "", image: "/Avatars/Tony.PNG", time: "Ahora" },
             { id: "m10", fromMe: true, text: "Aprobada, 10/10 actitud.", time: "Ahora" },
         ],
 

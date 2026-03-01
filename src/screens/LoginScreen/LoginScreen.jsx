@@ -9,11 +9,11 @@ export default function LoginScreen() {
     const { currentUser, login } = useChat();
 
     const avatarOptions = useMemo(() => [
-        "/Avatars/Jon.PNG",
-        "/Avatars/Arya.PNG",
-        "/Avatars/Sansa.PNG",
-        "/Avatars/Bran.PNG",
-        "/Avatars/Tony.PNG",
+        "/Avatars/Frodo.PNG",
+        "/Avatars/Tyrion.PNG",
+        "/Avatars/Hermione.PNG",
+        "/Avatars/Daenerys.PNG",
+        "/Avatars/Daemon.PNG",
     ], []);
 
     const [mode, setMode] = useState("form");
@@ -96,7 +96,7 @@ export default function LoginScreen() {
                             id="login-nickname"
                             className="fieldInput"
                             type="text"
-                            placeholder="Elegí tu nickname"
+                            placeholder="Elige tu apodo"
                             value={nickname}
                             onChange={(e) => setNickname(e.target.value)}
                             autoComplete="nickname"
@@ -107,7 +107,7 @@ export default function LoginScreen() {
                     </label>
 
                     <div className="field">
-                        <span className="fieldLabel">Elegí tu avatar</span>
+                        <span className="fieldLabel">Avatar</span>
                         <div className="avatarGrid" role="radiogroup" aria-label="Selector de avatar">
                             {avatarOptions.map((avatar, index) => {
                                 const isSelected = selectedAvatar === avatar;
@@ -134,7 +134,7 @@ export default function LoginScreen() {
                             id="login-password"
                             className="fieldInput"
                             type="password"
-                            placeholder="Ingrese su contraseña"
+                            placeholder="Ingresa tu contraseña"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             autoComplete="current-password"
@@ -159,7 +159,7 @@ export default function LoginScreen() {
                     <div className="footerText">
                         ¿No tienes una cuenta?{" "}
                         <button type="button" className="linkBtn" onClick={() => alert("Aún no funciono, soon 🙂")}>
-                            Registrate
+                            Regístrate
                         </button>
                     </div>
                 </form>

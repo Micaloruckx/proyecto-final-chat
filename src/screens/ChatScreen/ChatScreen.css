@@ -83,16 +83,120 @@
     text-align: center;
 }
 
-@media (max-width: 900px) {
+.supLogo {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    margin-inline: auto;
+}
+
+.mobileBackToChats {
+    display: none;
+}
+
+.mobileNavBackdrop,
+.mobileNavDrawer {
+    display: none;
+}
+
+@media (min-width: 750px) and (max-width: 1250px) {
+    .supLogo {
+        width: 230px;
+        height: 230px;
+    }
+}
+
+@media (max-width: 750px) {
     .layout {
         grid-template-columns: 1fr;
     }
 
     .left {
-        display: none;
+        display: block;
     }
 
     .leftShell {
         grid-template-columns: 1fr;
+    }
+
+    .leftShell .navRail {
+        display: none;
+    }
+
+    .mobileNavBackdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.35);
+        z-index: 50;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+    }
+
+    .mobileNavBackdrop.open {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .mobileNavDrawer {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 78px;
+        z-index: 51;
+        transform: translateX(-100%);
+        transition: transform 0.2s ease;
+    }
+
+    .mobileNavDrawer.open {
+        transform: translateX(0);
+    }
+
+    .mobileNavInner {
+        height: 100%;
+    }
+
+    .mobileNavInner .navRail {
+        width: 78px;
+    }
+
+    .mobileNavClose {
+        position: absolute;
+        top: 10px;
+        right: 8px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--color-bg-panel);
+        color: var(--color-text-primary);
+        border: 1px solid var(--color-border);
+        display: grid;
+        place-items: center;
+        font-size: 22px;
+        line-height: 1;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.15s ease;
+    }
+
+    .mobileNavDrawer.open .mobileNavClose {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .mobileBackToChats {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin: 8px 10px 4px;
+        padding: 6px 10px;
+        border-radius: var(--radius-pill);
+        border: 1px solid var(--color-border);
+        background: var(--color-bg-panel);
+        color: var(--color-text-primary);
+        width: fit-content;
     }
 }

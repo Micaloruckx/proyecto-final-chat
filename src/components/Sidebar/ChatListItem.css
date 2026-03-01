@@ -132,3 +132,50 @@
 [data-theme="dark"] .chatAvatarBtn:focus-visible {
     box-shadow: 0 0 0 2px var(--color-accent);
 }
+
+/* Responsive styles for smaller screens */
+
+@media (max-width: 750px) {
+    .chatItem {
+        grid-template-columns: 46px 1fr;
+        gap: 8px;
+        padding: 8px 10px;
+    }
+
+    .chatAvatarBtn {
+        width: 44px;
+        height: 44px;
+    }
+
+    .chatAvatar {
+        width: 44px;
+        height: 44px;
+    }
+
+    .chatMeta {
+        gap: 2px;
+    }
+
+    .row {
+        gap: 8px;
+    }
+
+    .name {
+        font-size: 14px;
+    }
+
+    .time {
+        font-size: 11px;
+    }
+
+    .last {
+        font-size: 12px;
+    }
+
+    .unread {
+        min-width: 18px;
+        height: 18px;
+        font-size: 11px;
+        padding: 0 5px;
+    }
+}

@@ -1,46 +1,50 @@
 .loginScreen {
-    min-height: 100vh;
+    height: 100dvh;
+    min-height: 100dvh;
+    min-width: 300px;
     display: grid;
     place-items: center;
-    padding: 24px;
+    padding: 12px;
     background: var(--color-bg-app);
+    overflow: hidden;
 }
 
 /* Login Card */
 .loginCard {
-    width: min(420px, 92vw);
+    width: min(410px, 94vw);
     background: var(--color-panel-overlay);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    padding: 22px 22px var(--radius-lg);
+    padding: 16px 16px 14px;
     color: var(--color-text-primary);
     box-shadow: var(--shadow-card);
+    max-height: calc(100dvh - 24px);
 }
 
 .loginLogo {
-    width: 150px;
-    height: 150px;
+    width: 125px;
+    height: 125px;
     display: block;
-    margin: 0 auto var(--radius-sm);
+    margin: 0 auto 6px;
     object-fit: contain;
     filter: var(--shadow-logo);
 }
 
 .loginTitle {
     font-family: var(--font-family-heading);
-    margin: 0 0 16px;
+    margin: 0 0 10px;
     text-align: center;
-    font-size: 26px;
+    font-size: 24px;
 }
 
 .loginForm {
     display: grid;
-    gap: var(--radius-md);
+    gap: 10px;
 }
 
 .field {
     display: grid;
-    gap: 6px;
+    gap: 4px;
 }
 
 .fieldLabel {
@@ -49,7 +53,7 @@
 }
 
 .fieldInput {
-    height: 42px;
+    height: 40px;
     border-radius: var(--radius-sm);
     border: 1px solid var(--color-bg-surface-2);
     background: var(--color-bg-surface);
@@ -78,7 +82,7 @@
 .avatarGrid {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 10px;
+    gap: 8px;
 }
 
 .avatarChoice {
@@ -110,8 +114,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     gap: var(--radius-sm);
-    margin-top: 4px;
+    margin-top: 2px;
 }
 
 .checkbox {
@@ -142,14 +147,14 @@
 }
 
 .loginBtn {
-    height: 44px;
+    height: 38px;
     border-radius: var(--radius-md);
     border: 1px solid var(--color-bg-surface-2);
     background: var(--color-brand);
     color: white;
     font-weight: 700;
     cursor: pointer;
-    margin-top: 6px;
+    margin-top: 2px;
 }
 
 .loginBtn:hover {
@@ -172,7 +177,7 @@
     text-align: center;
     font-size: 13px;
     color: var(--color-text-secondary);
-    margin-top: 8px;
+    margin-top: 2px;
 }
 
 /* Loading Card */
@@ -229,5 +234,97 @@
     100% {
         transform: scale(0.96);
         opacity: 0.85;
+    }
+}
+
+/* ------------- Media Queries ------------- */
+/* ------ Media Queries [760px] ------ */
+
+@media (max-height: 760px) {
+    .loginLogo {
+        width: 96px;
+        height: 96px;
+    }
+
+    .loginTitle {
+        margin-bottom: 8px;
+        font-size: 22px;
+    }
+
+    .loginForm {
+        gap: 8px;
+    }
+
+    .fieldInput {
+        height: 38px;
+    }
+}
+
+/* ------ Media Queries [420px] ------ */
+
+@media (max-width: 420px) {
+    .loginScreen {
+        padding: 8px;
+    }
+
+    .loginCard {
+        width: min(100%, 360px);
+        padding: 12px 12px 10px;
+        max-height: calc(100dvh - 16px);
+    }
+
+    .loginLogo {
+        width: 88px;
+        height: 88px;
+        margin-bottom: 4px;
+    }
+
+    .loginTitle {
+        font-size: 20px;
+        margin-bottom: 6px;
+    }
+
+    .loginForm {
+        gap: 7px;
+    }
+
+    .field {
+        gap: 3px;
+    }
+
+    .fieldLabel,
+    .remember,
+    .linkBtn,
+    .footerText {
+        font-size: 12px;
+    }
+
+    .fieldInput,
+    .loginBtn {
+        height: 36px;
+    }
+
+    .avatarGrid {
+        gap: 6px;
+    }
+
+    .avatarChoice {
+        padding: 5px;
+    }
+
+    .loginRow {
+        justify-content: flex-start;
+        margin-top: 0;
+    }
+
+    .footerText {
+        margin-top: 0;
+    }
+}
+
+@media (min-width: 1024px) {
+    .loginLogo {
+        width: 142px;
+        height: 142px;
     }
 }

@@ -30,6 +30,30 @@
     margin-bottom: var(--radius-sm);
 }
 
+.topHead {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.chatMenuBtn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: none;
+    place-items: center;
+    color: var(--color-text-secondary);
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    flex-shrink: 0;
+}
+
+.chatMenuBtn:hover {
+    background: var(--color-bg-surface-2);
+    color: var(--color-text-primary);
+}
+
 .themeControl {
     display: grid;
     justify-items: end;
@@ -134,4 +158,39 @@
 .chatItems::-webkit-scrollbar-thumb:hover {
     background: var(--color-border-strong);
     background-clip: content-box;
+}
+
+@media (max-width: 750px) {
+    .chatListTop {
+        padding: 10px;
+    }
+
+    .topRow {
+        margin-bottom: 8px;
+    }
+
+    .upChats {
+        font-size: 22px;
+        margin-bottom: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .chatMenuBtn {
+        display: grid;
+    }
+
+    .themeControl {
+        gap: 2px;
+    }
+
+    .themeLabel {
+        font-size: 10px;
+    }
+
+    .chatItems {
+        gap: 2px;
+        padding: 4px 6px 6px 4px;
+    }
 }

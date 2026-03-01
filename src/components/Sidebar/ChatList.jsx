@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { useChat } from "../../context/ContactContext";
-import { BsSunFill, BsMoonStarsFill } from "react-icons/bs";
+import { BsSunFill, BsMoonStarsFill, BsList } from "react-icons/bs";
 import SearchBox from "./SearchBox";
 import ChatListItem from "./ChatListItem.jsx";
 import "./ChatList.css";
@@ -32,8 +32,8 @@ function getSortEpoch(timeLabel, createdAt, index, referenceNow) {
     return dateAtTime.getTime();
 }
 
-export default function ChatList() {
-    const { chats, usersById, selectedChatId, messagesByChatId, theme, toggleTheme } = useChat();
+export default function ChatList({ onMenuClick }) {
+    const { chats, usersById, selectedChatId, messagesByChatId, theme, toggleTheme, currentUser } = useChat();
     const [query, setQuery] = useState("");
     const referenceNow = useMemo(() => {
         const openedAt = localStorage.getItem("ws_app_opened_at");
@@ -77,7 +77,17 @@ export default function ChatList() {
         <div className="chatList">
             <div className="chatListTop">
                 <div className="topRow">
-                    <div className="upChats">Chats</div>
+                    <div className="topHead">
+                        <button
+                            type="button"
+                            className="chatMenuBtn"
+                            aria-label="Abrir menú"
+                            onClick={onMenuClick}
+                        >
+                            <BsList size={20} />
+                        </button>
+                        <div className="upChats">Chats de {currentUser?.name || "usuario"}</div>
+                    </div>
                     <div className="themeControl">
                         <span className="themeLabel">Tema {theme === "dark" ? "Oscuro" : "Claro"}</span>
                         <button
