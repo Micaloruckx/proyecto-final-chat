@@ -231,8 +231,8 @@
 }
 
 .bigPulse {
-    width: 140px;
-    height: 140px;
+    width: 300px;
+    height: 300px;
     animation: pulse 1.3s ease-in-out infinite;
     opacity: 0.8;
 
@@ -301,8 +301,8 @@
     }
 
     .loginLogo {
-        width: 88px;
-        height: 88px;
+        width: 120px;
+        height: 120px;
         margin-bottom: 4px;
     }
 
