@@ -6,8 +6,8 @@ import "./ProfileScreen.css";
 export default function ProfileScreen() {
     const { userId } = useParams();
     const navigate = useNavigate();
-    const { usersById } = useChat();
-    const user = usersById[userId];
+    const { usersById, currentUser } = useChat();
+    const user = usersById[userId] || (currentUser?.id === userId ? currentUser : null);
 
     if (!user) {
         return (

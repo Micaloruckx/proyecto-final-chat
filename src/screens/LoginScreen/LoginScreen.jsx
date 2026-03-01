@@ -8,13 +8,20 @@ export default function LoginScreen() {
     const navigate = useNavigate();
     const { currentUser, login } = useChat();
 
-    const defaultUserId = useMemo(() => "tony", []);
+    const avatarOptions = useMemo(() => [
+        "/Avatars/Jon.PNG",
+        "/Avatars/Arya.PNG",
+        "/Avatars/Sansa.PNG",
+        "/Avatars/Bran.PNG",
+        "/Avatars/Tony.PNG",
+    ], []);
 
     const [mode, setMode] = useState("form");
     const [progress, setProgress] = useState(0);
 
-    const [email, setEmail] = useState("");
+    const [nickname, setNickname] = useState("");
     const [password, setPassword] = useState("");
+    const [selectedAvatar, setSelectedAvatar] = useState(avatarOptions[0]);
 
     useEffect(() => {
         if (currentUser) navigate("/", { replace: true });
@@ -22,6 +29,8 @@ export default function LoginScreen() {
 
     function handleSubmit(e) {
         e.preventDefault();
+        const trimmedNickname = nickname.trim();
+        if (!trimmedNickname) return;
 
         // INicia simulación de proceso de login con animación de carga
         setMode("loading");
@@ -40,7 +49,10 @@ export default function LoginScreen() {
             if (pct >= 100) {
                 clearInterval(t);
 
-                login(defaultUserId);
+                login({
+                    name: trimmedNickname,
+                    avatar: selectedAvatar,
+                });
 
                 // Redirige al chat principal
                 navigate("/", { replace: true });
@@ -79,18 +91,42 @@ export default function LoginScreen() {
 
                 <form className="loginForm" onSubmit={handleSubmit}>
                     <label className="field">
-                        <span className="fieldLabel">Correo electrónico</span>
+                        <span className="fieldLabel">Nickname</span>
                         <input
-                            id="login-email"
+                            id="login-nickname"
                             className="fieldInput"
-                            type="email"
-                            placeholder="Introduce tu correo electrónico"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            autoComplete="email"
+                            type="text"
+                            placeholder="Elegí tu nickname"
+                            value={nickname}
+                            onChange={(e) => setNickname(e.target.value)}
+                            autoComplete="nickname"
+                            minLength={2}
+                            maxLength={24}
                             required
                         />
                     </label>
+
+                    <div className="field">
+                        <span className="fieldLabel">Elegí tu avatar</span>
+                        <div className="avatarGrid" role="radiogroup" aria-label="Selector de avatar">
+                            {avatarOptions.map((avatar, index) => {
+                                const isSelected = selectedAvatar === avatar;
+                                return (
+                                    <button
+                                        key={avatar}
+                                        type="button"
+                                        className={`avatarChoice ${isSelected ? "isSelected" : ""}`}
+                                        onClick={() => setSelectedAvatar(avatar)}
+                                        role="radio"
+                                        aria-checked={isSelected}
+                                        aria-label={`Avatar ${index + 1}`}
+                                    >
+                                        <img src={avatar} alt="Avatar" className="avatarThumb" />
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    </div>
 
                     <label className="field">
                         <span className="fieldLabel">Contraseña</span>

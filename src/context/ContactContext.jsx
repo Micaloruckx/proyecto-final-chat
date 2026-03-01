@@ -115,6 +115,33 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
         return `${firstChunk}. ${suffix}`;
     }
 
+    function slugifyName(value) {
+        return (value || "")
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/(^-|-$)/g, "")
+            .slice(0, 24);
+    }
+
+    function buildCustomCurrentUser(payload) {
+        const rawName = (payload?.name || "").trim();
+        if (!rawName) return null;
+
+        const avatar = payload?.avatar || "/Avatars/Jon.PNG";
+        const slug = slugifyName(rawName) || `user-${Date.now()}`;
+
+        return {
+            id: `me-${slug}`,
+            name: rawName,
+            avatar,
+            status: "Disponible",
+            lastSeen: "En línea",
+            phone: "No disponible",
+        };
+    }
+
     function hydrateMessages(messagesMap, openedAtIso) {
         if (!messagesMap || typeof messagesMap !== "object") return {};
 
@@ -179,8 +206,10 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
             for (const u of contactData.users) map[u.id] = u;
             return map;
         }, []);
-        function login(userId) {
-            const u = usersById[userId] || null;
+        function login(userInput) {
+            const u = typeof userInput === "string"
+                ? (usersById[userInput] || null)
+                : buildCustomCurrentUser(userInput);
             setCurrentUser(u);
             setSelectedChatId(null);
             clearAuthStorage();
