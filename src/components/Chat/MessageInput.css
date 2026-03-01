@@ -1,17 +1,18 @@
 .msgForm {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 4px;
+    display: block;
     background-image: linear-gradient(var(--chat-overlay-start), var(--chat-overlay-end)), var(--chat-wallpaper);
     background-position: center;
 }
 
-.srOnly {
-    padding-left: 45px;
+.msgField {
+    position: relative;
+    margin: 10px;
 }
 
 .msgInput {
-    padding: var(--radius-sm) var(--radius-md);
+    width: 100%;
+    padding: var(--radius-sm) var(--radius-lg);
+    padding-right: 56px;
     border-radius: var(--radius-pill);
     border: 1px solid var(--color-bg-surface-2);
     background: var(--color-bg-panel);
@@ -22,7 +23,7 @@
     box-shadow: 0 0.5px 5px var(--color-border);
     caret-color: var(--color-accent);
     height: 50px;
-    margin: 10px 0 10px 10px;
+    margin: 0;
 }
 
 .msgInput:-webkit-autofill,
@@ -37,8 +38,12 @@
 }
 
 .sendBtn {
-    width: 46px;
-    height: 46px;
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     border: 0;
     background: var(--color-accent);
@@ -46,11 +51,11 @@
     display: grid;
     place-items: center;
     cursor: pointer;
-    margin: 12px 10px 12px 0;
+    margin: 0;
 }
 
 .sendBtn:hover {
-    filter: brightness(0.95);
+    background: color-mix(in srgb, var(--color-accent) 84%, black);
 }
 
 .msgInput:focus-visible {
@@ -68,11 +73,7 @@
         padding-bottom: max(env(safe-area-inset-bottom), 8px);
     }
 
-    .msgInput {
+    .msgField {
         margin-bottom: 8px;
-    }
-
-    .sendBtn {
-        margin-bottom: 10px;
     }
 }

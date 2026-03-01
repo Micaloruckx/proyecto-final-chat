@@ -15,18 +15,20 @@ export default function MessageInput() {
 
     return (
         <form className="msgForm" onSubmit={onSubmit}>
-            <label className="srOnly" htmlFor="chat-message-input">Escribe un mensaje</label>
-            <input
-                id="chat-message-input"
-                className="msgInput"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-                placeholder="Escribe un mensaje"
-                aria-label="Escribir mensaje"
-            />
-            <button className="sendBtn" type="submit" aria-label="Enviar mensaje">
-                <BsSendFill size={18} />
-            </button>
+            <div className="msgField">
+                <label className="srOnly" htmlFor="chat-message-input">Escribe un mensaje</label>
+                <input
+                    id="chat-message-input"
+                    className="msgInput"
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                    placeholder="Escribe un mensaje"
+                    aria-label="Escribir mensaje"
+                />
+                <button className="sendBtn" type="submit" aria-label="Enviar mensaje">
+                    <BsSendFill size={16} />
+                </button>
+            </div>
         </form>
     );
 }

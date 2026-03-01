@@ -9,7 +9,7 @@ const contactData = {
         { id: "catelyn", name: "Catelyn Stark", avatar: "/avatars/catelyn.png", status: "La familia primero", lastSeen: "En línea", phone: "+54 9 11 6294-7815" },
         { id: "rickon", name: "Rickon Stark", avatar: "/avatars/rickon.png", status: "⚡", lastSeen: "Desconocido", phone: "+54 9 11 2076-4489" },
         { id: "tony", name: "Tony Stark", avatar: "/avatars/tony.png", status: "Genio, multimillonario y filántropo", lastSeen: "En línea", phone: "+54 9 11 9999-3000" },
-        { id: "targaryen-group", name: "Consejo Targaryen 🔥", avatar: "/logos/logo-whatstark.png", status: "Grupo · 7 participantes", lastSeen: "En línea", phone: "+54 9 11 7000-0001" },
+        { id: "targaryen-group", name: "Consejo Targaryen 🔥", avatar: "/trono.jpg", status: "Grupo · 7 participantes", lastSeen: "En línea", phone: "+54 9 11 7000-0001" },
     ],
 
     chats: [
