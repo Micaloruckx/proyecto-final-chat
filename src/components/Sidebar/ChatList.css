@@ -162,6 +162,9 @@
     background-clip: content-box;
 }
 
+/* ------------- Media Queries ------------- */
+/* ------ Media Queries [max-width: 750px] ------ */
+
 @media (max-width: 750px) {
     .chatListTop {
         padding: 10px;

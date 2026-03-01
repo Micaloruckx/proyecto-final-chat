@@ -89,18 +89,21 @@
     border: 1px solid var(--color-bg-surface-2);
     background: var(--color-bg-surface);
     border-radius: 50px;
-    padding: 6px;
+    padding: 3px;
     cursor: pointer;
     transition: transform 0.15s ease, border-color 0.15s ease;
 }
 
 .avatarChoice:hover {
     transform: translateY(-1px);
-    background-color: var(--color-brand);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 1px var(--color-accent);
 }
 
 .avatarChoice.isSelected {
-    border-color: var(--color-accent);
+    border-color: var(--color-brand);
+    background: color-mix(in srgb, var(--color-brand) 52%, var(--color-bg-surface));
+    box-shadow: none;
 }
 
 .avatarThumb {
@@ -108,6 +111,11 @@
     aspect-ratio: 1;
     border-radius: 50px;
     object-fit: cover;
+    transition: transform 0.18s ease;
+}
+
+.avatarChoice:hover .avatarThumb {
+    transform: scale(1.12);
 }
 
 .loginRow {
@@ -238,7 +246,7 @@
 }
 
 /* ------------- Media Queries ------------- */
-/* ------ Media Queries [760px] ------ */
+/* ------ Media Queries [max-height: 760px] ------ */
 
 @media (max-height: 760px) {
     .loginLogo {
@@ -260,7 +268,7 @@
     }
 }
 
-/* ------ Media Queries [1024px] ------ */
+/* ------ Media Queries [min-width: 1024px] ------ */
 
 @media (min-width: 1024px) {
     .loginLogo {
@@ -269,7 +277,7 @@
     }
 }
 
-/* ------ Media Queries [420px] ------ */
+/* ------ Media Queries [max-width: 420px] ------ */
 
 @media (max-width: 420px) {
     .loginScreen {
@@ -318,7 +326,7 @@
     }
 
     .avatarChoice {
-        padding: 5px;
+        padding: 3px;
     }
 
     .loginRow {

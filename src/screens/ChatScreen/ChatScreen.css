@@ -99,12 +99,17 @@
     display: none;
 }
 
+/* ------------- Media Queries ------------- */
+/* ------ Media Queries [750px-1250px width] ------ */
+
 @media (min-width: 750px) and (max-width: 1250px) {
     .supLogo {
         width: 230px;
         height: 230px;
     }
 }
+
+/* ------ Media Queries [max-width: 750px] ------ */
 
 @media (max-width: 750px) {
     .layout {

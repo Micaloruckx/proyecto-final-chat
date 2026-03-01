@@ -53,6 +53,9 @@
     text-align: right;
 }
 
+/* ------------- Media Queries ------------- */
+/* ------ Media Queries [max-width: 750px] ------ */
+
 @media (max-width: 750px) {
     .bubble {
         max-width: min(420px, 82%);

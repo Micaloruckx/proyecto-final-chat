@@ -148,7 +148,8 @@
     box-shadow: 0 0 0 2px var(--color-accent);
 }
 
-/* Responsive styles for smaller screens */
+/* ------------- Media Queries ------------- */
+/* ------ Media Queries [max-width: 750px] ------ */
 
 @media (max-width: 750px) {
     .chatItem {
