@@ -1,9 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useChat } from "../../context/ContactContext";
+import PropTypes from "prop-types";
 import "./ChatHeader.css";
 
-export default function ChatHeader() {
+export default function ChatHeader({ onBack }) {
     const { selectedChatId, chats, usersById } = useChat();
     const navigate = useNavigate();
     const chat = chats.find((c) => c.id === selectedChatId);
@@ -22,6 +23,16 @@ export default function ChatHeader() {
 
     return (
         <div className="chatHeader">
+            {onBack ? (
+                <button
+                    type="button"
+                    className="headerBackBtn"
+                    onClick={onBack}
+                    aria-label="Volver a inicio/chats"
+                >
+                    ← Inicio
+                </button>
+            ) : null}
             <button
                 type="button"
                 className="headerAvatarBtn"
@@ -42,3 +53,7 @@ export default function ChatHeader() {
         </div>
     );
 }
+
+ChatHeader.propTypes = {
+    onBack: PropTypes.func,
+};

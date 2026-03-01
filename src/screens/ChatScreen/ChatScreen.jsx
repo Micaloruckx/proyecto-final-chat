@@ -76,15 +76,7 @@ export default function ChatScreen() {
                             </section>
                         ) : (
                             <>
-                                <button
-                                    type="button"
-                                    className="mobileBackToChats"
-                                    onClick={() => selectChat(null)}
-                                    aria-label="Volver a chats"
-                                >
-                                    ← Volver a chats
-                                </button>
-                                <ChatHeader />
+                                <ChatHeader onBack={() => selectChat(null)} />
                                 <MessageList />
                                 <MessageInput />
                             </>

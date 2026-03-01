@@ -11,6 +11,10 @@
     color: var(--color-text-primary);
 }
 
+.headerBackBtn {
+    display: none;
+}
+
 .headerAvatar {
     width: 40px;
     height: 40px;
@@ -68,6 +72,30 @@
         position: relative;
         gap: 8px;
         padding: 8px 10px;
+    }
+
+    .headerBackBtn {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        margin-left: auto;
+        padding: 5px 8px;
+        border-radius: var(--radius-pill);
+        border: 1px solid var(--color-border);
+        background: var(--color-bg-panel);
+        color: var(--color-text-primary);
+        white-space: nowrap;
+        font-size: 13px;
+        line-height: 1;
+        order: 3;
+    }
+
+    .headerAvatarBtn {
+        order: 1;
+    }
+
+    .headerMeta {
+        order: 2;
     }
 
     .headerAvatarBtn,

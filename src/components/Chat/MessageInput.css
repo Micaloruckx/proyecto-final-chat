@@ -6,6 +6,10 @@
     background-position: center;
 }
 
+.srOnly {
+    padding-left: 45px;
+}
+
 .msgInput {
     padding: var(--radius-sm) var(--radius-md);
     border-radius: var(--radius-pill);
