@@ -81,7 +81,7 @@ export default function Nav() {
 				>
 					<img
 						className="navUserAvatar"
-						src={currentUser?.avatar || "/Avatars/Tony.png"}
+						src={currentUser?.avatar || "/avatars/tony.png"}
 						alt={currentUser?.name || "Usuario"}
 					/>
 				</button>

@@ -45,7 +45,7 @@ body,
     --shadow-card: 0 12px 30px rgba(17, 27, 33, 0.18);
     --shadow-logo: drop-shadow(0 8px 14px rgba(17, 27, 33, 0.22));
 
-    --chat-wallpaper: url('/fondo_MainClaro.png');
+    --chat-wallpaper: url('/fondo_mainclaro.png');
     --chat-overlay-start: rgba(255, 255, 255, 0.55);
     --chat-overlay-end: rgba(255, 255, 255, 0.45);
 }
@@ -73,7 +73,7 @@ body,
     --shadow-card: 0 18px 50px rgba(0, 0, 0, 0.45);
     --shadow-logo: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.35));
 
-    --chat-wallpaper: url('/fondo_MainClaro.png');
+    --chat-wallpaper: url('/fondo_mainclaro.png');
     --chat-overlay-start: rgba(0, 0, 0, 0.72);
     --chat-overlay-end: rgba(0, 0, 0, 0.64);
 }
