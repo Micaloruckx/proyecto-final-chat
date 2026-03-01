@@ -17,7 +17,7 @@
 
 .scrollToBottomBtn {
     position: absolute;
-    right: 12px;
+    right: 24px;
     bottom: 14px;
     width: 34px;
     height: 34px;
@@ -29,6 +29,10 @@
     display: grid;
     place-items: center;
     z-index: 3;
+}
+
+.scrollToBottomBtn:hover {
+    background: var(--color-bg-surface-2);
 }
 
 @media (max-width: 750px) {
