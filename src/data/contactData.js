@@ -15,7 +15,7 @@ const contactData = {
     chats: [
         { id: "chat-targaryen", userId: "targaryen-group", lastMessage: "[Vos] Entendido. Sigo en las sombras.", lastTime: "Ahora", unread: 3 },
         { id: "chat-tony", userId: "tony", lastMessage: "Aprobada, 10/10 actitud.", lastTime: "Ahora", unread: 2 },
-        { id: "chat-eddard", userId: "eddard", lastMessage: "El Norte recuerda, pero también aprende.", lastTime: "22:07", unread: 0 },
+        { id: "chat-eddard", userId: "eddard", lastMessage: "Nota de voz", lastTime: "22:08", unread: 0 },
         { id: "chat-bran", userId: "bran", lastMessage: "Hablamos cuando llegue Jon.", lastTime: "21:09", unread: 0 },
         { id: "chat-catelyn", userId: "catelyn", lastMessage: "Qué linda foto. Abrigate bien.", lastTime: "20:20", unread: 0 },
         { id: "chat-robb", userId: "robb", lastMessage: "Perfecto. Esa actitud me gusta.", lastTime: "19:16", unread: 0 },
@@ -104,6 +104,9 @@ const contactData = {
             { id: "m3", fromMe: false, text: "Bien. No descuiden a la gente del pueblo.", time: "22:05" },
             { id: "m4", fromMe: true, text: "Ya se distribuyeron mantas y comida.", time: "22:06" },
             { id: "m5", fromMe: false, text: "El Norte recuerda, pero también aprende.", time: "22:07" },
+            // ===== [VOICE NOTE EDDARD EN DATA - INICIO] =====
+            { id: "m6", fromMe: false, text: "", audio: "/audio/chat-sfx.mp3", audioLabel: "Nota de voz:", time: "22:08" },
+            // ===== [VOICE NOTE EDDARD EN DATA - FIN] =====
         ],
 
         "chat-rickon": [

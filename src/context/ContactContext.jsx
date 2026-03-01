@@ -44,23 +44,69 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
         AUTH_STORAGE_KEYS.forEach((key) => localStorage.removeItem(key));
     }
 
+    // ===== [MIGRACIÓN AUDIO EDDARD - INICIO] =====
     function safeLoadMessages() {
         const openedAt = ensureAppOpenedAt();
-        const baseMessages = hydrateMessages(contactData.messages, openedAt);
+        const baseMessages = ensureEddardVoiceNoteMessage(hydrateMessages(contactData.messages, openedAt));
 
         try {
             const raw = localStorage.getItem("ws_messages");
             if (!raw) return baseMessages;
             const parsed = JSON.parse(raw);
             if (!parsed || typeof parsed !== "object") return baseMessages;
-            return {
+            return ensureEddardVoiceNoteMessage({
                 ...baseMessages,
                 ...hydrateMessages(parsed, openedAt),
-            };
+            });
         } catch {
             return baseMessages;
         }
     }
+
+    function ensureEddardVoiceNoteMessage(messagesByChatId) {
+        if (!messagesByChatId || typeof messagesByChatId !== "object") return {};
+
+        const chatId = "chat-eddard";
+        const voicePath = "/audio/chat-sfx.mp3";
+        const voiceLabel = "Nota de voz";
+        const eddardMessages = Array.isArray(messagesByChatId[chatId]) ? messagesByChatId[chatId] : [];
+
+        if (eddardMessages.some((message) => message?.audio === voicePath)) {
+            return messagesByChatId;
+        }
+
+        let didReplace = false;
+        const nextEddardMessages = eddardMessages.map((message) => {
+            if (message?.id !== "m6") return message;
+            didReplace = true;
+            return {
+                ...message,
+                text: "",
+                audio: voicePath,
+                audioLabel: voiceLabel,
+            };
+        });
+
+        const normalizedEddardMessages = didReplace
+            ? nextEddardMessages
+            : [
+                ...nextEddardMessages,
+                {
+                    id: "m6",
+                    fromMe: false,
+                    text: "",
+                    audio: voicePath,
+                    audioLabel: voiceLabel,
+                    time: "22:08",
+                },
+            ];
+
+        return {
+            ...messagesByChatId,
+            [chatId]: normalizedEddardMessages,
+        };
+    }
+    // ===== [MIGRACIÓN AUDIO EDDARD - FIN] =====
 
     function ensureAppOpenedAt() {
         const key = "ws_app_opened_at";

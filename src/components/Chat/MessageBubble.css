@@ -69,6 +69,113 @@
     margin-top: 6px;
 }
 
+.voiceNoteWrap {
+    margin-top: 6px;
+    display: grid;
+    gap: 6px;
+}
+
+/* ===== [VOICE NOTE ESTILOS - INICIO] ===== */
+
+.voiceNoteLabel {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+}
+
+.voiceNotePlayer {
+    width: min(320px, 100%);
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--color-border);
+    background: color-mix(in srgb, var(--color-bg-surface) 82%, var(--color-bg-panel));
+    padding: 8px 10px;
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 10px;
+    align-items: center;
+}
+
+.bubbleRow.me .voiceNotePlayer {
+    border-color: color-mix(in srgb, var(--color-accent) 40%, var(--color-border));
+    background: color-mix(in srgb, var(--color-accent) 18%, var(--color-bg-panel));
+}
+
+[data-theme="dark"] .bubbleRow.me .voiceNotePlayer {
+    border-color: color-mix(in srgb, var(--color-accent) 60%, var(--color-border));
+    background: color-mix(in srgb, var(--color-accent) 26%, var(--color-bg-panel));
+}
+
+.voicePlayBtn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border-strong);
+    color: var(--color-text-secondary);
+    background: var(--color-bg-panel);
+    display: grid;
+    place-items: center;
+    font-size: 11px;
+    line-height: 1;
+}
+
+.voicePlayBtn:hover {
+    color: var(--color-text-primary);
+    border-color: var(--color-accent);
+}
+
+.voicePlayBtn:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+}
+
+.voiceWaveWrap {
+    display: grid;
+    gap: 6px;
+}
+
+.voiceWave {
+    display: grid;
+    grid-template-columns: repeat(28, minmax(0, 1fr));
+    gap: 2px;
+    align-items: end;
+    height: 18px;
+}
+
+.voiceWaveBar {
+    width: 100%;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-text-secondary) 45%, transparent);
+}
+
+.voiceWaveBar:nth-child(3n+1) {
+    height: 6px;
+}
+
+.voiceWaveBar:nth-child(3n+2) {
+    height: 12px;
+}
+
+.voiceWaveBar:nth-child(3n) {
+    height: 9px;
+}
+
+.voiceWaveBar.active {
+    background: var(--color-accent);
+}
+
+.voiceTimes {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--color-text-secondary);
+}
+
+.voiceMic {
+    justify-self: end;
+    font-size: 14px;
+    color: var(--color-accent);
+}
+/* ===== [VOICE NOTE ESTILOS - FIN] ===== */
+
 .time {
     display: block;
     width: 100%;
@@ -95,6 +202,26 @@
 
     .messageImage {
         max-width: 180px;
+    }
+
+    .voiceNotePlayer {
+        width: min(285px, 100%);
+        padding: 7px 9px;
+        gap: 8px;
+    }
+
+    .voicePlayBtn {
+        width: 26px;
+        height: 26px;
+    }
+
+    .voiceWave {
+        height: 16px;
+        gap: 1.5px;
+    }
+
+    .voiceTimes {
+        font-size: 11px;
     }
 
     .time {
