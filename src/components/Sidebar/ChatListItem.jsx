@@ -32,13 +32,13 @@ export default function ChatListItem({ chat, active, collapsed }) {
                 aria-label={`Abrir chat con ${u.name}`}
             >
                 <div className="chatMeta">
-                    <div className="row">
-                        <div className="name">{u.name}</div>
-                        <div className="time">{chat.lastTime}</div>
+                    <div className="chatRow">
+                        <div className="chatName">{u.name}</div>
+                        <div className="chatTime">{chat.lastTime}</div>
                     </div>
-                    <div className="row">
-                        <div className="last">{chat.lastMessage}</div>
-                        {chat.unread > 0 && <div className="unread">{chat.unread}</div>}
+                    <div className="chatRow">
+                        <div className="chatLast">{chat.lastMessage}</div>
+                        {chat.unread > 0 && <div className="chatUnread">{chat.unread}</div>}
                     </div>
                 </div>
             </button>

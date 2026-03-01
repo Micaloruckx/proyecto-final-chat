@@ -86,7 +86,7 @@
     min-width: 0;
 }
 
-.row {
+.chatRow {
     display: flex;
     justify-content: space-between;
     gap: var(--radius-md);
@@ -94,7 +94,7 @@
     min-width: 0;
 }
 
-.name {
+.chatName {
     font-family: var(--font-family-heading);
     font-weight: 400;
     font-size: 16px;
@@ -105,13 +105,13 @@
     text-overflow: ellipsis;
 }
 
-.time {
+.chatTime {
     color: var(--color-text-muted);
     font-size: 12px;
     flex-shrink: 0;
 }
 
-.last {
+.chatLast {
     flex: 1;
     min-width: 0;
     color: var(--color-text-secondary);
@@ -121,7 +121,7 @@
     text-overflow: ellipsis;
 }
 
-.unread {
+.chatUnread {
     min-width: 20px;
     height: 20px;
     border-radius: var(--radius-pill);
@@ -172,23 +172,23 @@
         gap: 2px;
     }
 
-    .row {
+    .chatRow {
         gap: 8px;
     }
 
-    .name {
+    .chatName {
         font-size: 14px;
     }
 
-    .time {
+    .chatTime {
         font-size: 11px;
     }
 
-    .last {
+    .chatLast {
         font-size: 12px;
     }
 
-    .unread {
+    .chatUnread {
         min-width: 18px;
         height: 18px;
         font-size: 11px;
