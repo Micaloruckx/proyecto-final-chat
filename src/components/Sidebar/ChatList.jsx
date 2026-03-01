@@ -32,6 +32,31 @@ function getSortEpoch(timeLabel, createdAt, index, referenceNow) {
     return dateAtTime.getTime();
 }
 
+    function extractFirstUrl(text) {
+        if (!text) return null;
+        const match = text.match(/https?:\/\/[^\s]+/i);
+        return match ? match[0] : null;
+    }
+
+    function buildPreviewText(lastMessage, fallbackText) {
+        const plainText = lastMessage?.text?.trim();
+        if (plainText) {
+            const firstUrl = extractFirstUrl(plainText);
+            if (firstUrl) {
+                try {
+                    const hostname = new URL(firstUrl).hostname.replace(/^www\./i, "");
+                    return `🔗 ${hostname}`;
+                } catch {
+                    return "🔗 Enlace";
+                }
+            }
+            return plainText;
+        }
+
+        if (lastMessage?.image) return "📷 Foto";
+        return fallbackText;
+    }
+
 export default function ChatList({ onMenuClick }) {
     const { chats, usersById, selectedChatId, messagesByChatId, theme, toggleTheme, currentUser } = useChat();
     const [query, setQuery] = useState("");
@@ -46,9 +71,7 @@ export default function ChatList({ onMenuClick }) {
             const chatMessages = messagesByChatId[chat.id] || [];
             const lastMessage = chatMessages[chatMessages.length - 1];
 
-            const previewText =
-                lastMessage?.text?.trim() ||
-                (lastMessage?.image ? "📷 Foto" : chat.lastMessage);
+            const previewText = buildPreviewText(lastMessage, chat.lastMessage);
 
             const previewTime = lastMessage?.time || chat.lastTime;
             const lastAt = getSortEpoch(previewTime, lastMessage?.createdAt, index, referenceNow);

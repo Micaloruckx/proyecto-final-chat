@@ -36,6 +36,24 @@
     white-space: pre-wrap;
 }
 
+.textAndTime.singleLine {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.textAndTime.singleLine .text {
+    white-space: nowrap;
+}
+
+.time.inlineTime {
+    display: inline-block;
+    width: auto;
+    margin-top: 0;
+    margin-left: 2px;
+    flex-shrink: 0;
+}
+
 .messageImage {
     display: block;
     max-width: 220px;
@@ -46,6 +64,8 @@
 }
 
 .time {
+    display: block;
+    width: 100%;
     margin-top: 6px;
     font-size: 11px;
     color: var(--color-text-primary);

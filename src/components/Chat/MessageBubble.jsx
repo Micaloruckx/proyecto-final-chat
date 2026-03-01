@@ -3,12 +3,23 @@ import "./MessageBubble.css";
 import PropTypes from "prop-types";
 
 export default function MessageBubble({ message }) {
+    const text = message.text?.trim() || "";
+    const hasImage = Boolean(message.image);
+    const isSingleLine = Boolean(text) && !hasImage && !text.includes("\n") && text.length <= 52;
+
     return (
         <div className={`bubbleRow ${message.fromMe ? "me" : "them"}`} role="listitem">
             <div className="bubble">
-                {message.text ? <div className="text">{message.text}</div> : null}
+                {text ? (
+                    <div className={`textAndTime ${isSingleLine ? "singleLine" : ""}`}>
+                        <div className="text">{text}</div>
+                        {isSingleLine ? (
+                            <time className="time inlineTime" aria-label={`Enviado a las ${message.time}`}>{message.time}</time>
+                        ) : null}
+                    </div>
+                ) : null}
                 {message.image ? <img className="messageImage" src={message.image} alt="Imagen del chat" /> : null}
-                <time className="time" aria-label={`Enviado a las ${message.time}`}>{message.time}</time>
+                {!isSingleLine ? <time className="time" aria-label={`Enviado a las ${message.time}`}>{message.time}</time> : null}
             </div>
         </div>
     );
