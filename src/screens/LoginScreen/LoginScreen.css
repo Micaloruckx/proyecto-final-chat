@@ -246,6 +246,15 @@
 }
 
 /* ------------- Media Queries ------------- */
+/* ------ Media Queries [min-width: 1024px] ------ */
+
+@media (min-width: 1024px) {
+    .loginLogo {
+        width: 142px;
+        height: 142px;
+    }
+}
+
 /* ------ Media Queries [max-height: 760px] ------ */
 
 @media (max-height: 760px) {
@@ -265,15 +274,6 @@
 
     .fieldInput {
         height: 38px;
-    }
-}
-
-/* ------ Media Queries [min-width: 1024px] ------ */
-
-@media (min-width: 1024px) {
-    .loginLogo {
-        width: 142px;
-        height: 142px;
     }
 }
 
