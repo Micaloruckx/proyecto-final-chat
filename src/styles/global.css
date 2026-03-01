@@ -94,6 +94,17 @@ button {
     cursor: pointer;
     border: none;
     background: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a,
+[role="button"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+    -webkit-tap-highlight-color: transparent;
 }
 
 input,

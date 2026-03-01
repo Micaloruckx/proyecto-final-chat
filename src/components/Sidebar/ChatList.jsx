@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import PropTypes from "prop-types";
 import { useChat } from "../../context/ContactContext";
 import { BsSunFill, BsMoonStarsFill, BsList } from "react-icons/bs";
 import SearchBox from "./SearchBox";
@@ -142,3 +143,7 @@ export default function ChatList({ onMenuClick }) {
         </div>
     );
 }
+
+ChatList.propTypes = {
+    onMenuClick: PropTypes.func.isRequired,
+};

@@ -47,6 +47,7 @@
 	background: transparent;
 	text-align: left;
 	font-size: 13px;
+	-webkit-tap-highlight-color: transparent;
 }
 
 .navMenuItem:hover,
@@ -63,6 +64,7 @@
 	color: var(--color-text-secondary);
 	background: transparent;
 	transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+	-webkit-tap-highlight-color: transparent;
 }
 
 .navIconBtn:hover {
@@ -74,6 +76,12 @@
 .navIconBtn:focus-visible {
 	background: var(--color-bg-surface-2);
 	color: var(--color-text-primary);
+}
+
+.navIconBtn:active {
+	background: var(--color-bg-surface-2);
+	color: var(--color-text-primary);
+	transform: none;
 }
 
 .navUserAvatar {
@@ -92,6 +100,7 @@
 	background: transparent;
 	padding: 0;
 	transition: background-color 0.2s ease, transform 0.2s ease;
+	-webkit-tap-highlight-color: transparent;
 }
 
 .navAvatarBtn:hover {
@@ -101,4 +110,10 @@
 
 .navAvatarBtn:focus-visible {
 	background: var(--color-bg-surface-2);
+}
+
+.navAvatarBtn:active,
+.navMenuItem:active {
+	background: var(--color-bg-surface-2);
+	transform: none;
 }
