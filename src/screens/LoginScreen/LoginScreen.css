@@ -236,7 +236,7 @@
 
 /* Loading Card */
 .loadingCard {
-    width: min(460px, 94vw);
+    width: min(560px, 95vw);
     background: transparent;
     border: none;
     border-radius: 0;
@@ -244,6 +244,11 @@
     padding: 0;
     max-height: none;
     text-align: center;
+}
+
+.loadingCard .loginLogo.bigPulse {
+    width: min(84vw, 420px);
+    height: auto;
 }
 
 .loadingText {
@@ -278,7 +283,7 @@
 }
 
 .bigPulse {
-    width: clamp(240px, 52vw, 360px);
+    width: clamp(280px, 62vw, 420px);
     height: auto;
     max-width: 100%;
     animation: pulse 1.8s ease-in-out infinite;
@@ -384,15 +389,15 @@
     }
 
     .loadingCard {
-        width: min(100%, 360px);
+        width: min(100%, 440px);
     }
 
     .avatarChoice {
         padding: 3px;
     }
 
-    .bigPulse {
-        width: min(82vw, 300px);
+    .loadingCard .loginLogo.bigPulse {
+        width: min(86vw, 360px);
     }
 
     .loginRow {
