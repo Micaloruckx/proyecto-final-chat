@@ -1,15 +1,15 @@
 const contactData = {
     users: [
-        { id: "jon", name: "Jon Snow", avatar: "/Avatars/Jon.PNG", status: "No sé nada", lastSeen: "Hace 5 minutos", phone: "+54 9 11 4023-1945" },
-        { id: "arya", name: "Arya Stark", avatar: "/Avatars/Arya.PNG", status: "Una chica no tiene nombre", lastSeen: "Hace 2 días", phone: "+54 9 11 5931-2280" },
-        { id: "sansa", name: "Sansa Stark", avatar: "/Avatars/Sansa.PNG", status: "El Norte recuerda", lastSeen: "Ayer", phone: "+54 9 11 7142-6603" },
-        { id: "bran", name: "Bran Stark", avatar: "/Avatars/Bran.PNG", status: "Recuerdo todo", lastSeen: "Hace 4 horas", phone: "+54 9 11 3487-9152" },
-        { id: "robb", name: "Robb Stark", avatar: "/Avatars/Robb.PNG", status: "Rey en el Norte", lastSeen: "Hoy", phone: "+54 9 11 8750-3041" },
-        { id: "eddard", name: "Eddard Stark", avatar: "/Avatars/Eddard.PNG", status: "Se acerca el invierno", lastSeen: "Hoy", phone: "+54 9 11 4609-5538" },
-        { id: "catelyn", name: "Catelyn Stark", avatar: "/Avatars/Catelyn.PNG", status: "La familia primero", lastSeen: "En línea", phone: "+54 9 11 6294-7815" },
-        { id: "rickon", name: "Rickon Stark", avatar: "/Avatars/Rickon.PNG", status: "⚡", lastSeen: "Desconocido", phone: "+54 9 11 2076-4489" },
-        { id: "tony", name: "Tony Stark", avatar: "/Avatars/Tony.PNG", status: "Genio, multimillonario y filántropo", lastSeen: "En línea", phone: "+54 9 11 9999-3000" },
-        { id: "targaryen-group", name: "Consejo Targaryen 🔥", avatar: "/Logos/Logo-WhatStark-png.png", status: "Grupo · 7 participantes", lastSeen: "En línea", phone: "+54 9 11 7000-0001" },
+        { id: "jon", name: "Jon Snow", avatar: "/Avatars/jon.png", status: "No sé nada", lastSeen: "Hace 5 minutos", phone: "+54 9 11 4023-1945" },
+        { id: "arya", name: "Arya Stark", avatar: "/Avatars/arya.png", status: "Una chica no tiene nombre", lastSeen: "Hace 2 días", phone: "+54 9 11 5931-2280" },
+        { id: "sansa", name: "Sansa Stark", avatar: "/Avatars/sansa.png", status: "El Norte recuerda", lastSeen: "Ayer", phone: "+54 9 11 7142-6603" },
+        { id: "bran", name: "Bran Stark", avatar: "/Avatars/bran.png", status: "Recuerdo todo", lastSeen: "Hace 4 horas", phone: "+54 9 11 3487-9152" },
+        { id: "robb", name: "Robb Stark", avatar: "/Avatars/robb.png", status: "Rey en el Norte", lastSeen: "Hoy", phone: "+54 9 11 8750-3041" },
+        { id: "eddard", name: "Eddard Stark", avatar: "/Avatars/eddard.png", status: "Se acerca el invierno", lastSeen: "Hoy", phone: "+54 9 11 4609-5538" },
+        { id: "catelyn", name: "Catelyn Stark", avatar: "/Avatars/catelyn.png", status: "La familia primero", lastSeen: "En línea", phone: "+54 9 11 6294-7815" },
+        { id: "rickon", name: "Rickon Stark", avatar: "/Avatars/rickon.png", status: "⚡", lastSeen: "Desconocido", phone: "+54 9 11 2076-4489" },
+        { id: "tony", name: "Tony Stark", avatar: "/Avatars/tony.png", status: "Genio, multimillonario y filántropo", lastSeen: "En línea", phone: "+54 9 11 9999-3000" },
+        { id: "targaryen-group", name: "Consejo Targaryen 🔥", avatar: "/Logos/logo-whatstark.png", status: "Grupo · 7 participantes", lastSeen: "En línea", phone: "+54 9 11 7000-0001" },
     ],
 
     chats: [
@@ -72,7 +72,7 @@ const contactData = {
             { id: "m6", fromMe: true, text: "Jon. Hace eso antes del desayuno.", time: "Ahora" },
             { id: "m7", fromMe: false, text: "Genial, no me pongan en la primera fila.", time: "Ahora" },
             { id: "m8", fromMe: false, text: "Bueno, para caer bien: selfie de presentación 😎", time: "Ahora" },
-            { id: "m9", fromMe: false, text: "", image: "/Avatars/Tony.PNG", time: "Ahora" },
+            { id: "m9", fromMe: false, text: "", image: "/Avatars/tony.png", time: "Ahora" },
             { id: "m10", fromMe: true, text: "Aprobada, 10/10 actitud.", time: "Ahora" },
         ],
 
@@ -83,7 +83,7 @@ const contactData = {
             { id: "m4", fromMe: true, text: "Nos quedamos dentro después de la ronda.", time: "20:14" },
             { id: "m5", fromMe: false, text: "Perfecto, me quedo más tranquila.", time: "20:16" },
             { id: "m6", fromMe: true, text: "Te mando una selfie rápida antes de entrar.", time: "20:18" },
-            { id: "m7", fromMe: true, text: "", image: "/Avatars/Sansa.PNG", time: "20:19" },
+            { id: "m7", fromMe: true, text: "", image: "/Avatars/sansa.png", time: "20:19" },
             { id: "m8", fromMe: false, text: "Qué linda foto. Abrigate bien.", time: "20:20" },
         ],
 
@@ -94,7 +94,7 @@ const contactData = {
             { id: "m4", fromMe: true, text: "Armo dos turnos extra para mañana.", time: "19:10" },
             { id: "m5", fromMe: false, text: "Entonces entrenamos al amanecer.", time: "19:12" },
             { id: "m6", fromMe: false, text: "Mirá, los chicos ya están listos.", time: "19:14" },
-            { id: "m7", fromMe: false, text: "", image: "/Avatars/Robb.PNG", time: "19:15" },
+            { id: "m7", fromMe: false, text: "", image: "/Avatars/robb.png", time: "19:15" },
             { id: "m8", fromMe: true, text: "Perfecto. Esa actitud me gusta.", time: "19:16" },
         ],
 
@@ -108,7 +108,7 @@ const contactData = {
 
         "chat-rickon": [
             { id: "m1", fromMe: false, text: "Mirá esta selfie con Shaggydog 😎", time: "17:25" },
-            { id: "m2", fromMe: false, text: "", image: "/Avatars/Rickon.PNG", time: "17:26" },
+            { id: "m2", fromMe: false, text: "", image: "/Avatars/rickon.png", time: "17:26" },
             { id: "m3", fromMe: true, text: "JAJA, te salió tremenda. Él posa mejor que yo.", time: "17:27" },
             { id: "m4", fromMe: false, text: "jajaja quedó épica", time: "17:29" },
         ],

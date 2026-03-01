@@ -9,11 +9,11 @@ export default function LoginScreen() {
     const { currentUser, login } = useChat();
 
     const avatarOptions = useMemo(() => [
-        "/Avatars/Frodo.PNG",
-        "/Avatars/Tyrion.PNG",
-        "/Avatars/Hermione.PNG",
-        "/Avatars/Daenerys.PNG",
-        "/Avatars/Daemon.PNG",
+        "/Avatars/frodo.png",
+        "/Avatars/tyrion.png",
+        "/Avatars/hermione.png",
+        "/Avatars/daenerys.png",
+        "/Avatars/daemon.png",
     ], []);
 
     const [mode, setMode] = useState("form");
@@ -66,7 +66,7 @@ export default function LoginScreen() {
                 <div className="loginCard loadingCard">
                     <img
                         className="loginLogo bigPulse"
-                        src="/Logos/Logo-WhatStark-png.png"
+                        src="/Logos/logo-whatstark.png"
                         alt="WhatStark"
                     />
                     <div className="loadingText">Cargando tus chats…</div>
@@ -83,7 +83,7 @@ export default function LoginScreen() {
             <div className="loginCard">
                 <img
                     className="loginLogo"
-                    src="/Logos/Logo-WhatStark-png.png"
+                    src="/Logos/logo-whatstark.png"
                     alt="WhatStark"
                 />
 

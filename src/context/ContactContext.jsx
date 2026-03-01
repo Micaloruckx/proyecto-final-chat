@@ -129,7 +129,7 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
         const rawName = (payload?.name || "").trim();
         if (!rawName) return null;
 
-        const avatar = payload?.avatar || "/Avatars/Jon.PNG";
+        const avatar = payload?.avatar || "/Avatars/jon.png";
         const slug = slugifyName(rawName) || `user-${Date.now()}`;
 
         return {

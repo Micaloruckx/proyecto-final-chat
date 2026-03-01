@@ -13,7 +13,7 @@ export default function ChatHeader() {
 
     const userName = u?.name || "Chat";
     const userStatus = u?.status || "Sin estado";
-    const userAvatar = u?.avatar || "/Avatars/Jon.PNG";
+    const userAvatar = u?.avatar || "/Avatars/jon.png";
 
     function goToProfile() {
         if (!u?.id) return;
