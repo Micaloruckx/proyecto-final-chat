@@ -105,6 +105,18 @@ Durante el desarrollo se trabajó especialmente en:
 
 ---
 
+## 🎨 Guía de consistencia visual (inputs y botones)
+
+Para mantener una UI consistente entre navegadores (especialmente en mobile), el proyecto define estas reglas:
+
+- **Sin estilos por defecto del sistema en taps/clicks:** se desactiva el tap highlight nativo (`-webkit-tap-highlight-color: transparent`) en elementos interactivos.
+- **Focus controlado por componente:** los inputs principales (`Login`, `Search`, `MessageInput`) usan estilos de `:focus-visible` propios (borde/acento del tema), evitando anillos inesperados del navegador.
+- **Autofill normalizado:** se overridea `-webkit-autofill` para que el fondo y color de texto respeten tokens de tema y no aparezca el fondo celeste/amarillo del navegador.
+- **Tokens de tema obligatorios:** fondos, bordes y texto deben usar variables CSS (`--color-bg-surface`, `--color-border-strong`, `--color-accent`, etc.), evitando hardcodeo de colores.
+- **Compatibilidad de assets en deploy Linux:** rutas y extensiones de imágenes deben respetar exactamente mayúsculas/minúsculas reales de `public/`.
+
+---
+
 ## 🙌 Autoría
 
 Proyecto realizado por **Mica Loruckx** para el Trabajo Integrador Final de Frontend.

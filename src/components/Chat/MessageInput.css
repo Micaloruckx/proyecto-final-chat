@@ -11,12 +11,26 @@
     padding: var(--radius-sm) var(--radius-md);
     border-radius: var(--radius-pill);
     border: 1px solid var(--color-bg-surface-2);
-    background: var(--color-bg-panel);
+    background: var(--color-bg-surface);
     color: var(--color-text-primary);
     outline: none;
+    appearance: none;
+    -webkit-appearance: none;
     box-shadow: 0 0.5px 5px var(--color-border);
+    caret-color: var(--color-accent);
     height: 50px;
     margin: 10px 0 10px 10px;
+}
+
+.msgInput:-webkit-autofill,
+.msgInput:-webkit-autofill:hover,
+.msgInput:-webkit-autofill:focus,
+.msgInput:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--color-text-primary);
+    box-shadow: 0 0 0 1000px var(--color-bg-surface) inset;
+    -webkit-box-shadow: 0 0 0 1000px var(--color-bg-surface) inset;
+    border: 1px solid var(--color-bg-surface-2);
+    transition: background-color 9999s ease-in-out 0s;
 }
 
 .sendBtn {
@@ -37,7 +51,9 @@
 }
 
 .msgInput:focus-visible {
-    border-color: var(--color-border-strong);
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 1px var(--color-accent), 0 0.5px 5px var(--color-border);
 }
 
 .sendBtn:focus-visible {

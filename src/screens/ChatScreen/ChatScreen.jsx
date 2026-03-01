@@ -51,7 +51,7 @@ export default function ChatScreen() {
                 ) : null}
 
                 {showRightPane ? (
-                    <main className="right">
+                    <main className={`right ${isMobileLayout && selectedChatId ? "rightMobileChat" : ""}`}>
                         {!selectedChatId ? (
                             <section className="sup" aria-label="Estado inicial del chat">
                                 <div className="supTitle">

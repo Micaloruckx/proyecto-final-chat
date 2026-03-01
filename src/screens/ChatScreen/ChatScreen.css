@@ -215,4 +215,8 @@
         color: var(--color-text-primary);
         width: fit-content;
     }
+
+    .right.rightMobileChat {
+        grid-template-rows: auto auto minmax(0, 1fr) auto;
+    }
 }

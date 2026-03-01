@@ -23,10 +23,24 @@
     background: var(--color-bg-surface);
     color: var(--color-text-primary);
     outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    box-shadow: 0 0.5px 5px transparent;
 }
 
 .searchBox::placeholder {
     color: var(--color-text-muted);
+}
+
+.searchBox:-webkit-autofill,
+.searchBox:-webkit-autofill:hover,
+.searchBox:-webkit-autofill:focus,
+.searchBox:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--color-text-primary);
+    box-shadow: 0 0 0 1000px var(--color-bg-surface) inset;
+    -webkit-box-shadow: 0 0 0 1000px var(--color-bg-surface) inset;
+    border: 1px solid var(--color-bg-surface-2);
+    transition: background-color 9999s ease-in-out 0s;
 }
 
 .searchClearBtn {
@@ -56,7 +70,9 @@
 }
 
 .searchBox:focus-visible {
-    border-color: var(--color-border-strong);
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 1px var(--color-accent);
 }
 
 [data-theme="dark"] .searchBox {

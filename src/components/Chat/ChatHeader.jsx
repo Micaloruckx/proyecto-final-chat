@@ -9,25 +9,35 @@ export default function ChatHeader() {
     const chat = chats.find((c) => c.id === selectedChatId);
     const u = chat ? usersById[chat.userId] : null;
 
-    if (!u) return null;
+    if (!selectedChatId) return null;
+
+    const userName = u?.name || "Chat";
+    const userStatus = u?.status || "Sin estado";
+    const userAvatar = u?.avatar || "/Avatars/Jon.PNG";
+
+    function goToProfile() {
+        if (!u?.id) return;
+        navigate(`/profile/${u.id}`);
+    }
 
     return (
         <div className="chatHeader">
             <button
                 type="button"
                 className="headerAvatarBtn"
-                onClick={() => navigate(`/profile/${u.id}`)}
-                aria-label={`Abrir perfil de ${u.name}`}
+                onClick={goToProfile}
+                aria-label={`Abrir perfil de ${userName}`}
+                disabled={!u?.id}
             >
                 <img
                     className="headerAvatar"
-                    src={u.avatar}
-                    alt={u.name}
+                    src={userAvatar}
+                    alt={userName}
                 />
             </button>
             <div className="headerMeta">
-                <div className="headerName">{u.name}</div>
-                <div className="headerStatus">{u.status}</div>
+                <div className="headerName">{userName}</div>
+                <div className="headerStatus">{userStatus}</div>
             </div>
         </div>
     );

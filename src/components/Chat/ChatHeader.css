@@ -27,6 +27,10 @@
     background: transparent;
 }
 
+.headerAvatarBtn:disabled {
+    cursor: default;
+}
+
 .headerAvatarBtn:hover .headerAvatar {
     transform: translateY(-1px);
     box-shadow: 0 0 0 2px var(--color-bg-surface-2);
@@ -39,14 +43,44 @@
 
 .headerName {
     font-family: var(--font-family-heading);
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .headerStatus {
     color: var(--color-text-muted);
     font-size: 14px;
     margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .headerMeta {
     min-width: 0;
+    flex: 1;
+}
+
+@media (max-width: 750px) {
+    .chatHeader {
+        position: relative;
+        gap: 8px;
+        padding: 8px 10px;
+    }
+
+    .headerAvatarBtn,
+    .headerAvatar {
+        width: 36px;
+        height: 36px;
+    }
+
+    .headerName {
+        font-size: 15px;
+    }
+
+    .headerStatus {
+        font-size: 12px;
+    }
 }
