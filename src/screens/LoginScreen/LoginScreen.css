@@ -22,8 +22,8 @@
 }
 
 .loginLogo {
-    width: 125px;
-    height: 125px;
+    width: 200px;
+    height: 200px;
     display: block;
     margin: 0 auto 6px;
     object-fit: contain;
@@ -34,7 +34,7 @@
     font-family: var(--font-family-heading);
     margin: 0 0 10px;
     text-align: center;
-    font-size: 24px;
+    font-size: 10px;
 }
 
 .loginForm {
