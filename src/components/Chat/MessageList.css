@@ -33,11 +33,11 @@
 
 @media (max-width: 750px) {
     .messageList {
-        padding-bottom: 88px;
+        padding-bottom: calc(104px + env(safe-area-inset-bottom));
     }
 
     .scrollToBottomBtn {
         right: 14px;
-        bottom: 84px;
+        bottom: calc(92px + env(safe-area-inset-bottom));
     }
 }

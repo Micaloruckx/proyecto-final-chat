@@ -4,7 +4,6 @@
     gap: 4px;
     background-image: linear-gradient(var(--chat-overlay-start), var(--chat-overlay-end)), var(--chat-wallpaper);
     background-position: center;
-    border-top: 1px solid transparent;
 }
 
 .msgInput {
@@ -20,10 +19,6 @@
     caret-color: var(--color-accent);
     height: 50px;
     margin: 10px 0 10px 10px;
-}
-
-.msgInput:active {
-background-color: var(--color-bg-panel);
 }
 
 .msgInput:-webkit-autofill,
@@ -62,4 +57,18 @@ background-color: var(--color-bg-panel);
 
 .sendBtn:focus-visible {
     filter: brightness(0.95);
+}
+
+@media (max-width: 750px) {
+    .msgForm {
+        padding-bottom: max(env(safe-area-inset-bottom), 8px);
+    }
+
+    .msgInput {
+        margin-bottom: 8px;
+    }
+
+    .sendBtn {
+        margin-bottom: 10px;
+    }
 }
