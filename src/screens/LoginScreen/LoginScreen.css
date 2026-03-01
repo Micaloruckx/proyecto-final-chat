@@ -22,8 +22,8 @@
 }
 
 .loginLogo {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
     display: block;
     margin: 0 auto 6px;
     object-fit: contain;
@@ -231,8 +231,8 @@
 }
 
 .bigPulse {
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
     animation: pulse 1.3s ease-in-out infinite;
     opacity: 0.8;
 
@@ -260,8 +260,8 @@
 
 @media (min-width: 1024px) {
     .loginLogo {
-        width: 142px;
-        height: 142px;
+        width: 240px;
+        height: 240px;
     }
 }
 
@@ -269,8 +269,8 @@
 
 @media (max-height: 760px) {
     .loginLogo {
-        width: 96px;
-        height: 96px;
+        width: 170px;
+        height: 170px;
     }
 
     .loginTitle {
@@ -301,8 +301,8 @@
     }
 
     .loginLogo {
-        width: 120px;
-        height: 120px;
+        width: 160px;
+        height: 160px;
         margin-bottom: 4px;
     }
 
