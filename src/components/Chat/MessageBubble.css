@@ -17,9 +17,8 @@
     border-radius: var(--radius-sm);
     background: var(--color-bg-panel);
     color: var(--color-text-primary);
-    border: 0.5px solid var(--color-border);
+    border: 0,5px solid var(--color-border);
     box-shadow: 0 0.5px 5px var(--color-border);
-    min-width: 0;
 }
 
 .bubbleRow.me .bubble {
@@ -35,8 +34,24 @@
 
 .text {
     white-space: pre-wrap;
-    overflow-wrap: anywhere;
-    word-break: break-word;
+}
+
+.textAndTime.singleLine {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.textAndTime.singleLine .text {
+    white-space: nowrap;
+}
+
+.time.inlineTime {
+    display: inline-block;
+    width: auto;
+    margin-top: 0;
+    margin-left: 2px;
+    flex-shrink: 0;
 }
 
 .messageImage {
