@@ -244,10 +244,19 @@
     padding: 0;
     max-height: none;
     text-align: center;
+    animation: loadingEnter 220ms ease-out;
+}
+
+.loadingLogoShell {
+    width: min(84vw, 420px);
+    aspect-ratio: 1 / 1;
+    margin-inline: auto;
+    display: grid;
+    place-items: center;
 }
 
 .loadingCard .loginLogo.bigPulse {
-    width: min(84vw, 420px);
+    width: 100%;
     height: auto;
 }
 
@@ -305,6 +314,18 @@
     100% {
         transform: scale(0.96);
         opacity: 0.85;
+    }
+}
+
+@keyframes loadingEnter {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
@@ -397,6 +418,10 @@
     }
 
     .loadingCard .loginLogo.bigPulse {
+        width: 100%;
+    }
+
+    .loadingLogoShell {
         width: min(86vw, 360px);
     }
 

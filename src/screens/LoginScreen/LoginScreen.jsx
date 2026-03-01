@@ -183,11 +183,13 @@ export default function LoginScreen() {
             {/* ===== [AUDIO LOGIN: ELEMENTO HTML AUDIO - FIN] ===== */}
             {mode === "loading" ? (
                 <div className="loginCard loadingCard" aria-live="polite" aria-busy="true">
-                    <img
-                        className="loginLogo bigPulse"
-                        src="/logos/logo-solo-whatstark.png"
-                        alt="WhatStark"
-                    />
+                    <div className="loadingLogoShell">
+                        <img
+                            className="loginLogo bigPulse"
+                            src="/logos/logo-solo-whatstark.png"
+                            alt="WhatStark"
+                        />
+                    </div>
                     <div className="loadingText">Cargando tus chats…</div>
                     <div className="loadingBar" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress} aria-label="Progreso de inicio de sesión">
                         <div className="loadingFill" style={{ width: `${progress}%` }} />
