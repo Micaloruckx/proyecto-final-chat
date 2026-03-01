@@ -66,7 +66,7 @@ export default function LoginScreen() {
                 <div className="loginCard loadingCard">
                     <img
                         className="loginLogo bigPulse"
-                        src="/logos/logo-whatstark.png"
+                        src="/logos/logo-solo-whatstark.png"
                         alt="WhatStark"
                     />
                     <div className="loadingText">Cargando tus chats…</div>
