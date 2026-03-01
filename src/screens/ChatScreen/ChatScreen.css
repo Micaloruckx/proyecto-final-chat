@@ -219,4 +219,11 @@
     .right.rightMobileChat {
         grid-template-rows: auto auto minmax(0, 1fr) auto;
     }
+
+    .right.rightMobileChat .msgForm {
+        position: sticky;
+        bottom: 0;
+        z-index: 4;
+        padding-bottom: env(safe-area-inset-bottom);
+    }
 }

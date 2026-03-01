@@ -19,6 +19,8 @@
     color: var(--color-text-primary);
     border: 0,5px solid var(--color-border);
     box-shadow: 0 0.5px 5px var(--color-border);
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .bubbleRow.me .bubble {
@@ -34,16 +36,20 @@
 
 .text {
     white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .textAndTime.singleLine {
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-end;
     gap: 8px;
 }
 
 .textAndTime.singleLine .text {
-    white-space: nowrap;
+    white-space: pre-wrap;
+    min-width: 0;
 }
 
 .time.inlineTime {
