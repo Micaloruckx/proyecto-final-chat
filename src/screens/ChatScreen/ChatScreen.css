@@ -90,6 +90,60 @@
     margin-inline: auto;
 }
 
+.supLogoWrap {
+    position: relative;
+    display: inline-block;
+    line-height: 0;
+    margin-inline: auto;
+    overflow: hidden;
+}
+
+.supLogoWrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        112deg,
+        transparent 42%,
+        color-mix(in srgb, var(--color-bg-panel) 64%, white) 50%,
+        transparent 58%
+    );
+    opacity: 0.12;
+    transform: translateX(-140%) skewX(-16deg);
+    animation: supLogoShimmer 6.4s ease-in-out infinite;
+}
+
+[data-theme="dark"] .supLogoWrap::after {
+    display: none;
+}
+
+[data-theme="dark"] .supLogo {
+    filter: drop-shadow(0 0 8px color-mix(in srgb, var(--color-accent) 28%, transparent));
+}
+
+@keyframes supLogoShimmer {
+    0%,
+    18% {
+        transform: translateX(-140%) skewX(-16deg);
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0.12;
+    }
+
+    56% {
+        transform: translateX(130%) skewX(-16deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(130%) skewX(-16deg);
+        opacity: 0;
+    }
+}
+
 .mobileBackToChats {
     display: none;
 }

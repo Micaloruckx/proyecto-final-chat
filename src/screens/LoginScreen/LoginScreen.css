@@ -245,7 +245,7 @@
 .bigPulse {
     width: 400px;
     height: 400px;
-    animation: pulse 1.3s ease-in-out infinite;
+    animation: pulse 1.5s ease-in-out infinite;
     opacity: 0.8;
 
 }
