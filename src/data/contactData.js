@@ -1,15 +1,15 @@
 const contactData = {
     users: [
-        { id: "jon", name: "Jon Snow", avatar: "/Avatars/Jon.PNG", status: "I know nothing", lastSeen: "Hace 5 minutos" },
-        { id: "arya", name: "Arya Stark", avatar: "/Avatars/Arya.PNG", status: "A girl has no name", lastSeen: "Hace 2 días" },
-        { id: "sansa", name: "Sansa Stark", avatar: "/Avatars/Sansa.PNG", status: "The North remembers", lastSeen: "Ayer" },
-        { id: "bran", name: "Bran Stark", avatar: "/Avatars/Bran.PNG", status: "I remember everything", lastSeen: "Hace 4 horas" },
-        { id: "robb", name: "Robb Stark", avatar: "/Avatars/Robb.PNG", status: "King in the North", lastSeen: "Hoy" },
-        { id: "eddard", name: "Eddard Stark", avatar: "/Avatars/Eddard.PNG", status: "Winter is coming", lastSeen: "Hoy" },
-        { id: "catelyn", name: "Catelyn Stark", avatar: "/Avatars/Catelyn.PNG", status: "Family first", lastSeen: "Online" },
-        { id: "rickon", name: "Rickon Stark", avatar: "/Avatars/Rickon.PNG", status: "⚡", lastSeen: "Unknown" },
-        { id: "tony", name: "Tony Stark", avatar: "/Avatars/Tony.png", status: "Genius, billionaire, philanthropist", lastSeen: "Online" },
-        { id: "targaryen-group", name: "Consejo Targaryen 🔥", avatar: "/Logos/Logo-WhatStark-png.png", status: "Grupo · 7 participantes", lastSeen: "Online" },
+        { id: "jon", name: "Jon Snow", avatar: "/Avatars/Jon.PNG", status: "I know nothing", lastSeen: "Hace 5 minutos", phone: "+54 9 11 4023-1945" },
+        { id: "arya", name: "Arya Stark", avatar: "/Avatars/Arya.PNG", status: "A girl has no name", lastSeen: "Hace 2 días", phone: "+54 9 11 5931-2280" },
+        { id: "sansa", name: "Sansa Stark", avatar: "/Avatars/Sansa.PNG", status: "The North remembers", lastSeen: "Ayer", phone: "+54 9 11 7142-6603" },
+        { id: "bran", name: "Bran Stark", avatar: "/Avatars/Bran.PNG", status: "I remember everything", lastSeen: "Hace 4 horas", phone: "+54 9 11 3487-9152" },
+        { id: "robb", name: "Robb Stark", avatar: "/Avatars/Robb.PNG", status: "King in the North", lastSeen: "Hoy", phone: "+54 9 11 8750-3041" },
+        { id: "eddard", name: "Eddard Stark", avatar: "/Avatars/Eddard.PNG", status: "Winter is coming", lastSeen: "Hoy", phone: "+54 9 11 4609-5538" },
+        { id: "catelyn", name: "Catelyn Stark", avatar: "/Avatars/Catelyn.PNG", status: "Family first", lastSeen: "Online", phone: "+54 9 11 6294-7815" },
+        { id: "rickon", name: "Rickon Stark", avatar: "/Avatars/Rickon.PNG", status: "⚡", lastSeen: "Unknown", phone: "+54 9 11 2076-4489" },
+        { id: "tony", name: "Tony Stark", avatar: "/Avatars/Tony.png", status: "Genius, billionaire, philanthropist", lastSeen: "Online", phone: "+54 9 11 9999-3000" },
+        { id: "targaryen-group", name: "Consejo Targaryen 🔥", avatar: "/Logos/Logo-WhatStark-png.png", status: "Grupo · 7 participantes", lastSeen: "Online", phone: "+54 9 11 7000-0001" },
     ],
 
     chats: [

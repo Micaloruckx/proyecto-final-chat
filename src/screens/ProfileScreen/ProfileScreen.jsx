@@ -27,6 +27,7 @@ export default function ProfileScreen() {
                 <img className="profileAvatar" src={user.avatar} alt={user.name} />
                 <h1 className="profileName">{user.name}</h1>
                 <p className="profileStatus">{user.status}</p>
+                <p className="profilePhone">Celular: {user.phone || "No disponible"}</p>
                 <p className="profileSeen">Última conversación: {user.lastSeen}</p>
             </div>
         </main>
