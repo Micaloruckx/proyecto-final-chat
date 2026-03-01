@@ -22,6 +22,10 @@
     margin: 10px 0 10px 10px;
 }
 
+.msgInput:active {
+background-color: var(--color-bg-panel);
+}
+
 .msgInput:-webkit-autofill,
 .msgInput:-webkit-autofill:hover,
 .msgInput:-webkit-autofill:focus,

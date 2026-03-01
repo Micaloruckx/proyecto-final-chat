@@ -56,7 +56,7 @@ export default function ChatScreen() {
                             <section className="sup" aria-label="Estado inicial del chat">
                                 <div className="supTitle">
                                     <h2>WhatStark</h2>
-                                    <img className="supLogo" src="/public/Logos/LogoSolo-WhatStark-png.PNG" alt="Logo WhatStark" />
+                                    <img className="supLogo" src="/Logos/LogoSolo-WhatStark-png.PNG" alt="Logo WhatStark" />
                                     <p>Seleccioná un chat para empezar o</p>
                                 </div>
                                 <div className="supActions" aria-label="Acciones rápidas">
