@@ -1,10 +1,10 @@
 # WhatStark
 
-Trabajo Integrador Final de Frontend (1er llamado)
+Trabajo Integrador Final de Frontend (1er llamado).
 
 Aplicación web de mensajería inspirada en WhatsApp, desarrollada en React, con login personalizado, listado de chats, vista de conversación, perfil de usuario, tema claro/oscuro y diseño responsive.
 
-Como propuesta diferencial, el proyecto adapta esa base a una temática inspirada en Game of Thrones, con una narrativa alternativa orientada al entretenimiento. Se incorporó una lógica de interacción donde la persona usuaria participa como un personaje “infiltrado” dentro de la trama del chat. Para estos resultados se optó por la generación + selección de personajes, diseño de historias y personalización visual del entorno (por ejemplo, fondo del chat).
+Como propuesta diferencial, el proyecto adapta esa base a una temática inspirada en Game of Thrones, con una alternativa orientada al entretenimiento. Se incorporó una lógica de interacción donde la persona usuaria participa como un personaje “infiltrado” dentro de la trama del chat. Para estos resultados se optó por la generación + selección de personajes, diseño de historias y personalización visual del entorno (por ejemplo, fondo del chat).
 
 ---
 
@@ -38,16 +38,18 @@ Se eligió construir una app de mensajería tipo WhatsApp ("WhatStark") para apl
 
 ---
 
-> Extensiones de VS Code útiles
+> Cómo correr el proyecto en local
 
-Durante el desarrollo se utilizaron (y/o se recomiendan) las siguientes extensiones para mejorar productividad, calidad y mantenimiento del código:
+```bash/PowerShell
+npm install
+npm run dev
+```
 
-- **GitHub Copilot** (`GitHub.copilot`) y **GitHub Copilot Chat** (`GitHub.copilot-chat`): asistencia en implementación, refactor y resolución de errores.
-- **ESLint** (`dbaeumer.vscode-eslint`): detección temprana de problemas de estilo y calidad directamente en el editor.
-- **Formateador nativo de VS Code** (Format Document): se utilizó el formateo integrado del editor para mantener legibilidad y uniformidad, sin depender de Prettier (no me resultó de mi estilo).
-- **GitLens** (`eamodio.gitlens`): trazabilidad de cambios, historial y contexto de autoría sobre archivos y líneas.
+Build de producción:
 
-Estas herramientas complementan el flujo de trabajo local y reducen fricción entre iteraciones de desarrollo y deploy.
+```bash/PowerShell
+npm run build
+```
 
 ---
 
@@ -64,6 +66,15 @@ Estas herramientas complementan el flujo de trabajo local y reducen fricción en
 
 ---
 
+> Estado actual (solo pantalla UI)
+
+- **Login:** `¿Has olvidado tu contraseña?` y `Regístrate` sin acción ni flujo real, solo visual.
+- **Login:** checkbox `Recordarme` es visual y no altera persistencia de sesión en esta versión.
+- **Nav:** íconos `Chats` y `Llamadas` no disparan acción aún, solo visual por ahora.
+- **Pantalla de bienvenida del chat (sin chat seleccionado):** botones `Enviar documento` y `Añadir contacto` no disparan acción aún, son solo visuales por ahora.
+
+---
+
 > Cumplimiento de requisitos del TP
 
 - [x] Deploy funcional (Vercel)
@@ -71,15 +82,16 @@ Estas herramientas complementan el flujo de trabajo local y reducen fricción en
 - [x] README con descripción y stack
 - [x] Aplicación responsive (320px a 2000px)
 - [x] Estilos accesibles (contrastes y legibilidad)
-- [x] Desarrollo en React
+- [x] Desarrollo en React.js
 - [x] Uso de estados
 - [x] Uso de Context API
 - [x] Routing con `react-router-dom`
-- [x] Uso de al menos 1 formulario (login)
+- [x] Uso de al menos 1 formulario (login -> .loginForm)
 - [x] Uso de componentes reutilizables
 - [x] Flujo con 2+ páginas (`/login`, `/`, `/profile/:userId`)
 - [x] Uso de parámetros de ruta con `useParams`
-- [x] Criterios de código (KISS/DRY en estructura y helpers)
+- [x] Criterios de código (KISS/DRY/YAGNI en estructura y helpers, con revisión específica final al cierre del proyecto). Estos principios y cuidados facilitarán el mantenimiento del código.
+- [x] Diseño de página basado en WhatsApp con impronta personal para variar
 
 ---
 
@@ -94,29 +106,14 @@ Estas herramientas complementan el flujo de trabajo local y reducen fricción en
 
 ---
 
-> Cómo correr el proyecto en local
-
-```bash/PowerShell
-npm install
-npm run dev
-```
-
-Build de producción:
-
-```bash/PowerShell
-npm run build
-```
-
----
-
 > Decisiones y dificultades
 
 Durante el desarrollo se trabajó especialmente en:
 
-- Ajustes finos de responsive para mobile
-- Consistencia visual de estados hover/selección
 - Manejo de rutas de assets para evitar errores por mayúsculas/minúsculas en deploy (Windows vs Linux/Vercel)
 - Iteraciones de UX para que la app se sienta similar a un flujo real de mensajería
+- Ajustes finos de responsive para mobile
+- Consistencia visual de estados hover/selección
 - Se evaluó integrar una API de IA para respuestas del chat, pero no se llegó a implementar en esta entrega por tiempos y por priorizar que el flujo principal funcionara estable.
 - Queda como mejora futura del proyecto: sumar esa integración de IA en una próxima versión.
 
@@ -127,12 +124,12 @@ Durante el desarrollo se trabajó especialmente en:
 Durante el desarrollo del proyecto, los principales aprendizajes fueron:
 
 0. **React y reutilización de componentes/comportamientos**
-	- Diseñar componentes reutilizables permitió mantener consistencia visual y lógica entre distintas screens/pages.
+	- Diseñar componentes reutilizables permite mantener consistencia visual y lógica entre distintas screens/pages.
 	- Reaprovechar estructura y comportamiento redujo duplicación y facilitó iterar más rápido.
 
 1. **Case-sensitive entre Local vs Vercel (Linux)**
-	- Un aprendizaje clave fue que Vercel/Linux diferencia mayúsculas y minúsculas en rutas, mientras que Windows suele ser más permisivo.
-	- Esto impacta directamente en assets (imágenes, logos, avatares): conviene definir una nomenclatura estandarizada desde el inicio.
+	- Un aprendizaje clave fue que Vercel/Linux diferencia mayúsculas y minúsculas en rutas creadas.
+	- Esto impacta directamente en assets (imágenes, logos, avatares): conviene definir una nomenclatura estandarizada previo al inicio.
 
 2. **Uso de Vercel para deploy continuo**
 	- Se trabajó con deploys de Preview/Production para validar cambios de forma incremental sin romper la versión pública.
@@ -148,10 +145,10 @@ Durante el desarrollo del proyecto, los principales aprendizajes fueron:
 
 5. **Trabajo colaborativo con IA (Copilot)**
 	- Aprendí a traducir problemas de UX y bugs técnicos en pedidos concretos, para iterar más rápido y con menos fricción.
-	- Aprendí a validar cada cambio con evidencia (estado de Git, lint, build, deploy) y a priorizar soluciones de raíz en lugar de parches rápidos.
+	- Aprendí a validar cada cambio con evidencia (estado de Git, lint, build, deploy) y a priorizar soluciones de raíz en lugar de parches que postergarían problemas más grandes.
 
 6. **Posibilidades de uso de audio en UX**
-	- Integrar audio en 2 pantallas puntuales (login/loading) ayuda a reforzar identidad temática de la app.
+	- Integrar audio en 2 pantallas puntuales (login/loading) ayuda no solo a la práctica, sino a reforzar identidad temática de la app.
 	- También aprendí que se puede controlar volumen máximo, delays de inicio y fallback por interacción del usuario para cumplir políticas de autoplay en navegadores.
 
 ---
@@ -165,6 +162,19 @@ Para mantener una UI consistente entre navegadores (especialmente en mobile), el
 - **Autofill normalizado:** se overridea `-webkit-autofill` para que el fondo y color de texto respeten tokens de tema y no aparezca el fondo celeste/amarillo del navegador.
 - **Tokens de tema obligatorios:** fondos, bordes y texto deben usar variables CSS (`--color-bg-surface`, `--color-border-strong`, `--color-accent`, etc.), evitando hardcodeo de colores.
 - **Compatibilidad de assets en deploy Linux:** rutas y extensiones de imágenes deben respetar exactamente mayúsculas/minúsculas reales de `public/`.
+
+---
+
+> Extensiones de VS Code útiles
+
+Durante el desarrollo se utilizaron (y/o se recomiendan) las siguientes extensiones para mejorar productividad, calidad y mantenimiento del código:
+
+- **GitHub Copilot** (`GitHub.copilot`) y **GitHub Copilot Chat** (`GitHub.copilot-chat`): asistencia en implementación, refactor y resolución de errores.
+- **ESLint** (`dbaeumer.vscode-eslint`): detección temprana de problemas de estilo y calidad directamente en el editor.
+- **Formateador nativo de VS Code** (Format Document): se utilizó el formateo integrado del editor para mantener legibilidad y uniformidad, sin depender de Prettier (no me resultó de mi estilo).
+- **GitLens** (`eamodio.gitlens`): trazabilidad de cambios, historial y contexto de autoría sobre archivos y líneas.
+
+Estas herramientas complementan el flujo de trabajo local y reducen fricción entre iteraciones de desarrollo y deploy.
 
 ---
 

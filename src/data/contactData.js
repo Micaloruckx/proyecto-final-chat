@@ -117,7 +117,7 @@ const contactData = {
             { id: "m4", fromMe: true, text: "Ya se distribuyeron mantas y comida.", time: "22:06" },
             { id: "m5", fromMe: false, text: "El Norte recuerda, pero también aprende.", time: "22:07" },
             // ===== [VOICE NOTE EDDARD EN DATA - INICIO] =====
-            { id: "m6", fromMe: false, text: "", audio: "/audio/chat-sfx.mp3", audioLabel: "Nota de voz:", time: "22:08" },
+            { id: "m6", fromMe: false, text: "", audio: "/audio/chat-audio-eddard.mp3", audioLabel: "Nota de voz:", time: "22:08" },
             // ===== [VOICE NOTE EDDARD EN DATA - FIN] =====
             { id: "m7", fromMe: true, text: "Recibida. Doy la orden de cerrar los accesos del puente.", time: "22:10" },
             { id: "m8", fromMe: false, text: "Al alba se cierran las puertas del norte.", time: "22:12" },

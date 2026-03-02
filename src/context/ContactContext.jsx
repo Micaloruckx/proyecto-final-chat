@@ -67,7 +67,7 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
         if (!messagesByChatId || typeof messagesByChatId !== "object") return {};
 
         const chatId = "chat-eddard";
-        const voicePath = "/audio/chat-sfx.mp3";
+        const voicePath = "/audio/chat-audio-eddard.mp3";
         const voiceLabel = "Nota de voz";
         const eddardMessages = Array.isArray(messagesByChatId[chatId]) ? messagesByChatId[chatId] : [];
 
