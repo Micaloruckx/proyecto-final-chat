@@ -42,6 +42,8 @@ export default function LoginScreen() {
         const audio = audioRef.current;
         if (!audio) return;
 
+        const unlockEvents = ["pointerdown", "touchstart", "click", "keydown"];
+
         const enforceMaxVolume = () => {
             if (audio.volume > MAX_LOGIN_VOLUME) {
                 audio.volume = MAX_LOGIN_VOLUME;
@@ -55,7 +57,10 @@ export default function LoginScreen() {
         };
 
         audio.volume = MAX_LOGIN_VOLUME;
+        audio.playsInline = true;
+        audio.setAttribute("playsinline", "");
         enforceMaxVolume();
+        audio.load();
 
         const tryPlay = () => {
             applyTrackOffset();
@@ -66,11 +71,16 @@ export default function LoginScreen() {
                 .catch(() => false);
         };
 
+        const removeUnlockListeners = () => {
+            unlockEvents.forEach((eventName) => {
+                window.removeEventListener(eventName, unlockAudio);
+            });
+        };
+
         const unlockAudio = () => {
             tryPlay().then((played) => {
                 if (played) {
-                    window.removeEventListener("pointerdown", unlockAudio);
-                    window.removeEventListener("keydown", unlockAudio);
+                    removeUnlockListeners();
                 }
             });
         };
@@ -78,12 +88,13 @@ export default function LoginScreen() {
         audio.addEventListener("volumechange", enforceMaxVolume);
         audio.addEventListener("loadedmetadata", enforceMaxVolume);
         audio.addEventListener("loadedmetadata", applyTrackOffset);
-        window.addEventListener("pointerdown", unlockAudio);
-        window.addEventListener("keydown", unlockAudio);
+        audio.addEventListener("canplay", unlockAudio);
+        unlockEvents.forEach((eventName) => {
+            window.addEventListener(eventName, unlockAudio, { passive: true });
+        });
         tryPlay().then((played) => {
             if (played) {
-                window.removeEventListener("pointerdown", unlockAudio);
-                window.removeEventListener("keydown", unlockAudio);
+                removeUnlockListeners();
             }
         });
 
@@ -95,8 +106,8 @@ export default function LoginScreen() {
             audio.removeEventListener("volumechange", enforceMaxVolume);
             audio.removeEventListener("loadedmetadata", enforceMaxVolume);
             audio.removeEventListener("loadedmetadata", applyTrackOffset);
-            window.removeEventListener("pointerdown", unlockAudio);
-            window.removeEventListener("keydown", unlockAudio);
+            audio.removeEventListener("canplay", unlockAudio);
+            removeUnlockListeners();
             audio.pause();
             audio.currentTime = 0;
         };
@@ -168,6 +179,11 @@ export default function LoginScreen() {
         const trimmedNickname = nickname.trim();
         if (!trimmedNickname) return;
 
+        const audio = audioRef.current;
+        if (audio && audio.paused && !isAudioMuted) {
+            audio.play().catch(() => { });
+        }
+
         // INicia simulación de proceso de login con animación de carga
         setMode("loading");
         setProgress(0);
@@ -197,7 +213,7 @@ export default function LoginScreen() {
     return (
         <main className="loginScreen">
             {/* ===== [AUDIO LOGIN: ELEMENTO HTML AUDIO - INICIO] ===== */}
-            <audio ref={audioRef} src="/audio/got-intro.mp3" autoPlay loop preload="auto" hidden />
+            <audio ref={audioRef} className="srOnly" src="/audio/got-intro.mp3" autoPlay loop preload="auto" playsInline />
             {/* ===== [AUDIO LOGIN: ELEMENTO HTML AUDIO - FIN] ===== */}
             {mode === "loading" ? (
                 <div className="loginCard loadingCard" aria-live="polite" aria-busy="true">
