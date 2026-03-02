@@ -57,8 +57,6 @@ export default function LoginScreen() {
         };
 
         audio.volume = MAX_LOGIN_VOLUME;
-        audio.playsInline = true;
-        audio.setAttribute("playsinline", "");
         enforceMaxVolume();
         audio.load();
 
@@ -213,7 +211,7 @@ export default function LoginScreen() {
     return (
         <main className="loginScreen">
             {/* ===== [AUDIO LOGIN: ELEMENTO HTML AUDIO - INICIO] ===== */}
-            <audio ref={audioRef} className="srOnly" src="/audio/got-intro.mp3" autoPlay loop preload="auto" playsInline />
+            <audio ref={audioRef} className="srOnly" src="/audio/got-intro.mp3" autoPlay loop preload="auto" />
             {/* ===== [AUDIO LOGIN: ELEMENTO HTML AUDIO - FIN] ===== */}
             {mode === "loading" ? (
                 <div className="loginCard loadingCard" aria-live="polite" aria-busy="true">
