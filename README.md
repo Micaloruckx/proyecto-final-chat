@@ -66,7 +66,7 @@ npm run build
 
 ---
 
-> Estado actual (solo pantalla UI)
+> Estado actual de elementos solo pantalla (UI)
 
 - **Login:** `¿Has olvidado tu contraseña?` y `Regístrate` sin acción ni flujo real, solo visual.
 - **Login:** checkbox `Recordarme` es visual y no altera persistencia de sesión en esta versión.
@@ -106,7 +106,7 @@ npm run build
 
 ---
 
-> Decisiones y dificultades
+> Desafíos y decisiones
 
 Durante el desarrollo se trabajó especialmente en:
 
@@ -121,7 +121,7 @@ Durante el desarrollo se trabajó especialmente en:
 
 > Aprendizajes
 
-Durante el desarrollo del proyecto, los principales aprendizajes fueron:
+Proyecto desarrollado de forma iterativa, con múltiples ciclos de mejora en UI, arquitectura, deploy y documentación. Durante el desarrollo, los principales aprendizajes fueron:
 
 0. **React y reutilización de componentes/comportamientos**
 	- Diseñar componentes reutilizables permite mantener consistencia visual y lógica entre distintas screens/pages.
