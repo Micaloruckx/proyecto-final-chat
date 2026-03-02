@@ -55,18 +55,24 @@ export default function LoginScreen() {
         };
 
         audio.volume = MAX_LOGIN_VOLUME;
-        audio.muted = isAudioMuted;
         enforceMaxVolume();
 
         const tryPlay = () => {
             applyTrackOffset();
-            audio.play().catch(() => { });
+            return audio.play()
+                .then(() => {
+                    return true;
+                })
+                .catch(() => false);
         };
 
         const unlockAudio = () => {
-            tryPlay();
-            window.removeEventListener("pointerdown", unlockAudio);
-            window.removeEventListener("keydown", unlockAudio);
+            tryPlay().then((played) => {
+                if (played) {
+                    window.removeEventListener("pointerdown", unlockAudio);
+                    window.removeEventListener("keydown", unlockAudio);
+                }
+            });
         };
 
         audio.addEventListener("volumechange", enforceMaxVolume);
@@ -74,7 +80,12 @@ export default function LoginScreen() {
         audio.addEventListener("loadedmetadata", applyTrackOffset);
         window.addEventListener("pointerdown", unlockAudio);
         window.addEventListener("keydown", unlockAudio);
-        tryPlay();
+        tryPlay().then((played) => {
+            if (played) {
+                window.removeEventListener("pointerdown", unlockAudio);
+                window.removeEventListener("keydown", unlockAudio);
+            }
+        });
 
         return () => {
             if (fadeTimerRef.current) {
@@ -89,7 +100,14 @@ export default function LoginScreen() {
             audio.pause();
             audio.currentTime = 0;
         };
-    }, [LOGIN_AUDIO_TRACK_OFFSET_SECONDS, MAX_LOGIN_VOLUME, isAudioMuted]);
+    }, [LOGIN_AUDIO_TRACK_OFFSET_SECONDS, MAX_LOGIN_VOLUME]);
+
+    useEffect(() => {
+        const audio = audioRef.current;
+        if (!audio) return;
+
+        audio.muted = isAudioMuted;
+    }, [isAudioMuted]);
     // ===== [AUDIO LOGIN: CONTROL/REPRODUCCIÓN - FIN] =====
 
     // ===== [AUDIO LOGIN: BOTÓN MUTE - INICIO] =====
@@ -154,7 +172,7 @@ export default function LoginScreen() {
         setMode("loading");
         setProgress(0);
 
-        const totalMs = 2500;
+        const totalMs = 3000;
         const stepMs = 60;
         const steps = Math.ceil(totalMs / stepMs);
         let i = 0;
