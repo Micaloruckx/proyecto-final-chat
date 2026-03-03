@@ -23,6 +23,7 @@
     padding: 8px 12px;
     background: var(--color-bg-surface);
     color: var(--color-text-primary);
+    cursor: pointer;
     transition: background-color 0.2s ease, transform 0.2s ease;
 }
 

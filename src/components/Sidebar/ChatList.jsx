@@ -133,8 +133,12 @@ export default function ChatList({ onMenuClick }) {
 
             <div className="chatItems">
                 {sortedChats.map((c) => {
-                    const userName = (usersById[c.userId]?.name || "").toLowerCase();
+                    const user = usersById[c.userId];
+                    if (!user) return null;
+
+                    const userName = (user.name || "").toLowerCase();
                     const collapsed = Boolean(loweredQuery) && !userName.includes(loweredQuery);
+
                     return (
                         <ChatListItem key={c.id} chat={c} active={c.id === selectedChatId} collapsed={collapsed} />
                     );

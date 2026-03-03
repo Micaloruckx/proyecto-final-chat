@@ -8,12 +8,13 @@ export default function LoginScreen() {
     // ===== [AUDIO LOGIN - INICIO] =====
     const MAX_LOGIN_VOLUME = 0.5;
     const LOGIN_AUDIO_TRACK_OFFSET_SECONDS = 4;
-    const LOGIN_AUDIO_FADE_OUT_MS = 1200;
+    const LOGIN_AUDIO_FADE_OUT_MS = 2500;
     const navigate = useNavigate();
     const { currentUser, login } = useChat();
     const audioRef = useRef(null);
     const fadeTimerRef = useRef(null);
     const hasAppliedTrackOffsetRef = useRef(false);
+    const hasStartedLoadingFadeRef = useRef(false);
 
     const avatarOptions = useMemo(() => [
         "/avatars/frodo.png",
@@ -130,11 +131,13 @@ export default function LoginScreen() {
 
     // Transición de salida: desvanecer audio y luego navegar al chat
     // ===== [AUDIO LOGIN: FADE OUT AL NAVEGAR - INICIO] =====
-    const fadeOutAudioAndNavigate = () => {
+    const fadeOutAudioAndNavigate = ({ navigateOnComplete = true } = {}) => {
         const audio = audioRef.current;
 
         if (!audio) {
-            navigate("/", { replace: true });
+            if (navigateOnComplete) {
+                navigate("/", { replace: true });
+            }
             return;
         }
 
@@ -147,7 +150,9 @@ export default function LoginScreen() {
         if (audio.paused || initialVolume <= 0.01) {
             audio.pause();
             audio.currentTime = 0;
-            navigate("/", { replace: true });
+            if (navigateOnComplete) {
+                navigate("/", { replace: true });
+            }
             return;
         }
 
@@ -168,7 +173,9 @@ export default function LoginScreen() {
                 audio.volume = 0;
                 audio.pause();
                 audio.currentTime = 0;
-                navigate("/", { replace: true });
+                if (navigateOnComplete) {
+                    navigate("/", { replace: true });
+                }
             }
         }, tickMs);
     };
@@ -188,6 +195,7 @@ export default function LoginScreen() {
         // INicia simulación de proceso de login con animación de carga
         setMode("loading");
         setProgress(0);
+        hasStartedLoadingFadeRef.current = false;
 
         const totalMs = 3000;
         const stepMs = 60;
@@ -199,6 +207,11 @@ export default function LoginScreen() {
             const pct = Math.min(100, Math.round((i / steps) * 100));
             setProgress(pct);
 
+            if (pct >= 50 && !hasStartedLoadingFadeRef.current) {
+                hasStartedLoadingFadeRef.current = true;
+                fadeOutAudioAndNavigate({ navigateOnComplete: false });
+            }
+
             if (pct >= 100) {
                 clearInterval(t);
 
@@ -207,7 +220,7 @@ export default function LoginScreen() {
                     avatar: selectedAvatar,
                 });
 
-                fadeOutAudioAndNavigate();
+                navigate("/", { replace: true });
             }
         }, stepMs);
     }

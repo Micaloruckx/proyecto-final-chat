@@ -37,10 +37,10 @@ export default function Nav() {
 	return (
 		<aside className="navRail" aria-label="Navegación principal">
 			<div className="navTop">
-				<button type="button" className="navIconBtn" aria-label="Chats" title="Chats">
+				<button type="button" className="navIconBtn" aria-label="Chats" title="Chats" disabled>
 					<BsChatLeftText size={24} />
 				</button>
-				<button type="button" className="navIconBtn" aria-label="Llamadas" title="Llamadas">
+				<button type="button" className="navIconBtn" aria-label="Llamadas" title="Llamadas" disabled>
 					<BsTelephone size={22} />
 				</button>
 			</div>

@@ -9,6 +9,8 @@ export default function ChatListItem({ chat, active, collapsed }) {
     const navigate = useNavigate();
     const u = usersById[chat.userId];
 
+    if (!u) return null;
+
     function openProfile(e) {
         e.preventDefault();
         e.stopPropagation();

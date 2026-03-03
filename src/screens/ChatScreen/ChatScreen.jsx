@@ -62,10 +62,10 @@ export default function ChatScreen() {
                                     <p>Seleccioná un chat para empezar o</p>
                                 </div>
                                 <div className="supActions" aria-label="Acciones rápidas">
-                                    <button type="button" className="supActionBtn" aria-label="Enviar documento">
+                                    <button type="button" className="supActionBtn" aria-label="Enviar documento" disabled>
                                         <BsFileEarmarkText size={30} />
                                     </button>
-                                    <button type="button" className="supActionBtn" aria-label="Añadir contacto">
+                                    <button type="button" className="supActionBtn" aria-label="Añadir contacto" disabled>
                                         <BsPersonPlus size={32} />
                                     </button>
                                 </div>

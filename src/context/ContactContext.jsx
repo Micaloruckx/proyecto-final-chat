@@ -230,6 +230,19 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
         return result;
     }
 
+    function warnInvalidChats(chats, usersById) {
+        if (!Array.isArray(chats) || !usersById) return;
+
+        chats.forEach((chat) => {
+            const hasUser = Boolean(usersById[chat?.userId]);
+            if (!hasUser) {
+                console.warn(
+                    `[WhatStark] Chat inválido detectado: id="${chat?.id || "desconocido"}" userId="${chat?.userId || "vacío"}" no existe en users.`
+                );
+            }
+        });
+    }
+
     export function ContactProvider({ children }) {
         // No persistimos la sesión: siempre iniciar en login.
         const [currentUser, setCurrentUser] = useState(null);
@@ -252,6 +265,26 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
             for (const u of contactData.users) map[u.id] = u;
             return map;
         }, []);
+
+        const validChats = useMemo(
+            () => contactData.chats.filter((chat) => Boolean(usersById[chat?.userId])),
+            [usersById]
+        );
+
+        const validChatIds = useMemo(
+            () => new Set(validChats.map((chat) => chat.id)),
+            [validChats]
+        );
+
+        useEffect(() => {
+            warnInvalidChats(contactData.chats, usersById);
+        }, [usersById]);
+
+        useEffect(() => {
+            if (selectedChatId && !validChatIds.has(selectedChatId)) {
+                setSelectedChatId(null);
+            }
+        }, [selectedChatId, validChatIds]);
         function login(userInput) {
             const u = typeof userInput === "string"
                 ? (usersById[userInput] || null)
@@ -268,6 +301,7 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
         }
 
         function selectChat(chatId) {
+            if (chatId !== null && !validChatIds.has(chatId)) return;
             setSelectedChatId(chatId);
         }
 
@@ -277,7 +311,7 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
 
         function sendMessage(chatId, text) {
             const trimmed = text.trim();
-            if (!trimmed || !chatId) return;
+            if (!trimmed || !chatId || !validChatIds.has(chatId)) return;
 
             const now = new Date();
 
@@ -307,7 +341,7 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
 
         const value = {
             users: contactData.users,
-            chats: contactData.chats,
+            chats: validChats,
             usersById,
             currentUser,
             selectedChatId,
