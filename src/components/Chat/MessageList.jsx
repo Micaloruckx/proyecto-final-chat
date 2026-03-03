@@ -5,8 +5,9 @@ import MessageBubble from "./MessageBubble.jsx";
 import "./MessageList.css";
 
 export default function MessageList() {
-    const { selectedChatId, messagesByChatId } = useChat();
+    const { selectedChatId, messagesByChatId, typingByChatId } = useChat();
     const msgs = messagesByChatId[selectedChatId] || [];
+    const isTyping = Boolean(selectedChatId && typingByChatId[selectedChatId]);
     const endRef = useRef(null);
     const listRef = useRef(null);
     const [showScrollDown, setShowScrollDown] = useState(false);
@@ -43,6 +44,15 @@ export default function MessageList() {
                 {msgs.map((m) => (
                     <MessageBubble key={m.id} message={m} />
                 ))}
+                {isTyping ? (
+                    <div className="typingRow" role="status" aria-live="polite" aria-label="El personaje está escribiendo">
+                        <div className="typingBubble">
+                            <span className="typingDot" />
+                            <span className="typingDot" />
+                            <span className="typingDot" />
+                        </div>
+                    </div>
+                ) : null}
                 <div ref={endRef} />
             </div>
 

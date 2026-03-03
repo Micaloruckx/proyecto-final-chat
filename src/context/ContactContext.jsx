@@ -31,6 +31,28 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
     "chat-targaryen": "[Varys] La información ya está en movimiento.",
 };
 
+const CHARACTER_REPLY_PREFIX_BY_CHAT = {
+    "chat-jon": "Entendido. Tomo esto:",
+    "chat-arya": "Recibido. Lo hago así:",
+    "chat-sansa": "Perfecto. Queda anotado:",
+    "chat-bran": "Lo veo claro. Es esto:",
+    "chat-robb": "Bien. Vamos con esto:",
+    "chat-catelyn": "De acuerdo. Tomo nota de:",
+    "chat-eddard": "Con prudencia, procedemos con:",
+    "chat-rickon": "Jajaja sí, va esto:",
+    "chat-tony": "Copy that. Compilo esto:",
+    "chat-targaryen": "[Tyrion] Entendido. El Consejo registra:",
+};
+
+const CHATBOT_ACK_BY_INTENT = {
+    greeting: "Qué bueno leerte",
+    question: "Buena pregunta",
+    request: "Perfecto, me encargo",
+    urgent: "Recibido, lo tomo con prioridad",
+    confirm: "Dale, queda confirmado",
+    default: "Entendido",
+};
+
     const AUTH_STORAGE_KEYS = [
         "ws_currentUser",
         "ws_selectedChatId",
@@ -46,21 +68,8 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
 
     // ===== [MIGRACIÓN AUDIO EDDARD - INICIO] =====
     function safeLoadMessages() {
-        const openedAt = ensureAppOpenedAt();
-        const baseMessages = ensureEddardVoiceNoteMessage(hydrateMessages(contactData.messages, openedAt));
-
-        try {
-            const raw = localStorage.getItem("ws_messages");
-            if (!raw) return baseMessages;
-            const parsed = JSON.parse(raw);
-            if (!parsed || typeof parsed !== "object") return baseMessages;
-            return ensureEddardVoiceNoteMessage({
-                ...baseMessages,
-                ...hydrateMessages(parsed, openedAt),
-            });
-        } catch {
-            return baseMessages;
-        }
+        const openedAt = new Date().toISOString();
+        return ensureEddardVoiceNoteMessage(hydrateMessages(contactData.messages, openedAt));
     }
 
     function ensureEddardVoiceNoteMessage(messagesByChatId) {
@@ -108,16 +117,6 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
     }
     // ===== [MIGRACIÓN AUDIO EDDARD - FIN] =====
 
-    function ensureAppOpenedAt() {
-        const key = "ws_app_opened_at";
-        const existing = localStorage.getItem(key);
-        if (existing) return existing;
-
-        const now = new Date().toISOString();
-        localStorage.setItem(key, now);
-        return now;
-    }
-
     function safeLoadTheme() {
         const stored = localStorage.getItem(THEME_STORAGE_KEY);
         if (stored === "light" || stored === "dark") return stored;
@@ -135,18 +134,12 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
         }).format(date);
     }
 
-    function persistMessages(nextMessagesByChatId) {
-        localStorage.setItem("ws_messages", JSON.stringify(nextMessagesByChatId));
-    }
-
     function appendMessage(setter, chatId, message) {
         setter((prev) => {
-            const next = {
+            return {
                 ...prev,
                 [chatId]: [...(prev[chatId] || []), message],
             };
-            persistMessages(next);
-            return next;
         });
     }
 
@@ -154,11 +147,56 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
         return AI_FALLBACK_BY_CHAT[chatId] || "Recibido. Te respondo en breve.";
     }
 
+    function normalizeUserText(text) {
+        return (text || "").replace(/\s+/g, " ").trim();
+    }
+
+    function detectMessageIntent(text) {
+        const lower = text.toLowerCase();
+
+        if (/\b(hola|buenas|hey|qué tal|que tal|buen día|buen dia)\b/i.test(lower)) {
+            return "greeting";
+        }
+
+        if (text.includes("?")) {
+            return "question";
+        }
+
+        if (/\b(urgente|ya|ahora|rápido|rapido|asap)\b/i.test(lower)) {
+            return "urgent";
+        }
+
+        if (/\b(por favor|podés|podes|podrías|podrias|hacé|hace|enviá|envia|revisá|revisa)\b/i.test(lower)) {
+            return "request";
+        }
+
+        if (/\b(ok|dale|listo|perfecto|confirmado|genial|hecho)\b/i.test(lower)) {
+            return "confirm";
+        }
+
+        return "default";
+    }
+
+    function extractTopic(text) {
+        const firstSentence = text.split(/[.!?]/)[0]?.trim() || text;
+        return firstSentence.slice(0, 110);
+    }
+
+    function buildIntentAwareBody(intent, topic) {
+        const ack = CHATBOT_ACK_BY_INTENT[intent] || CHATBOT_ACK_BY_INTENT.default;
+        return `${ack} sobre "${topic}".`;
+    }
+
     function buildLocalAiReply(chatId, userText) {
-        const clean = userText.trim();
-        const firstChunk = clean.split(/[.!?]/)[0]?.trim() || "Entendido";
+        const clean = normalizeUserText(userText);
+        if (!clean) return buildFallbackReply(chatId);
+
+        const intent = detectMessageIntent(clean);
+        const topic = extractTopic(clean);
+        const chatbotBody = buildIntentAwareBody(intent, topic);
+        const prefix = CHARACTER_REPLY_PREFIX_BY_CHAT[chatId] || "Recibido. Respondo a:";
         const suffix = LOCAL_AI_SUFFIX_BY_CHAT[chatId] || "Sigo atento.";
-        return `${firstChunk}. ${suffix}`;
+        return `${prefix} ${chatbotBody} ${suffix}`;
     }
 
     function slugifyName(value) {
@@ -248,11 +286,15 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
         const [currentUser, setCurrentUser] = useState(null);
         const [selectedChatId, setSelectedChatId] = useState(null);
         const [messagesByChatId, setMessagesByChatId] = useState(() => safeLoadMessages());
+        const [typingByChatId, setTypingByChatId] = useState({});
         const [theme, setTheme] = useState(() => safeLoadTheme());
 
         useEffect(() => {
             // Hard reset de auth al iniciar la app: siempre volver a login al recargar.
             clearAuthStorage();
+            ["ws_messages", "ws_app_opened_at", "ws_data_seed_version", "ws_data_seed_snapshot"].forEach((key) => {
+                localStorage.removeItem(key);
+            });
         }, []);
 
         useEffect(() => {
@@ -324,19 +366,33 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
             };
 
             appendMessage(setMessagesByChatId, chatId, newMsg);
+            setTypingByChatId((prev) => ({ ...prev, [chatId]: true }));
 
-            (async () => {
-                const replyText = buildLocalAiReply(chatId, trimmed) || buildFallbackReply(chatId);
-
+            window.setTimeout(() => {
                 const replyNow = new Date();
-                appendMessage(setMessagesByChatId, chatId, {
-                    id: `m-ai-${Date.now()}`,
-                    fromMe: false,
-                    text: replyText,
-                    time: formatArgentinaTime(replyNow),
-                    createdAt: replyNow.toISOString(),
-                });
-            })();
+
+                try {
+                    const replyText = buildLocalAiReply(chatId, trimmed) || buildFallbackReply(chatId);
+
+                    appendMessage(setMessagesByChatId, chatId, {
+                        id: `m-ai-${Date.now()}`,
+                        fromMe: false,
+                        text: replyText,
+                        time: formatArgentinaTime(replyNow),
+                        createdAt: replyNow.toISOString(),
+                    });
+                } catch {
+                    appendMessage(setMessagesByChatId, chatId, {
+                        id: `m-ai-${Date.now()}`,
+                        fromMe: false,
+                        text: buildFallbackReply(chatId),
+                        time: formatArgentinaTime(replyNow),
+                        createdAt: replyNow.toISOString(),
+                    });
+                } finally {
+                    setTypingByChatId((prev) => ({ ...prev, [chatId]: false }));
+                }
+            }, 450);
         }
 
         const value = {
@@ -346,6 +402,7 @@ const LOCAL_AI_SUFFIX_BY_CHAT = {
             currentUser,
             selectedChatId,
             messagesByChatId,
+            typingByChatId,
             theme,
             login,
             logout,
