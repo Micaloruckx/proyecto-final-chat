@@ -7,12 +7,13 @@ import "./LoginScreen.css";
 export default function LoginScreen() {
     // ===== [AUDIO LOGIN - INICIO] =====
     const MAX_LOGIN_VOLUME = 0.5;
-    const LOGIN_AUDIO_TRACK_OFFSET_SECONDS = 5;
+    const LOGIN_AUDIO_TRACK_OFFSET_SECONDS = 4;
     const LOGIN_AUDIO_FADE_OUT_MS = 1200;
     const navigate = useNavigate();
     const { currentUser, login } = useChat();
     const audioRef = useRef(null);
     const fadeTimerRef = useRef(null);
+    const hasAppliedTrackOffsetRef = useRef(false);
 
     const avatarOptions = useMemo(() => [
         "/avatars/frodo.png",
@@ -51,17 +52,18 @@ export default function LoginScreen() {
         };
 
         const applyTrackOffset = () => {
+            if (hasAppliedTrackOffsetRef.current) return;
             if (Number.isFinite(audio.duration) && audio.duration > LOGIN_AUDIO_TRACK_OFFSET_SECONDS) {
                 audio.currentTime = LOGIN_AUDIO_TRACK_OFFSET_SECONDS;
+                hasAppliedTrackOffsetRef.current = true;
             }
         };
 
         audio.volume = MAX_LOGIN_VOLUME;
         enforceMaxVolume();
-        audio.load();
+        applyTrackOffset();
 
         const tryPlay = () => {
-            applyTrackOffset();
             return audio.play()
                 .then(() => {
                     return true;
@@ -108,6 +110,7 @@ export default function LoginScreen() {
             removeUnlockListeners();
             audio.pause();
             audio.currentTime = 0;
+            hasAppliedTrackOffsetRef.current = false;
         };
     }, [LOGIN_AUDIO_TRACK_OFFSET_SECONDS, MAX_LOGIN_VOLUME]);
 
